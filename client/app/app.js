@@ -17,12 +17,14 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngAnimate from 'angular-animate';
 import ngMaterial from 'angular-material';
-// because we exported a named variable
-// without using default keyword
-// we must import it with the brackets
-import {home} from './components/home/home';
+// Layout 
 import {sideBar} from './components/sideBar/sideBar';
 import {topBar} from './components/topBar/topBar';
+// Views
+import {home} from './components/home/home';
+// Service
+import {messengerCard} from './components/messengerCard/messengerCard';
+
 import {shared} from './shared/shared';
 
 angular.module('app', [
@@ -38,7 +40,9 @@ angular.module('app', [
   shared.name,
   // Navigation modules
   sideBar.name,
-  topBar.name
+  topBar.name,
+
+  messengerCard.name
 ])
 .directive('app', appDirective)
 .config(function($mdThemingProvider){

@@ -10,3 +10,11 @@ main{
     height: 100%;
     display: flex;
 }
+
+.main-content{
+    margin-left: $sideBarWidth;
+}
+
+.mu-txt{
+    color: $muColor;
+}
