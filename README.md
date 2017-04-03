@@ -66,7 +66,6 @@ angular.module('app', [
   ngAnimate,
   ngMaterial,
   home.name,
-  common.name,
   shared.name,
   // Registrar el modulo usando su nombre
   micomponente.name

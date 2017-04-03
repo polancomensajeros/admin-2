@@ -1,0 +1,17 @@
+<div class="sidebar-container" flex="0">
+  <md-sidenav flex class="md-sidenav-left main-sidenav" md-component-id="left" md-is-locked-open="true" md-whiteframe="4">
+
+    <md-toolbar class="md-theme-indigo logo">
+      <img ng-src="{{vm.muLogo}}" alt="">
+    </md-toolbar>
+    <md-content layout-padding>
+      <ul>
+        <li ng-repeat="navIcon in vm.navIcons">
+          <md-icon class="md-icon">{{navIcon.icon}}</md-icon>
+          <small>{{navIcon.name}}</small>
+        </li>
+      </ul>
+    </md-content>
+
+  </md-sidenav>
+</div>

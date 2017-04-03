@@ -9,6 +9,7 @@ export const homeDirective = ()=> {
     controllerAs: 'vm',
     restrict: 'E',
     replace: true,
-    scope: {}
+    scope: {},
+    bindToController: true
   };
 };

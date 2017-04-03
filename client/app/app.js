@@ -21,7 +21,8 @@ import ngMaterial from 'angular-material';
 // without using default keyword
 // we must import it with the brackets
 import {home} from './components/home/home';
-import {common} from './components/common/common';
+import {sideBar} from './components/sideBar/sideBar';
+import {topBar} from './components/topBar/topBar';
 import {shared} from './shared/shared';
 
 angular.module('app', [
@@ -34,7 +35,15 @@ angular.module('app', [
   // property who's value is the name you set the
   // module to be
   home.name,
-  common.name,
-  shared.name
+  shared.name,
+  // Navigation modules
+  sideBar.name,
+  topBar.name
 ])
-.directive('app', appDirective);
+.directive('app', appDirective)
+.config(function($mdThemingProvider){
+  $mdThemingProvider.theme('mensajeros') 
+  .primaryPalette('cyan')
+  .accentPalette('yellow')
+  .warnPalette('red');
+});

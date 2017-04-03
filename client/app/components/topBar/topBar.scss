@@ -1,0 +1,23 @@
+@import '../../../styles/variables';
+.main-topbar{
+  margin-left: $sideBarWidth;
+  background: transparent !important;
+  padding-right: $sideBarWidth;
+  padding-top: 7px;
+  .search{
+    .md-errors-spacer{
+      display: none !important;
+    }
+    md-input-container{
+      margin: 0;
+    }
+    input{
+      margin-top: 6px;
+      padding-right: 95px;
+    }
+  }
+  .search-btn{
+    margin-left: -86px;
+  }
+}
+  
