@@ -4,28 +4,12 @@
     <div class="main-content" flex>
       <top-bar></top-bar>
       <div layout="row">
-        <div layout="column">
+        <div layout="column" flex>
           <div>
             <messenger-card messenger="{name: 'Juan sebastian Polanco Ramos', phone: '234234324', identification: '234234234', plate: 'AS 456'}"></messenger-card>
           </div>
           <div>
-            <md-card>
-              <md-card-title>
-                <md-card-title-text>
-                  <span class="md-headline">Action buttons</span>
-                </md-card-title-text>
-              </md-card-title>
-              <md-card-content>
-                <p>
-                  The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest
-                  Greene's musical language: feel it. It's a simple request, as well...
-                </p>
-              </md-card-content>
-              <md-card-actions layout="row" layout-align="end center">
-                <md-button>Action 1</md-button>
-                <md-button>Action 2</md-button>
-              </md-card-actions>
-            </md-card>
+            <service-card service="{uuid: 'asdf'}"></service-card>
           </div>
           <div>
             <md-card>
@@ -47,8 +31,8 @@
             </md-card>
           </div>
         </div>
-        <div layout="column">
-                    <div>
+        <div layout="column" flex>
+          <div>
             <md-card>
               <md-card-title>
                 <md-card-title-text>
@@ -106,7 +90,11 @@
             </md-card>
           </div>
         </div>
-        <div layout="column"></div>
+        <div layout="column" flex>
+          <div>
+            <service-map></service-map>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -16,7 +16,10 @@ import {appDirective} from './app.directive';
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngAnimate from 'angular-animate';
+import ngSanitize from 'angular-sanitize';
 import ngMaterial from 'angular-material';
+// External dependencies
+import openLayersDirective from 'angular-openlayers-directive';
 // Layout 
 import {sideBar} from './components/sideBar/sideBar';
 import {topBar} from './components/topBar/topBar';
@@ -24,25 +27,28 @@ import {topBar} from './components/topBar/topBar';
 import {home} from './components/home/home';
 // Service
 import {messengerCard} from './components/messengerCard/messengerCard';
+import {serviceCard} from './components/serviceCard/serviceCard';
+import {serviceMap} from './components/serviceMap/serviceMap';
 
 import {shared} from './shared/shared';
 
 angular.module('app', [
   uiRouter,
   ngAnimate,
+  ngSanitize,
   ngMaterial,
-  // home is the module, the angular module
-  // because that's what we exported in home.js
-  // all angular modules have a name
-  // property who's value is the name you set the
-  // module to be
+  
+  'openlayers-directive',
+
   home.name,
   shared.name,
   // Navigation modules
   sideBar.name,
   topBar.name,
 
-  messengerCard.name
+  messengerCard.name,
+  serviceCard.name,
+  serviceMap.name
 ])
 .directive('app', appDirective)
 .config(function($mdThemingProvider){

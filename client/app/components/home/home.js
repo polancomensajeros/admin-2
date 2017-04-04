@@ -1,3 +1,6 @@
+//import '/dist/ol.css' from 'openlayers';
+import 'openlayers/dist/ol.css';
+import openlayers from 'openlayers';
 import angular from 'angular';
 import {homeDirective} from './home.directive';
 

@@ -2,6 +2,10 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
+html, body{
+    font-size: 0.95em;
+}
+
 main{
     width: 100%;
 }
@@ -11,6 +15,10 @@ main{
     display: flex;
 }
 
+.ol-logo-only{
+    display: none;
+}
+
 .main-content{
     margin-left: $sideBarWidth;
 }
@@ -18,3 +26,13 @@ main{
 .mu-txt{
     color: $muColor;
 }
+
+.bordered-container{
+    border: solid #e0e0e0 1px;
+    padding: 0.4em;
+}
+
+.float-right{
+    float: right;
+}
+
