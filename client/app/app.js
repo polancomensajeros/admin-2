@@ -29,6 +29,7 @@ import {home} from './components/home/home';
 import {messengerCard} from './components/messengerCard/messengerCard';
 import {serviceCard} from './components/serviceCard/serviceCard';
 import {serviceMap} from './components/serviceMap/serviceMap';
+import {serviceTimeline} from './components/serviceTimeline/serviceTimeline';
 
 import {shared} from './shared/shared';
 
@@ -48,7 +49,8 @@ angular.module('app', [
 
   messengerCard.name,
   serviceCard.name,
-  serviceMap.name
+  serviceMap.name,
+  serviceTimeline.name
 ])
 .directive('app', appDirective)
 .config(function($mdThemingProvider){
