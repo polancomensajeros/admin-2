@@ -1,4 +1,5 @@
 @import '../styles/variables.scss';
+@import '../styles/containers.scss';
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
@@ -13,10 +14,6 @@ main{
 [ui-view]{
     height: 100%;
     display: flex;
-}
-
-.ol-logo-only{
-    display: none;
 }
 
 .main-content{
