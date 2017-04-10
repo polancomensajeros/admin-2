@@ -21,6 +21,7 @@ import {serviceMap} from './components/serviceMap/serviceMap';
 import {serviceTimeline} from './components/serviceTimeline/serviceTimeline';
 import {serviceInstructions} from './components/serviceInstructions/serviceInstructions';
 import {serviceProducts} from './components/serviceProducts/serviceProducts';
+import {companyCard} from './components/companyCard/companyCard';
 
 import {shared} from './shared/shared';
 
@@ -49,7 +50,8 @@ angular.module('app', [
   serviceMap.name,
   serviceTimeline.name,
   serviceInstructions.name,
-  serviceProducts.name
+  serviceProducts.name,
+  companyCard.name
 ])
 .directive('app', appDirective)
 .config(function($mdThemingProvider){

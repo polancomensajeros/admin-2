@@ -1,12 +1,16 @@
 import _ from 'lodash';
 
 class ServiceTimelineController {
-  constructor() {
+  constructor($interval) {
+    const self = this;
     this.greeting = 'ServiceTimelineController!';
     this.events = [];
     for(let i = 0; i < 10; i++){
       this.addEvent();
     }
+    $interval(function(){
+      self.addEvent();
+    }, 5000);
   }
 
   addEvent(){
@@ -31,6 +35,6 @@ class ServiceTimelineController {
   }
 }
 
-ServiceTimelineController.$inject = [];
+ServiceTimelineController.$inject = ['$interval'];
 
 export {ServiceTimelineController};

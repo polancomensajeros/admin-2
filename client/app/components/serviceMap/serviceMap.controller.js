@@ -8,7 +8,7 @@ class ServiceMapController {
       zoom: 8
     }
     const self = this;
-    setTimeout(function(){ 
+    $timeout(function(){ 
       self.resizeMap() 
     }, 1);
   }
