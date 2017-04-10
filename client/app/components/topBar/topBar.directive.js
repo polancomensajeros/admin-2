@@ -7,7 +7,6 @@ export const topBarDirective = ()=> {
     controller,
     template,
     controllerAs: 'vm',
-    scope: {},
     replace: true,
     restrict: 'E'
   }

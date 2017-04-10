@@ -58,6 +58,5 @@ angular.module('app', [
   // Configire theme colors
   $mdThemingProvider.theme('mensajeros') 
   .primaryPalette('cyan')
-  .accentPalette('yellow')
-  .warnPalette('red');
+  .accentPalette('yellow');
 });
