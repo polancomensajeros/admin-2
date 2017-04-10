@@ -1,13 +1,13 @@
 <md-card class="messenger-card">
-  <md-card-content layout="row">
-    <img src="http://rapicourier.com/wp-content/uploads/2015/07/1446626322046-mensajeria-instantanea-valencia.jpg" alt="">
-    <div flex class="info-container">
-      <div>
-        <p class="mu-txt"><strong>{{vm.messenger.name}}</strong></p>
-        <p class="mu-txt">{{vm.messenger.phone}}</p>
-        <p>{{vm.messenger.identification}}</p>
-        <p>{{vm.messenger.plate}}</p>
-      </div>
-    </div>
-  </md-card-content>
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">{{vm.messenger.name}}</span>
+      <span class="md-subhead">{{vm.messenger.phone}}</span>
+      <span class="md-subhead">{{vm.messenger.identification}}</span>
+      <span class="md-subhead">{{vm.messenger.plate}}</span>
+    </md-card-title-text>
+    <md-card-title-media>
+      <img src="http://lorempixel.com/100/112/people/" alt="">
+    </md-card-title-media>
+  </md-card-title>
 </md-card>

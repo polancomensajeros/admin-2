@@ -1,18 +1,7 @@
-// we don't need to use a variable
-// or the from keyword when importing a css/styl file
-// thanks the the styles loader it gets added as a
-// <style> tag in the head by default but can be changed
 import 'normalize.css';
 import 'angular-material/angular-material.min.css';
 import {appDirective} from './app.directive';
-// the angular libs are just common js
-// and therefore we can assume they were
-// exported using the default keyword in ES2015
-// so we can import each module
-// with any name we see fit.
-// Note that the actual value are just strings except angular itself
-// because that's how angular decided to export
-// their auxillary modules
+
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngAnimate from 'angular-animate';
@@ -31,31 +20,40 @@ import {serviceCard} from './components/serviceCard/serviceCard';
 import {serviceMap} from './components/serviceMap/serviceMap';
 import {serviceTimeline} from './components/serviceTimeline/serviceTimeline';
 import {serviceInstructions} from './components/serviceInstructions/serviceInstructions';
+import {serviceProducts} from './components/serviceProducts/serviceProducts';
 
 import {shared} from './shared/shared';
 
 angular.module('app', [
+
+  // Angular dependencies
   uiRouter,
   ngAnimate,
   ngSanitize,
   ngMaterial,
   
+  // External dependencies 
   'openlayers-directive',
-
-  home.name,
+  
+  // App shared dependencies
   shared.name,
-  // Navigation modules
+
+  // App navigation dependencies
   sideBar.name,
   topBar.name,
 
+  // App service detail view
+  home.name,
   messengerCard.name,
   serviceCard.name,
   serviceMap.name,
   serviceTimeline.name,
-  serviceInstructions.name
+  serviceInstructions.name,
+  serviceProducts.name
 ])
 .directive('app', appDirective)
 .config(function($mdThemingProvider){
+  // Configire theme colors
   $mdThemingProvider.theme('mensajeros') 
   .primaryPalette('cyan')
   .accentPalette('yellow')

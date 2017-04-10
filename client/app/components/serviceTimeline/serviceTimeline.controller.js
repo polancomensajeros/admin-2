@@ -3,14 +3,10 @@ import _ from 'lodash';
 class ServiceTimelineController {
   constructor() {
     this.greeting = 'ServiceTimelineController!';
-    this.events = [
-      {
-        hour: '02:00 PM',
-        title: 'Creado',
-        content: 'Servicio creado',
-        color: '#afafaf'
-      }
-    ]
+    this.events = [];
+    for(let i = 0; i < 10; i++){
+      this.addEvent();
+    }
   }
 
   addEvent(){

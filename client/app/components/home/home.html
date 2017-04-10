@@ -2,65 +2,58 @@
   <div layout="row" flex>
     <side-bar flex></side-bar>
     <div class="main-content" flex>
-      <top-bar></top-bar>
+
+      <!-- Component -->
+        <top-bar></top-bar>
+      <!-- /Component -->
+
       <div layout="row">
         <div layout="column" flex>
           <div>
-            <messenger-card messenger="{name: 'Juan sebastian Polanco Ramos', phone: '234234324', identification: '234234234', plate: 'AS 456'}"></messenger-card>
+
+            <!-- Component -->
+              <messenger-card messenger="{name: 'Juan sebastian Polanco Ramos', phone: '234234324', identification: '234234234', plate: 'AS 456'}"></messenger-card>
+            <!-- /Component -->
+
           </div>
           <div>
-            <service-card service="{uuid: 'asdf'}"></service-card>
+
+            <!-- Component -->
+              <service-card service="{uuid: 'asdf'}"></service-card>
+            <!-- /Component -->
+
           </div>
           <div>
-            <service-timeline></service-timeline>
-          </div>
-        </div>
-        <div layout="column" flex>
-          <div>
-            <service-instructions></service-instructions>
-          </div>
-          <div>
-            <md-card>
-              <md-card-title>
-                <md-card-title-text>
-                  <span class="md-headline">Action buttons</span>
-                </md-card-title-text>
-              </md-card-title>
-              <md-card-content>
-                <p>
-                  The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest
-                  Greene's musical language: feel it. It's a simple request, as well...
-                </p>
-              </md-card-content>
-              <md-card-actions layout="row" layout-align="end center">
-                <md-button>Action 1</md-button>
-                <md-button>Action 2</md-button>
-              </md-card-actions>
-            </md-card>
-          </div>
-          <div>
-            <md-card>
-              <md-card-title>
-                <md-card-title-text>
-                  <span class="md-headline">Action buttons</span>
-                </md-card-title-text>
-              </md-card-title>
-              <md-card-content>
-                <p>
-                  The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest
-                  Greene's musical language: feel it. It's a simple request, as well...
-                </p>
-              </md-card-content>
-              <md-card-actions layout="row" layout-align="end center">
-                <md-button>Action 1</md-button>
-                <md-button>Action 2</md-button>
-              </md-card-actions>
-            </md-card>
+
+            <!-- Component -->
+              <service-timeline></service-timeline>
+            <!-- /Component -->
+
           </div>
         </div>
         <div layout="column" flex>
           <div>
-            <service-map></service-map>
+
+            <!-- Component -->
+              <service-instructions></service-instructions>
+            <!-- /Component -->
+
+          </div>
+          <div>
+
+            <!-- Component -->
+              <service-products></service-products>
+            <!-- /Component -->
+
+          </div>
+        </div>
+        <div layout= "column" flex>
+          <div flex layout="column">
+
+            <!-- Component -->
+              <service-map></service-map>
+            <!-- /Component -->
+
           </div>
         </div>
       </div>

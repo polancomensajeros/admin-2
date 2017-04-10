@@ -1,5 +1,9 @@
-<md-card>
-  <md-card-content>
-    <openlayers ol-center="vm.center"></openlayers>
+<md-card flex class="service-map">
+  <md-card-content flex>
+    <openlayers height="100%" ol-center="vm.center">
+      <ol-control name="fullscreen"></ol-control>
+    </openlayers>
   </md-card-content>
-</md-card>
+  <small>{{vm.loadingMap}}</small>
+  <md-progress-linear ng-if="vm.loadingMap" md-mode="indeterminate"></md-progress-linear>
+</md-card> 

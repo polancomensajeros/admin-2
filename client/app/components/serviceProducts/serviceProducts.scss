@@ -1,0 +1,9 @@
+@import '../../../styles/variables';
+
+.service-products{
+  md-list-item{
+    border-bottom: solid $borderColor 1px;
+    padding-bottom: 0.3em;
+  }
+}
+  
