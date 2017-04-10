@@ -1,6 +1,8 @@
 @import '../../../styles/variables';
 .sidebar-container{
   width: $sideBarWidth;
+  flex: none !important;
+  -webkit-flex: none !important;
   .main-sidenav{
     height: 100%;
     width: $sideBarWidth;
