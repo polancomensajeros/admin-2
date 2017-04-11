@@ -1,0 +1,54 @@
+<div>
+  <md-toolbar class="transparent" ng-if="vm.type == 'toolbar'">
+    <div class="md-toolbar-tools">
+      <md-button ng-click="vm.editServiceModal($event)" class="md-raised md-primary" aria-label="Learn More">
+        Editar
+      </md-button>
+      <md-button ng-click="vm.bidServiceModal($event)" class="md-raised md-primary" aria-label="Learn More">
+        Ofertar
+      </md-button>
+      <md-button ng-click="vm.relaunchServiceModal($event)" class="md-raised md-primary" aria-label="Learn More">
+        Relanzar
+      </md-button>
+      <span flex></span>
+      <md-button ng-click="vm.endServiceModal($event)" class="md-raised md-warn" aria-label="Learn More">
+        Finalizar
+      </md-button>
+      <md-button ng-click="vm.cancelServiceModal($event)" class="md-raised md-warn" aria-label="Learn More">
+        Cancelar
+      </md-button>
+    </div>
+  </md-toolbar>
+  <div class="corner-buttons" ng-if="vm.type != 'toolbar'">
+    <md-fab-speed-dial md-open="demo.isOpen" md-direction="up" ng-class="{'md-scale' : true}">
+      <md-fab-trigger>
+        <md-button aria-label="Open menu with custom trigger" class="md-raised md-primary md-fab">
+          <md-icon class="md-icon">line_weight</md-icon>
+        </md-button>
+      </md-fab-trigger>
+
+      <md-fab-actions>
+        <md-button ng-click="vm.endServiceModal($event)" aria-label="Open menu with custom trigger" class="md-raised md-warn md-fab md-mini">
+          <md-tooltip md-direction="left" md-visible="false">Finalizar</md-tooltip>
+          <md-icon class="md-icon">flag</md-icon>
+        </md-button>
+        <md-button ng-click="vm.cancelServiceModal($event)" aria-label="Open menu with custom trigger" class="md-raised md-warn md-fab md-mini">
+          <md-tooltip md-direction="left" md-visible="false">Cancelar</md-tooltip>
+          <md-icon class="md-icon">cancel</md-icon>
+        </md-button>
+        <md-button ng-click="vm.editServiceModal($event)" aria-label="Open menu with custom trigger" class="md-raised md-fab md-mini">
+          <md-tooltip md-direction="left" md-visible="false">Editar</md-tooltip>
+          <md-icon class="md-icon">mode_edit</md-icon>
+        </md-button>
+        <md-button ng-click="vm.bidServiceModal($event)" aria-label="Open menu with custom trigger" class="md-raised md-fab md-mini">
+          <md-tooltip md-direction="left" md-visible="false">Ofertar</md-tooltip>
+          <md-icon class="md-icon">attach_money</md-icon>
+        </md-button>
+        <md-button ng-click="vm.relaunchServiceModal($event)" aria-label="Open menu with custom trigger" class="md-raised md-fab md-mini">
+          <md-tooltip md-direction="left" md-visible="false">Relanzar</md-tooltip>
+          <md-icon class="md-icon">replay</md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-fab-speed-dial>
+  </div>
+</div>

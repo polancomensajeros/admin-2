@@ -1,0 +1,36 @@
+<md-dialog flex="30">
+    <md-dialog-content class="md-dialog-content" layout="column">
+        <h2>Cancelar servicio</h2>
+        <md-input-container>
+            <label>Tipo de cancelación</label>
+            <md-select ng-model="ctrl.userState" flex>
+                <md-option><em>Selecciona una opción</em></md-option>
+                <md-option ng-repeat="state in ['opcion 1', 'opcion 2']" ng-value="state">
+                    {{state}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container class="md-block">
+            <label>Descripción</label>
+            <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus placeholder="Porque se cancela el servicio?"></textarea>
+        </md-input-container>
+        <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+            Penalizar al mensajero
+        </md-checkbox>
+        <md-checkbox ng-model="data.cb2" aria-label="Checkbox 1">
+            Penalizar al cliente
+        </md-checkbox>
+        <md-checkbox ng-model="data.cb3" aria-label="Checkbox 1">
+            Reconocer al mensajero
+        </md-checkbox>
+        <small ng-if="data.cb3">Se le pagará al mensajero $5,000 COP por la llegada</small>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button ng-click="cancel()">
+        Anular cancelación
+        </md-button>
+        <md-button class="md-primary" ng-click="answer('useful')">
+            Confirmar
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>
