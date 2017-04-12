@@ -1,6 +1,9 @@
 import cancelModal from './cancelModal.html';
 import {cancelModalController as cancelController} from './cancelModal.controller';
 
+import relaunchModal from './relaunchModal.html';
+import {relaunchModalController as relaunchController} from './relaunchModal.controller';
+
 class ServiceActionsController {
   constructor($mdDialog, $mdToast, $scope) {
     this.greeting = 'ServiceActionsController!';
@@ -56,7 +59,21 @@ class ServiceActionsController {
 
   bidServiceModal() { }
 
-  relaunchServiceModal() { }
+  relaunchServiceModal(ev) {
+    const self = this;
+    this.mdDialog.show({
+      controller: relaunchController,
+      template: relaunchModal,
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true
+    })
+      .then(function (answer) {
+        console.log(answer);
+      }, function () {
+        console.log('Dialog closed');
+      });
+  }
 
 }
 

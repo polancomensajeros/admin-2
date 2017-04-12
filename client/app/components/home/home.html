@@ -1,10 +1,10 @@
 <section layout="column" flex>
   <div layout="row" flex>
     <side-bar flex></side-bar>
-    <div class="main-content" flex>
+    <div class="main-content" layout="column" flex>
 
       <!-- Component -->
-      <top-bar></top-bar>
+        <top-bar></top-bar>
       <!-- /Component -->
 
 
@@ -12,8 +12,8 @@
           <service-actions type="'toolbar'"></service-actions>
       <!-- /Component -->
 
-      <div layout-sm="column" layout-gt-sm="row">
-        <div layout="column" flex>
+      <md-content layout-sm="column" layout-gt-sm="row" flex>
+        <div layout="column" flex class="scrollable-full-column">
           <div>
 
             <!-- Component -->
@@ -36,7 +36,7 @@
 
           </div>
         </div>
-        <div layout="column" flex>
+        <div layout="column" flex class="scrollable-full-column">
           <div>
 
             <!-- Component -->
@@ -59,7 +59,7 @@
 
           </div>
         </div>
-        <div layout="column" flex>
+        <div layout="column" flex class="scrollable-full-column">
           <div flex layout="column">
 
             <!-- Component -->
@@ -70,10 +70,10 @@
         </div>
         
         <!-- Component -->
-          <service-actions type="'speedDial'"></service-actions>
+          <!--service-actions type="'speedDial'"></service-actions-->
         <!-- /Component -->
 
-      </div>
+      </md-content>
     </div>
   </div>
 </section>

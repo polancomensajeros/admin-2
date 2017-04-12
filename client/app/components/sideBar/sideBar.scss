@@ -25,6 +25,13 @@
           color: rgba(255, 255, 255, 0.5);
           margin-bottom: 0.2em;
         }
+        &.active{
+          color: white;
+          font-weight: 500;
+          md-icon{
+            color: white;
+          }
+        }
       }
     }
   }  

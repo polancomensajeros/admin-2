@@ -1,5 +1,6 @@
 import 'normalize.css';
 import 'angular-material/angular-material.min.css';
+import 'mapbox-gl/dist/mapbox-gl.css';
 import {appDirective} from './app.directive';
 
 import angular from 'angular';
@@ -59,6 +60,7 @@ angular.module('app', [
 .config(function($mdThemingProvider){
   // Configire theme colors
   $mdThemingProvider.theme('mensajeros') 
-  .primaryPalette('cyan')
-  .accentPalette('yellow');
+  .primaryPalette('blue-grey')
+  .warnPalette('deep-orange')
+  .accentPalette('grey');
 });

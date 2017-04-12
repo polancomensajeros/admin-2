@@ -6,7 +6,7 @@
     </md-toolbar>
     <md-content layout-padding>
       <ul>
-        <li ng-repeat="navIcon in vm.navIcons">
+        <li ng-repeat="navIcon in vm.navIcons" ng-class="{'active' : $index % 2 != 0}">
           <md-icon class="md-icon">{{navIcon.icon}}</md-icon>
           <small>{{navIcon.name}}</small>
         </li>

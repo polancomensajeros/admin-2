@@ -10,7 +10,7 @@ class ServiceTimelineController {
     }
     $interval(function(){
       self.addEvent();
-    }, 5000);
+    }, 60000);
   }
 
   addEvent(){
