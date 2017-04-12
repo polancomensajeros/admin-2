@@ -1,8 +1,11 @@
 import cancelModal from './cancelModal.html';
-import {cancelModalController as cancelController} from './cancelModal.controller';
+import { cancelModalController as cancelController } from './cancelModal.controller';
 
 import relaunchModal from './relaunchModal.html';
-import {relaunchModalController as relaunchController} from './relaunchModal.controller';
+import { relaunchModalController as relaunchController } from './relaunchModal.controller';
+
+import bidModal from './bidModal.html';
+import { bidModalController as bidController } from './bidModal.controller';
 
 class ServiceActionsController {
   constructor($mdDialog, $mdToast, $scope) {
@@ -51,13 +54,27 @@ class ServiceActionsController {
       });
   }
 
-  closeModal(){
+  closeModal() {
     this.mdDialog.hide();
   }
 
-  editServiceModal() { }
+  editServiceModal(ev) { }
 
-  bidServiceModal() { }
+  bidServiceModal(ev) {
+    const self = this;
+    this.mdDialog.show({
+      controller: bidController,
+      template: bidModal,
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true
+    })
+      .then(function (answer) {
+        console.log(answer);
+      }, function () {
+        console.log('Dialog closed');
+      });
+  }
 
   relaunchServiceModal(ev) {
     const self = this;
