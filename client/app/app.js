@@ -1,5 +1,6 @@
 import 'normalize.css';
 import 'angular-material/angular-material.min.css';
+import 'ng-date-range-picker/src/picker.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import {appDirective} from './app.directive';
 
@@ -10,6 +11,7 @@ import ngSanitize from 'angular-sanitize';
 import ngMaterial from 'angular-material';
 // External dependencies
 import openLayersDirective from 'angular-openlayers-directive';
+import smDateTimeRangePicker from 'ng-date-range-picker';
 // Layout 
 import {sideBar} from './components/sideBar/sideBar';
 import {topBar} from './components/topBar/topBar';
@@ -37,6 +39,7 @@ angular.module('app', [
   
   // External dependencies 
   'openlayers-directive',
+  'smDateTimeRangePicker',
   
   // App shared dependencies
   shared.name,

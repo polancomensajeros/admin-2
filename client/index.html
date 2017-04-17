@@ -8,7 +8,9 @@
 <body md-theme="mensajeros" layout="row">
 
   <app layout="row" flex></app>
-  <!-- don't you dare load up any other script tags here -->
+  <!-- ngMaterialDatePicker is not webpack compatible, so moment js is here and not in app.js -->
   <script src="bundle.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment-with-locales.min.js"></script>
+  <script src='https://rawgit.com/mominsamir/smDateTimeRangePicker/master/src/picker.js'></script
 </body>
 </html>

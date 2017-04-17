@@ -7,8 +7,11 @@ export const serviceMapDirective = ()=> {
     controller,
     template,
     controllerAs: 'vm',
-    scope: {},
+    scope: {
+      carded : '='
+    },
     replace: true,
-    restrict: 'E'
+    restrict: 'E',
+    bindToController: true
   }
 };

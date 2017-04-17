@@ -7,6 +7,9 @@ import { relaunchModalController as relaunchController } from './relaunchModal.c
 import bidModal from './bidModal.html';
 import { bidModalController as bidController } from './bidModal.controller';
 
+import editModal from './editModal.html';
+import { editModalController as editController } from './editModal.controller';
+
 class ServiceActionsController {
   constructor($mdDialog, $mdToast, $scope) {
     this.greeting = 'ServiceActionsController!';
@@ -58,7 +61,21 @@ class ServiceActionsController {
     this.mdDialog.hide();
   }
 
-  editServiceModal(ev) { }
+  editServiceModal(ev) {
+    const self = this;
+    this.mdDialog.show({
+      controller: editController,
+      template: editModal,
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true
+    })
+      .then(function (answer) {
+        console.log(answer);
+      }, function () {
+        console.log('Dialog closed');
+      });
+  }
 
   bidServiceModal(ev) {
     const self = this;
