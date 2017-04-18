@@ -1,6 +1,6 @@
 import {topBar} from './topBar'
 import {TopBarController} from './topBar.controller';
-import {topBardirective} from './topBar.directive';
+import {topBarDirective} from './topBar.directive';
 import template from './topBar.html';
 
 describe('TopBar', ()=>{
@@ -25,10 +25,10 @@ describe('TopBar', ()=>{
   describe('Controller', ()=>{
     // test your controller here
 
-    it('should have a name property [REMOVE]', ()=>{ // erase me if you remove this.name from the controller
+    it('should have a title property', ()=>{
       let controller = makeController();
 
-      expect(controller).to.have.property('greeting');
+      expect(controller).to.have.property('title');
     });
   });
 
@@ -36,8 +36,8 @@ describe('TopBar', ()=>{
     // test the template
     // use Regexes to test that you are using the right bindings {{  }}
 
-    it('should have name in template [REMOVE]', ()=>{
-      expect(template).to.match(/{{\s?vm\.greeting\s?}}/g);
+    it('should have title in template', ()=>{
+      expect(template).to.match(/{{\s?vm\.title\s?}}/g);
     });
   });
 

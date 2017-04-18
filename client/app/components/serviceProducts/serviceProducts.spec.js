@@ -1,6 +1,6 @@
 import {serviceProducts} from './serviceProducts'
 import {ServiceProductsController} from './serviceProducts.controller';
-import {serviceProductsdirective} from './serviceProducts.directive';
+import {serviceProductsDirective} from './serviceProducts.directive';
 import template from './serviceProducts.html';
 
 describe('ServiceProducts', ()=>{
@@ -24,21 +24,11 @@ describe('ServiceProducts', ()=>{
 
   describe('Controller', ()=>{
     // test your controller here
-
-    it('should have a name property [REMOVE]', ()=>{ // erase me if you remove this.name from the controller
-      let controller = makeController();
-
-      expect(controller).to.have.property('greeting');
-    });
   });
 
   describe('Template', ()=>{
     // test the template
     // use Regexes to test that you are using the right bindings {{  }}
-
-    it('should have name in template [REMOVE]', ()=>{
-      expect(template).to.match(/{{\s?vm\.greeting\s?}}/g);
-    });
   });
 
 

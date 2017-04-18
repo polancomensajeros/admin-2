@@ -11,7 +11,6 @@ import ngSanitize from 'angular-sanitize';
 import ngMaterial from 'angular-material';
 // External dependencies
 import openLayersDirective from 'angular-openlayers-directive';
-import smDateTimeRangePicker from 'ng-date-range-picker';
 // Layout 
 import {sideBar} from './components/sideBar/sideBar';
 import {topBar} from './components/topBar/topBar';
@@ -39,7 +38,6 @@ angular.module('app', [
   
   // External dependencies 
   'openlayers-directive',
-  'smDateTimeRangePicker',
   
   // App shared dependencies
   shared.name,
