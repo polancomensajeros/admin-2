@@ -1,0 +1,12 @@
+/// @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+
+.messenger-budget{
+  .budget{
+    flex-direction: column;
+    /// Hide the md-list before
+    &::before{
+      display: none;
+    }
+  }
+}
+  

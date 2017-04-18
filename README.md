@@ -84,6 +84,11 @@ npm test
 La entrada a las pruebas es el archivo *karma.conf.js*, se usan los frameworks karma, mocha y chai. Gracias a este enfoque orientado a componentes
 cada controller se puede testear individualmente sin angular, ya que son solo clases de ES6.  
 
+### Recomendaciones
+
+Cada vez que se crea un nuevo componente es recomendable detener el servidor y correr de nuevo el comando *npm start*. Esto para evitar que el server muestre archivos html
+guardados en caché
+
 La aplicación hace uso del framework [Angular Material](https://material.angularjs.org/latest/) 
 
 Para mas información sobre la arquitectura utilizada leer [Este documento](http://fem-ng6.netlify.com/)

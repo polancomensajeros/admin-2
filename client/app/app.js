@@ -39,6 +39,7 @@ import {serviceActions} from './components/serviceActions/serviceActions';
 // messengerDetailView components
 import {messengerDocuments} from './components/messengerDocuments/messengerDocuments';
 import {messengerConfig} from './components/messengerConfig/messengerConfig';
+import {messengerBudget} from './components/messengerBudget/messengerBudget';
 
 // Shared factories and constants
 import {shared} from './shared/shared';
@@ -77,7 +78,8 @@ angular.module('app', [
   messengerDetailView.name,
 
   messengerDocuments.name,
-  messengerConfig.name
+  messengerConfig.name,
+  messengerBudget.name
 ])
 .directive('app', appDirective)
 .config(function($mdThemingProvider){
