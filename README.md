@@ -71,8 +71,18 @@ angular.module('app', [
   micomponente.name
 ])
 ```
+Si se van a desarrollar servicios compartidos (factories, constants) deben ser registrados en el modulo shared.
 
-Si se van a desarrollar servicios compartidos deben ser registrados en el modulo shared.
+### Testing
+
+Cada componente tiene su archivo de testing, se puede identificar por el patrón _component.spec.js_ 
+Para ejecutar las pruebas se usa el comando
+
+```
+npm test
+```
+La entrada a las pruebas es el archivo *karma.conf.js*, se usan los frameworks karma, mocha y chai. Gracias a este enfoque orientado a componentes
+cada controller se puede testear individualmente sin angular, ya que son solo clases de ES6.  
 
 La aplicación hace uso del framework [Angular Material](https://material.angularjs.org/latest/) 
 
