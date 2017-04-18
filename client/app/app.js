@@ -8,19 +8,24 @@ import 'ng-date-range-picker/src/picker.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import {appDirective} from './app.directive';
 
+// Angular dependencies
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngAnimate from 'angular-animate';
 import ngSanitize from 'angular-sanitize';
 import ngMaterial from 'angular-material';
+
 // External dependencies
 import openLayersDirective from 'angular-openlayers-directive';
+
 // Layout 
 import {sideBar} from './components/sideBar/sideBar';
 import {topBar} from './components/topBar/topBar';
+
 // Views
 import {serviceDetailView} from './components/serviceDetailView/serviceDetailView';
 import {messengerDetailView} from './components/messengerDetailView/messengerDetailView';
+
 // ServiceDetailView components
 import {messengerCard} from './components/messengerCard/messengerCard';
 import {serviceCard} from './components/serviceCard/serviceCard';
@@ -30,8 +35,11 @@ import {serviceInstructions} from './components/serviceInstructions/serviceInstr
 import {serviceProducts} from './components/serviceProducts/serviceProducts';
 import {companyCard} from './components/companyCard/companyCard';
 import {serviceActions} from './components/serviceActions/serviceActions';
+
 // messengerDetailView components
 import {messengerDocuments} from './components/messengerDocuments/messengerDocuments';
+import {messengerConfig} from './components/messengerConfig/messengerConfig';
+
 // Shared factories and constants
 import {shared} from './shared/shared';
 
@@ -68,7 +76,8 @@ angular.module('app', [
   // Messenger detail view
   messengerDetailView.name,
 
-  messengerDocuments.name
+  messengerDocuments.name,
+  messengerConfig.name
 ])
 .directive('app', appDirective)
 .config(function($mdThemingProvider){
