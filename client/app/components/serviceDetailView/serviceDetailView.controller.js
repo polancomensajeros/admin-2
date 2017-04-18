@@ -2,7 +2,7 @@
 // highly controversial class
 import _ from 'lodash';
 
-class HomeController {
+class ServiceDetailViewController {
   // bind to this and not $scope
   // because of controllerAs.
   constructor() {
@@ -12,4 +12,4 @@ class HomeController {
   }
 }
 // could also just export the class up top as well
-export {HomeController};
+export {ServiceDetailViewController};

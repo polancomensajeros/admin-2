@@ -15,8 +15,8 @@ import openLayersDirective from 'angular-openlayers-directive';
 import {sideBar} from './components/sideBar/sideBar';
 import {topBar} from './components/topBar/topBar';
 // Views
-import {home} from './components/home/home';
-// Service
+import {serviceDetailView} from './components/serviceDetailView/serviceDetailView';
+// ServiceDetailView components
 import {messengerCard} from './components/messengerCard/messengerCard';
 import {serviceCard} from './components/serviceCard/serviceCard';
 import {serviceMap} from './components/serviceMap/serviceMap';
@@ -47,7 +47,8 @@ angular.module('app', [
   topBar.name,
 
   // App service detail view
-  home.name,
+  serviceDetailView.name,
+
   messengerCard.name,
   serviceCard.name,
   serviceMap.name,
