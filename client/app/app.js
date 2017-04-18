@@ -30,7 +30,9 @@ import {serviceInstructions} from './components/serviceInstructions/serviceInstr
 import {serviceProducts} from './components/serviceProducts/serviceProducts';
 import {companyCard} from './components/companyCard/companyCard';
 import {serviceActions} from './components/serviceActions/serviceActions';
-
+// messengerDetailView components
+import {messengerDocuments} from './components/messengerDocuments/messengerDocuments';
+// Shared factories and constants
 import {shared} from './shared/shared';
 
 angular.module('app', [
@@ -64,7 +66,9 @@ angular.module('app', [
   serviceActions.name,
 
   // Messenger detail view
-  messengerDetailView.name
+  messengerDetailView.name,
+
+  messengerDocuments.name
 ])
 .directive('app', appDirective)
 .config(function($mdThemingProvider){

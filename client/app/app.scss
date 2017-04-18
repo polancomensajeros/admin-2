@@ -37,6 +37,10 @@ main{
     cursor: pointer;
 }
 
+.green-txt{
+    color: $greenColor !important;
+}
+
 /* Transitions for the ui-view, you can use them or not, I'd rather not */
 
 /*[ui-view].ng-enter{
