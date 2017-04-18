@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import {serviceMap} from './serviceMap'
 import {ServiceMapController} from './serviceMap.controller';
 import {serviceMapDirective} from './serviceMap.directive';

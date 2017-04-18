@@ -1,11 +1,17 @@
-class TopBarController {
-  constructor($q, $timeout) {
-    this.title = 'Detalle del servicio';
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
 
+class TopBarController {
+  constructor($q, $timeout, Titles) {
+    this.title = Titles.getTopbarTitle();
     this.simulateQuery = true;
     this.states = this.loadAll();
-    
     this.searchText = '';
+  }
+
+  setTitle(title){
+    this.title = title;
   }
 
   querySearch(query) {
@@ -41,6 +47,6 @@ class TopBarController {
 
 }
 
-TopBarController.$inject = ['$q', '$timeout'];
+TopBarController.$inject = ['$q', '$timeout', 'Titles'];
 
 export { TopBarController };

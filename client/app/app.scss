@@ -14,7 +14,6 @@ main{
 
 .main-content{
     background: #f3f3f3;
-    //overflow: auto;
 }
 
 .mu-txt{
@@ -33,3 +32,38 @@ main{
 .transparent{
     background: transparent !important;
 }
+
+.pointer{
+    cursor: pointer;
+}
+
+/* Transitions for the ui-view, you can use them or not, I'd rather not */
+
+/*[ui-view].ng-enter{
+    opacity: 0;
+    transform: scale3d(0.5,0.5,0.5);
+}
+    
+
+[ui-view].ng-enter-active{
+    opacity: 1;
+    transform: scale3d(1,1,1);
+}
+
+[ui-view].ng-leave{
+    opacity: 1;
+    transform: translate3d(0,0,0);
+}
+    
+[ui-view].ng-leave-active{
+    opacity: 0;
+    transform: translate3d(100px, 0, 0);
+}
+
+[ui-view].ng-enter,[ui-view].ng-leave{
+    position: absolute;
+    left: 0;
+    right: 0;
+    transition: all .5s ease-in-out;
+}*/
+    

@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import './serviceProducts.scss';
 import {ServiceProductsController as controller} from './serviceProducts.controller';
 import template from './serviceProducts.html';

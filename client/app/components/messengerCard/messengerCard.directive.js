@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import './messengerCard.scss';
 import {MessengerCardController as controller} from './messengerCard.controller';
 import template from './messengerCard.html';

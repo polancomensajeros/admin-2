@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import cancelModal from './cancelModal.html';
 import { cancelModalController as cancelController } from './cancelModal.controller';
 

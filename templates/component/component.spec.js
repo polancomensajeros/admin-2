@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import {<%= name %>} from './<%= name %>'
 import {<%= upCaseName %>Controller} from './<%= name %>.controller';
 import {<%= name %>Directive} from './<%= name %>.directive';

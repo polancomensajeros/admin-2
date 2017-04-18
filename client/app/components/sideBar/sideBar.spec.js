@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import {sideBar} from './sideBar'
 import {SideBarController} from './sideBar.controller';
 import {sideBarDirective} from './sideBar.directive';

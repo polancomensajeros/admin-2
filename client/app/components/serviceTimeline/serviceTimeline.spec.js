@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import {serviceTimeline} from './serviceTimeline'
 import {ServiceTimelineController} from './serviceTimeline.controller';
 import {serviceTimelineDirective} from './serviceTimeline.directive';

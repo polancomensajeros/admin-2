@@ -2,20 +2,20 @@
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
 
-import {serviceCard} from './serviceCard'
-import {ServiceCardController} from './serviceCard.controller';
-import {serviceCardDirective} from './serviceCard.directive';
-import template from './serviceCard.html';
+import {messengerDetailView} from './messengerDetailView'
+import {MessengerDetailViewController} from './messengerDetailView.controller';
+import {messengerDetailViewDirective} from './messengerDetailView.directive';
+import template from './messengerDetailView.html';
 
-describe('ServiceCard', ()=>{
+describe('MessengerDetailView', ()=>{
   let $rootScope,
   makeController;
 
-  beforeEach(window.module(serviceCard.name));
+  beforeEach(window.module(messengerDetailView.name));
   beforeEach(inject((_$rootScope_)=>{
     $rootScope = _$rootScope_;
     makeController = ()=>{
-      return new ServiceCardController();
+      return new MessengerDetailViewController();
     };
   }));
 
@@ -38,7 +38,7 @@ describe('ServiceCard', ()=>{
 
   describe('Directive', ()=>{
       // test the component/directive itself
-      let directive = serviceCardDirective();
+      let directive = messengerDetailViewDirective();
 
       it('should use the right template',()=>{
         expect(directive.template).to.equal(template);
@@ -49,7 +49,7 @@ describe('ServiceCard', ()=>{
       });
 
       it('should use the right controller', ()=>{
-        expect(directive.controller).to.equal(ServiceCardController);
+        expect(directive.controller).to.equal(MessengerDetailViewController);
       });
   });
 });

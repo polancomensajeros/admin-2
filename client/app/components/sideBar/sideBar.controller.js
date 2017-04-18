@@ -1,27 +1,30 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import muLogo from '../../../images/logo-mu.png';
 
 class SideBarController {
-  constructor() {
+  constructor($state) {
+    this.state = $state;
     this.greeting = 'SideBarController!';
     this.muLogo = muLogo;
     this.navIcons = [
       {
-        icon: 'warning',
-        name: 'Alertas'
+        icon: 'assignment',
+        name: 'Servicio',
+        sref: 'serviceDetailView'
       },
       {
-        icon: 'room',
-        name: 'Activación'
-      },
-      {
-        icon: 'content_paste',
-        name: 'Servicios'
+        icon: 'directions_bike',
+        name: 'Mensajero',
+        sref: 'messengerDetailView'
       }
     ]
   }
 
 }
 
-SideBarController.$inject = [];
+SideBarController.$inject = ['$state'];
 
 export {SideBarController};

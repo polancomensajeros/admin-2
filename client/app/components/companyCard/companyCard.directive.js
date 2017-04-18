@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import './companyCard.scss';
 import {CompanyCardController as controller} from './companyCard.controller';
 import template from './companyCard.html';

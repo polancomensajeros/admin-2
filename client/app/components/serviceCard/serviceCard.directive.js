@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import './serviceCard.scss';
 import {ServiceCardController as controller} from './serviceCard.controller';
 import template from './serviceCard.html';

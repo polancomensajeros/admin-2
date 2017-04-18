@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import {companyCard} from './companyCard'
 import {CompanyCardController} from './companyCard.controller';
 import {companyCardDirective} from './companyCard.directive';

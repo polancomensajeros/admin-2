@@ -1,15 +1,13 @@
-// create our controller using the
-// highly controversial class
-import _ from 'lodash';
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
 
 class ServiceDetailViewController {
-  // bind to this and not $scope
-  // because of controllerAs.
-  constructor() {
-    this.items = _.times(5, i => {
-      return `I am item ${i}`;
-    });
+  constructor(Titles) {
+    Titles.setTopbarTitle('Detalle del servicio');
   }
 }
-// could also just export the class up top as well
+
+ServiceDetailViewController.$inject = ['Titles'];
+
 export {ServiceDetailViewController};

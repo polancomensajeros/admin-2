@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import {serviceProductsDirective} from './serviceProducts.directive';
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';

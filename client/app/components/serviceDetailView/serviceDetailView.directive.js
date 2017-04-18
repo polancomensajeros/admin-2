@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import './serviceDetailView.scss';
 import {ServiceDetailViewController as controller} from './serviceDetailView.controller';
 import template from './serviceDetailView.html';

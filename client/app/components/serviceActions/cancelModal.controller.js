@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 class cancelModalController {
   constructor($mdDialog, $scope) {
     $scope.hide = function() {

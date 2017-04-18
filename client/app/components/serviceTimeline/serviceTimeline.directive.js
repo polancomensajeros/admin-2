@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import './serviceTimeline.scss';
 import {ServiceTimelineController as controller} from './serviceTimeline.controller';
 import template from './serviceTimeline.html';

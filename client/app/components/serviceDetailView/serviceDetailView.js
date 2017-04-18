@@ -1,4 +1,7 @@
-//import '/dist/ol.css' from 'openlayers';
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import 'openlayers/dist/ol.css';
 import openlayers from 'openlayers';
 import angular from 'angular';

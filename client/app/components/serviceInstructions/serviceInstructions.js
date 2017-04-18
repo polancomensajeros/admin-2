@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import {serviceInstructionsDirective} from './serviceInstructions.directive';
 import angular from 'angular';
 

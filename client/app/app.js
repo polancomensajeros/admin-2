@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import 'normalize.css';
 import 'angular-material/angular-material.min.css';
 import 'ng-date-range-picker/src/picker.css';
@@ -16,6 +20,7 @@ import {sideBar} from './components/sideBar/sideBar';
 import {topBar} from './components/topBar/topBar';
 // Views
 import {serviceDetailView} from './components/serviceDetailView/serviceDetailView';
+import {messengerDetailView} from './components/messengerDetailView/messengerDetailView';
 // ServiceDetailView components
 import {messengerCard} from './components/messengerCard/messengerCard';
 import {serviceCard} from './components/serviceCard/serviceCard';
@@ -39,14 +44,14 @@ angular.module('app', [
   // External dependencies 
   'openlayers-directive',
   
-  // App shared dependencies
+  // shared dependencies
   shared.name,
 
-  // App navigation dependencies
+  // navigation dependencies
   sideBar.name,
   topBar.name,
 
-  // App service detail view
+  // service detail view
   serviceDetailView.name,
 
   messengerCard.name,
@@ -56,7 +61,10 @@ angular.module('app', [
   serviceInstructions.name,
   serviceProducts.name,
   companyCard.name,
-  serviceActions.name
+  serviceActions.name,
+
+  // Messenger detail view
+  messengerDetailView.name
 ])
 .directive('app', appDirective)
 .config(function($mdThemingProvider){

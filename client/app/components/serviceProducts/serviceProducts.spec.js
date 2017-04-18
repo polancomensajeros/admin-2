@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import {serviceProducts} from './serviceProducts'
 import {ServiceProductsController} from './serviceProducts.controller';
 import {serviceProductsDirective} from './serviceProducts.directive';

@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import {topBar} from './topBar'
 import {TopBarController} from './topBar.controller';
 import {topBarDirective} from './topBar.directive';

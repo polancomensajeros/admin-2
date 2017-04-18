@@ -1,3 +1,7 @@
+/**
+ * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ */
+
 import {messengerCard} from './messengerCard'
 import {MessengerCardController} from './messengerCard.controller';
 import {messengerCardDirective} from './messengerCard.directive';
