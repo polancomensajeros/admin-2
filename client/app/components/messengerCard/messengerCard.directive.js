@@ -1,5 +1,7 @@
 /**
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+ * 
+ * Material card with the information of a messenger
  */
 
 import './messengerCard.scss';
@@ -12,7 +14,10 @@ export const messengerCardDirective = ()=> {
     template,
     controllerAs: 'vm',
     scope: {
-      messenger: '='
+      // Object with the messenger data
+      messenger: '=',
+      // If actions is the card's action buttons will show
+      actions: '='
     },
     bindToController: true,
     replace: true,

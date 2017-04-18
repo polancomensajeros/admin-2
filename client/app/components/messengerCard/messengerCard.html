@@ -1,7 +1,15 @@
 <md-card class="messenger-card">
+  <md-card-header layout="row" ng-if="vm.actions">
+    <span>{{vm.messenger.name}}</span>
+    <span flex></span>
+    <div class="stars-container" ng-if="vm.actions" ng-repeat="star in [1,2,3,4,5]">
+      <md-icon ng-if="$index < 3" class="md-icon">star</md-icon>
+      <md-icon ng-if="$index >= 3" class="md-icon">star_border</md-icon>
+    </div>
+  </md-card-header>
   <md-card-title>
     <md-card-title-text>
-      <span class="md-headline">{{vm.messenger.name}}</span>
+      <span class="md-subhead">{{vm.messenger.name}}</span>
       <span class="md-subhead">{{vm.messenger.phone}}</span>
       <span class="md-subhead">{{vm.messenger.identification}}</span>
       <span class="md-subhead">{{vm.messenger.plate}}</span>
@@ -10,4 +18,10 @@
       <img src="http://lorempixel.com/100/112/people/" alt="">
     </md-card-title-media>
   </md-card-title>
+  <md-card-actions ng-if="vm.actions" layout="row">
+    <md-button class="md-primary">Ajustes</md-button>
+    <md-button class="md-primary">Editar perfil</md-button>
+    <span flex></span>
+    <md-button class="md-warn">Bloquear</md-button>
+  </md-card-actions>
 </md-card>
