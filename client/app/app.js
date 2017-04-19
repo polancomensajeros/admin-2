@@ -51,6 +51,7 @@ import {messengerServices} from './components/messengerServices/messengerService
 
 // AlertsView component
 import {alertsStatus} from './components/alertsStatus/alertsStatus';
+import {alertsMap} from './components/alertsMap/alertsMap';
 
 // Shared factories and constants
 import {shared} from './shared/shared';
@@ -99,7 +100,8 @@ angular.module('app', [
   // Alerts view
   alertsView.name,
 
-  alertsStatus.name
+  alertsStatus.name,
+  alertsMap.name
 ])
 .directive('app', appDirective)
 .config(function($mdThemingProvider){
