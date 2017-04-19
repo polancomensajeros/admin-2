@@ -1,0 +1,18 @@
+<md-dialog flex="30">
+    <md-dialog-content class="md-dialog-content" layout="column">
+        <h2>Cargar cédula</h2>
+        <lf-ng-md-file-input lf-files="files06" preview lf-browse-label="Buscar" lf-remove-label="Borrar" lf-placeholder="Seleccione un archivo"></lf-ng-md-file-input>
+        <md-input-container>
+            <label>Vencimiento</label>
+             <md-datepicker ng-model="vm.start"></md-datepicker>
+        </md-input-container>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button ng-click="vm.cancel()">
+            Cancelar
+        </md-button>
+        <md-button class="md-primary" ng-click="vm.answer('useful')">
+            Cargar
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

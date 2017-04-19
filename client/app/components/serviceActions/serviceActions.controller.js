@@ -2,17 +2,17 @@
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
 
-import cancelModal from './cancelModal.html';
-import { cancelModalController as cancelController } from './cancelModal.controller';
+import cancelModal from './components/cancelModal/cancelModal.html';
+import { cancelModalController as cancelModalController } from './components/cancelModal/cancelModal.controller';
 
-import relaunchModal from './relaunchModal.html';
-import { relaunchModalController as relaunchController } from './relaunchModal.controller';
+import relaunchModal from './components/relaunchModal/relaunchModal.html';
+import { relaunchModalController as relaunchModalController } from './components/relaunchModal/relaunchModal.controller';
 
-import bidModal from './bidModal.html';
-import { bidModalController as bidController } from './bidModal.controller';
+import bidModal from './components/bidModal/bidModal.html';
+import { bidModalController as bidModalController } from './components/bidModal/bidModal.controller';
 
-import editModal from './editModal.html';
-import { editModalController as editController } from './editModal.controller';
+import editModal from './components/editModal/editModal.html';
+import { editModalController as editModalController } from './components/editModal/editModal.controller';
 
 class ServiceActionsController {
   constructor($mdDialog, $mdToast, $scope) {
@@ -20,6 +20,22 @@ class ServiceActionsController {
     this.mdDialog = $mdDialog;
     this.mdToast = $mdToast;
     this.scopeAll = $scope;
+  }
+
+  testingModals(ev, template, controller) {
+    const self = this;
+    this.mdDialog.show({
+      controller: controller,
+      template: template,
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true
+    })
+    .then(function (answer) {
+      console.log(answer);
+    }, function () {
+      console.log('Dialog closed');
+    });
   }
 
   endServiceModal(ev) {
@@ -46,19 +62,7 @@ class ServiceActionsController {
   }
 
   cancelServiceModal(ev) {
-    const self = this;
-    this.mdDialog.show({
-      controller: cancelController,
-      template: cancelModal,
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose: true
-    })
-      .then(function (answer) {
-        console.log(answer);
-      }, function () {
-        console.log('Dialog closed');
-      });
+    this.testingModals(ev, cancelModal, cancelModalController);
   }
 
   closeModal() {
@@ -66,51 +70,15 @@ class ServiceActionsController {
   }
 
   editServiceModal(ev) {
-    const self = this;
-    this.mdDialog.show({
-      controller: editController,
-      template: editModal,
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose: true
-    })
-      .then(function (answer) {
-        console.log(answer);
-      }, function () {
-        console.log('Dialog closed');
-      });
+    this.testingModals(ev, editModal, editModalController);
   }
 
   bidServiceModal(ev) {
-    const self = this;
-    this.mdDialog.show({
-      controller: bidController,
-      template: bidModal,
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose: true
-    })
-      .then(function (answer) {
-        console.log(answer);
-      }, function () {
-        console.log('Dialog closed');
-      });
+    this.testingModals(ev, bidModal, bidModalController);
   }
 
   relaunchServiceModal(ev) {
-    const self = this;
-    this.mdDialog.show({
-      controller: relaunchController,
-      template: relaunchModal,
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose: true
-    })
-      .then(function (answer) {
-        console.log(answer);
-      }, function () {
-        console.log('Dialog closed');
-      });
+    this.testingModals(ev, relaunchModal, configModalController);
   }
 
 }

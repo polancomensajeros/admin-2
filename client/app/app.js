@@ -7,6 +7,8 @@ import 'angular-material/angular-material.min.css';
 import 'ng-date-range-picker/src/picker.css';
 import 'angular-material-data-table/dist/md-data-table.min.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import 'lf-ng-md-file-input/dist/lf-ng-md-file-input.min.css';
+
 import {appDirective} from './app.directive';
 
 // Angular dependencies
@@ -18,7 +20,8 @@ import ngMaterial from 'angular-material';
 
 // External dependencies
 import openLayersDirective from 'angular-openlayers-directive';
-import ngMaterialDataTable from 'angular-material-data-table';
+import ngMaterialDataTable from 'angular-material-data-table'
+import lfNgMdFileInput from 'lf-ng-md-file-input';
 
 // Layout 
 import {sideBar} from './components/sideBar/sideBar';
@@ -59,7 +62,7 @@ angular.module('app', [
   // External dependencies 
   'openlayers-directive',
   ngMaterialDataTable,
-  //'angular-material-data-table',
+  'lfNgMdFileInput',
 
   // shared dependencies
   shared.name,

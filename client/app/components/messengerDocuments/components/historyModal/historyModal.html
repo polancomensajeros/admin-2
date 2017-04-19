@@ -1,0 +1,39 @@
+<md-dialog flex="60">
+    <md-dialog-content class="md-dialog-content" layout="column">
+        <h2>Historial de documentos</h2>
+        <md-toolbar class="md-table-toolbar md-menu-toolbar" layout="row">
+            <span flex></span>
+            <md-autocomplete flex md-search-text="vm.searchText" md-items="item in vm.querySearch(vm.searchText)" md-item-text="item.display"
+                md-min-length="3" placeholder="Buscar">
+                <md-item-template>
+                    <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                </md-item-template>
+                <md-not-found>
+                    No hay resultados que coincidan con: "{{vm.searchText}}"
+                </md-not-found>
+            </md-autocomplete>
+            <md-datepicker ng-model="vm.start" md-placeholder="Inicio"></md-datepicker>
+            <md-datepicker ng-model="vm.end" md-placeholder="Fin"></md-datepicker>
+        </md-toolbar>
+        <md-table-container>
+            <table md-table ng-model="vm.selected" md-progress="vm.promise">
+                <thead md-head md-order="vm.query.order" md-on-reorder="vm.getDesserts">
+                    <tr md-row>
+                        <th md-column md-order-by="nameToLower"><span>Archivo</span></th>
+                        <th md-column md-numeric md-order-by="calories.value"><span>Fecha de carga</span></th>
+                        <th md-column md-numeric>Cargado por</th>
+                    </tr>
+                </thead>
+                <tbody md-body>
+                    <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="dessert in vm.desserts">
+                        <td md-cell><a href="">{{dessert.service}}</a></td>
+                        <td md-cell>{{dessert.date}}</td>
+                        <td md-cell>{{dessert.description}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+
+        <md-table-pagination md-limit="vm.query.limit" md-limit-options="[5, 10, 15]" md-page="vm.query.page" md-total="{{vm.desserts.count}}"
+            md-on-paginate="vm.getDesserts" md-page-select md-label="{page: 'Página:', rowsPerPage: 'Filas por página:', of: 'de'}"></md-table-pagination>
+</md-dialog>

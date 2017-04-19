@@ -12,7 +12,7 @@
           <h3> Cédula </h3>
           <p> Documento cargado correctamente </p>
         </div>
-        <md-button class="md-secondary md-icon-button" ng-click="doSecondaryAction($event)" aria-label="call" ng-if="item.icons == true">
+        <md-button ng-click="vm.showUploadModal($event)" class="md-secondary md-icon-button" ng-click="doSecondaryAction($event)" aria-label="call" ng-if="item.icons == true">
           <md-icon class="md-icon">mode_edit</md-icon>
         </md-button>
       </md-list-item>
@@ -20,6 +20,6 @@
     </md-list>
   </md-card-content>
   <md-card-actions layout="row" layout-align="end center">
-    <md-button class="md-primary">Historial de documentos cargados</md-button>
+    <md-button class="md-primary" ng-click="vm.showHistoryModal()">Historial de documentos cargados</md-button>
   </md-card-actions>
 </md-card>

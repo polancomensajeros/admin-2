@@ -2,7 +2,7 @@
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
 
-class adjustmentModalController {
+class uploadModalController {
     constructor($mdDialog, $scope) {
         this.mdDialog = $mdDialog;
     }
@@ -30,6 +30,6 @@ class adjustmentModalController {
     };
 }
 
-adjustmentModalController.$inject = ['$mdDialog', '$scope'];
+uploadModalController.$inject = ['$mdDialog', '$scope'];
 
-export { adjustmentModalController };
+export { uploadModalController };
