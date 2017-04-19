@@ -78,7 +78,7 @@ class ServiceActionsController {
   }
 
   relaunchServiceModal(ev) {
-    this.testingModals(ev, relaunchModal, configModalController);
+    this.testingModals(ev, relaunchModal, relaunchModalController);
   }
 
 }

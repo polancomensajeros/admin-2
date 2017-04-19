@@ -30,6 +30,7 @@ import {topBar} from './components/topBar/topBar';
 // Views
 import {serviceDetailView} from './components/serviceDetailView/serviceDetailView';
 import {messengerDetailView} from './components/messengerDetailView/messengerDetailView';
+import {alertsView} from './components/alertsView/alertsView';
 
 // ServiceDetailView components
 import {messengerCard} from './components/messengerCard/messengerCard';
@@ -47,6 +48,9 @@ import {messengerConfig} from './components/messengerConfig/messengerConfig';
 import {messengerBudget} from './components/messengerBudget/messengerBudget';
 import {messengerMovements} from './components/messengerMovements/messengerMovements';
 import {messengerServices} from './components/messengerServices/messengerServices';
+
+// AlertsView component
+import {alertsStatus} from './components/alertsStatus/alertsStatus';
 
 // Shared factories and constants
 import {shared} from './shared/shared';
@@ -90,7 +94,12 @@ angular.module('app', [
   messengerConfig.name,
   messengerBudget.name,
   messengerMovements.name,
-  messengerServices.name
+  messengerServices.name,
+
+  // Alerts view
+  alertsView.name,
+
+  alertsStatus.name
 ])
 .directive('app', appDirective)
 .config(function($mdThemingProvider){

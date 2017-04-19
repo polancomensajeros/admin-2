@@ -12,10 +12,10 @@ import {serviceDetailViewDirective} from './serviceDetailView.directive';
 // using export {varname}
 export const serviceDetailView = angular.module('serviceDetailView', [])
 .config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/detalle-servicio');
 
   $stateProvider.state('serviceDetailView', {
-    url: '/',
+    url: '/detalle-servicio',
     template: '<service-detail-view></service-detail-view>'
   });
 })

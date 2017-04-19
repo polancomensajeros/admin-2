@@ -12,7 +12,7 @@ export const messengerDetailView = angular.module('messengerDetailView', [uiRout
   // be a view remove the state below
   .config(($stateProvider) => {
     $stateProvider.state('messengerDetailView', {
-      url: '/messengerDetailView',
+      url: '/detalle-mensajero',
       template: '<messenger-detail-view></messenger-detail-view>'
     })
   })

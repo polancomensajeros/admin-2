@@ -1,0 +1,33 @@
+<section layout="column" flex>
+  <div layout="row" flex>
+    <side-bar flex></side-bar>
+    <div class="main-content" layout="column" flex>
+
+      <!-- Component -->
+        <top-bar></top-bar> 
+      <!-- /Component -->
+
+      <md-content layout-sm="column" layout-gt-sm="row" flex>
+        <div layout="column" flex class="scrollable-full-column">
+          <div>
+
+            <!-- Component -->
+            <alerts-status></alerts-status>
+            <!-- /Component -->
+
+          </div>
+        </div>
+        <div layout="column" flex="30" class="scrollable-full-column">
+          <div>
+
+            <!-- Component -->
+            <service-map></service-map>
+            <!-- /Component -->
+
+          </div>
+        </div>
+
+      </md-content>
+    </div>
+  </div>
+</section>
