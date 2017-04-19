@@ -71,7 +71,10 @@ angular.module('app', [
   micomponente.name
 ])
 ```
-Si se van a desarrollar servicios compartidos (factories, constants) deben ser registrados en el modulo shared.
+Si se van a desarrollar servicios compartidos (factories, constants) deben ser registrados en el modulo shared.   
+
+Si un componente tiene componentes hijos con controllers independientes ($mdDialog), se debe crear una carpeta llamada *components* dentro de la carpeta del componente, 
+y dentro de esta carpeta crear sub-carpetas para cada uno de los componentes.
 
 ### Testing
 
