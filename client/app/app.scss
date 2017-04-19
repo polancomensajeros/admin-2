@@ -70,4 +70,28 @@ main{
     right: 0;
     transition: all .5s ease-in-out;
 }*/
-    
+
+/// Service status dots
+
+.service-state{
+    width: 15px;
+    height: 15px;
+    background: #9b9b9b;
+    display: inline-block;
+    border-radius: 50%;
+    &.state-3{
+        background: #ffc64b;
+    }
+    &.state-4{
+        background: $muColor;
+    }
+    &.state-5{
+        background: $muColor;
+    }
+    &.state-6{
+        background: $muColor;
+    }
+    &.state-7{
+        background: red;
+    }
+}
