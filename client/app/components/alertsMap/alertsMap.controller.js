@@ -2,15 +2,22 @@
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
 
-// Class representing a AlertsMap
+import {ServiceMapController} from '../serviceMap/serviceMap.controller';
 
-class AlertsMapController {
-  constructor() {
-    this.greeting = 'AlertsMapController!';
+// Class representing a AlertsMap
+class AlertsMapController extends ServiceMapController{
+  constructor(olData, $timeout) {
+    super(olData, $timeout);
+    this.showFilters = true;
+  }
+
+  resizeMap(){
+    this.showFilters = !this.showFilters;
+    super.resizeMap();
   }
 
 }
 
-AlertsMapController.$inject = [];
+AlertsMapController.$inject = ['olData', '$timeout'];
 
 export {AlertsMapController};
