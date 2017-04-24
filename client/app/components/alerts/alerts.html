@@ -1,46 +1,276 @@
 <md-card class="alerts" flex>
-  <div layout="row" class="padding-top-0-5 padding-left-0-5 padding-right-0-5">
-    <md-select ng-model="cali" placeholder="Mis alertas asignadas" class="md-no-underline margin-top-0 margin-bottom-0">
-      <md-option value="cali1">Opción 1</md-option>
-      <md-option value="cali2">Opción 2</md-option>
-    </md-select>
-    <span flex></span>
-    <md-autocomplete class="alerts-search" flex="40" md-search-text="vm.searchText" md-items="item in vm.querySearch(vm.searchText)"
-      md-item-text="item.display" md-min-length="3" placeholder="Servicio, usuario, mensajero ...">
-      <md-item-template>
-        <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.display}}</span>
-      </md-item-template>
-      <md-not-found>
-        No hay resultados que coincidan con: "{{vm.searchText}}"
-      </md-not-found>
-    </md-autocomplete>
-    <md-button class="md-primary md-raised">Trasnferir alertas</md-button>
-  </div>
   <md-card-content>
+    <div layout="row" class="padding-top-0-5 padding-left-0-5 padding-right-0-5">
+      <md-select ng-model="cali" placeholder="Mis alertas asignadas" class="md-no-underline margin-top-0 margin-bottom-0">
+        <md-option value="cali1">Opción 1</md-option>
+        <md-option value="cali2">Opción 2</md-option>
+      </md-select>
+      <span flex></span>
+      <md-autocomplete class="alerts-search" flex="40" md-search-text="vm.searchText" md-items="item in vm.querySearch(vm.searchText)"
+        md-item-text="item.display" md-min-length="3" placeholder="Servicio, usuario, mensajero ...">
+        <md-item-template>
+          <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.display}}</span>
+        </md-item-template>
+        <md-not-found>
+          No hay resultados que coincidan con: "{{vm.searchText}}"
+        </md-not-found>
+      </md-autocomplete>
+      <md-button class="md-primary md-raised">Trasnferir alertas</md-button>
+    </div>
     <md-table-container>
       <table md-table ng-model="vm.selected" md-progress="vm.promise" md-row-select multiple>
         <thead md-head md-order="vm.query.order" md-on-reorder="vm.getDesserts">
           <tr md-row>
-            <th md-column md-order-by="nameToLower"><span>ID</span></th>
-            <th md-column><md-icon class="md-icon">flag</md-icon></th>
+            <th md-column><span>ID</span></th>
+            <th md-column>
+              <md-icon class="md-icon">flag</md-icon>
+            </th>
             <th md-column md-numeric><span>Tiempo</span></th>
             <th md-column md-numeric>Usuario</th>
             <th md-column md-numeric>Mensajero</th>
             <th md-column md-numeric>Ciudad</th>
             <th md-column md-numeric>Agente MU</th>
             <th md-column md-numeric>Tipo</th>
+            <th md-column md-numeric>Acciones</th>
           </tr>
         </thead>
         <tbody md-body>
           <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="dessert in vm.desserts">
-            <td md-cell><div class="service-state"></div></td>
-            <td md-cell><a href="">{{dessert.service}}</a></td>
+            <td md-cell>
+              <div class="service-state state-{{dessert.stateStatus}}"></div>
+            </td>
+            <td md-cell>
+
+              <!-- Service menu -->
+              <md-menu>
+                <a class="pointer srefer" ng-click="vm.openMenu($mdMenu)">{{dessert.service}}</a>
+                <md-menu-content class="popup" width="4">
+                  <div layout="column" class="popup">
+                    <div layout="row" layout-align="space-between center">
+                      <div>
+                        <md-icon class="md-icon">open_in_new</md-icon>
+                      </div>
+                      <div class="md-subhead">
+                        <strong class="srefer" ui-sref="serviceDetailView">{{dessert.service}}</strong>
+                      </div>
+                    </div>
+                    <div layout="row" layout-align="space-between center">
+                      <div>
+                        <md-icon class="md-icon">face</md-icon>
+                      </div>
+                      <div class="md-subhead">
+                        <strong>Juan Sebastian Polanco Ramos</strong>
+                      </div>
+                    </div>
+                    <div layout="row" layout-align="space-between center">
+                      <div>
+                        <md-icon class="md-icon">email</md-icon>
+                      </div>
+                      <div class="md-subhead">
+                        <small class="srefer">s.polanco@mensajerosurbanos.com</small>
+                      </div>
+                    </div>
+                    <div layout="row" layout-align="space-between center">
+                      <div>
+                        <md-icon class="md-icon">phone</md-icon>
+                      </div>
+                      <div class="md-subhead">
+                        <small class="srefer">3208876776</small>
+                      </div>
+                    </div>
+                    <div layout="row" layout-align="space-between center">
+                      <div>
+                        <md-icon class="md-icon">place</md-icon>
+                      </div>
+                      <div class="md-subhead">
+                        <small>Calle falsa 123</small>
+                      </div>
+                    </div>
+                    <md-divider class="margin-bottom-o-5"></md-divider>
+                    <div layout="row" layout-align="space-between center">
+                      <div layout="row" layout-align="center center">
+                        <div class="padding-top-0-5">
+                          <md-icon class="md-icon">attach_money</md-icon>
+                        </div>
+                        <div class="md-subhead">
+                          <small>124.000</small>
+                        </div>
+                      </div>
+                      <div layout="row" layout-align="center center">
+                        <div class="padding-top-0-5">
+                          <md-icon class="md-icon">credit_card</md-icon>
+                        </div>
+                        <div class="md-subhead">
+                          <small>Efectivo</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </md-menu-content>
+              </md-menu>
+              <!-- /Service menu -->
+
+            </td>
             <td md-cell>{{dessert.date}}</td>
-            <td md-cell>{{dessert.description}}</td>
-            <td md-cell>{{dessert.price}}</td>
+            <td md-cell>
+
+              <!-- Company menu -->
+              <md-menu>
+                <a class="pointer srefer" ng-click="vm.openMenu($mdMenu)">{{dessert.description}}</a>
+                <md-menu-content class="popup" width="4">
+                  <div layout="column" class="popup">
+                    <div layout="row" layout-align="space-between center">
+                      <div>
+                        <md-icon class="md-icon">face</md-icon>
+                      </div>
+                      <div class="md-subhead">
+                        <strong>Maria Alexandra Useche Melo</strong>
+                      </div>
+                    </div>
+                    <div layout="row" layout-align="space-between center">
+                      <div>
+                        <md-icon class="md-icon">email</md-icon>
+                      </div>
+                      <div class="md-subhead">
+                        <small class="srefer">s.polanco@mensajerosurbanos.com</small>
+                      </div>
+                    </div>
+                    <div layout="row" layout-align="space-between center">
+                      <div>
+                        <md-icon class="md-icon">phone</md-icon>
+                      </div>
+                      <div class="md-subhead">
+                        <small class="srefer">8878766</small>
+                      </div>
+                    </div>
+                    <div layout="row" layout-align="space-between center">
+                      <div>
+                        <md-icon class="md-icon">smartphone</md-icon>
+                      </div>
+                      <div class="md-subhead">
+                        <small class="srefer">3208876776</small>
+                      </div>
+                    </div>
+                    <div layout="row" layout-align="space-between center">
+                      <div>
+                        <md-icon class="md-icon">business</md-icon>
+                      </div>
+                      <div class="md-subhead">
+                        <small class="srefer">Farmatodo</small>
+                      </div>
+                    </div>
+                  </div>
+                </md-menu-content>
+              </md-menu>
+              <!-- /Company menu -->
+
+            </td>
+            <td md-cell>
+
+              <!-- Messenger menu -->
+              <md-menu>
+                <a class="pointer srefer" ng-click="vm.openMenu($mdMenu)">{{dessert.price}}</a>
+                <md-menu-content class="popup" width="4">
+                  <div layout="column" class="popup">
+                    <div layout="row" layout-align="space-between center">
+                      <div>
+                        <md-icon class="md-icon">face</md-icon>
+                      </div>
+                      <div class="md-subhead">
+                        <strong class="srefer">Jhonatan Hernandez</strong>
+                      </div>
+                    </div>
+                    <div layout="row" layout-align="space-between center">
+                      <div>
+                        <md-icon class="md-icon">contact_mail</md-icon>
+                      </div>
+                      <div class="md-subhead">
+                        <small>10120556776</small>
+                      </div>
+                    </div>
+                    <div layout="row" layout-align="space-between center">
+                      <div>
+                        <md-icon class="md-icon">email</md-icon>
+                      </div>
+                      <div class="md-subhead">
+                        <small class="srefer">s.polanco@mensajerosurbanos.com</small>
+                      </div>
+                    </div>
+                    <div layout="row" layout-align="space-between center">
+                      <div>
+                        <md-icon class="md-icon">phone</md-icon>
+                      </div>
+                      <div class="md-subhead">
+                        <small class="srefer">3208876776</small>
+                      </div>
+                    </div>
+                  </div>
+                </md-menu-content>
+              </md-menu>
+              <!-- /Messenger menu -->
+
+            </td>
             <td md-cell>{{dessert.ammount}}</td>
-            <td md-cell>{{dessert.bill}}</td>
+            <td md-cell>
+
+              <!-- Agent menu -->
+              <md-menu>
+                <a class="pointer srefer" ng-click="vm.openMenu($mdMenu)">{{dessert.bill}}</a>
+                <md-menu-content class="popup" width="4">
+                  <md-menu-item>
+                    <md-button>
+                      <md-icon class="md-icon" md-menu-align-target>phone</md-icon>
+                      Llamar Cliente
+                    </md-button>
+                  </md-menu-item>
+                  <md-menu-item>
+                    <md-button>
+                      <md-icon class="md-icon" md-menu-align-target>directions_bike</md-icon>
+                      Llamar Mensajero
+                    </md-button>
+                  </md-menu-item>
+                </md-menu-content>
+              </md-menu>
+              <!-- /Agent menu -->
+
+            </td>
             <td md-cell>{{dessert.created}}</td>
+            <td md-cell>
+
+              <!-- Service actions menu -->
+              <md-menu>
+                <md-icon class="md-icon pointer" ng-click="vm.openMenu($mdMenu)">more_vert</md-icon>
+                <md-menu-content class="popup" width="4">
+                  <md-menu-item>
+                    <md-button>
+                      Modificar
+                    </md-button>
+                  </md-menu-item>
+                  <md-menu-item>
+                    <md-button>
+                      Relanzar
+                    </md-button>
+                  </md-menu-item>
+                  <md-menu-item>
+                    <md-button>
+                      Ofertar
+                    </md-button>
+                  </md-menu-item>
+                  <md-menu-item>
+                    <md-button>
+                      Finalizar
+                    </md-button>
+                  </md-menu-item>
+                  <md-menu-item>
+                    <md-button>
+                      Cancelar
+                    </md-button>
+                  </md-menu-item>
+                </md-menu-content>
+              </md-menu>
+              <!-- /Service actions menu -->
+
+            </td>
           </tr>
         </tbody>
       </table>

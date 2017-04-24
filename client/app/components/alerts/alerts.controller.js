@@ -2,20 +2,17 @@
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
 
+import _ from 'lodash';
+
 // Class representing a Alerts
 
 class AlertsController {
-  constructor() {
-    this.selected = [];
-    this.query = {
-      order: 'name',
-      limit: 5,
-      page: 1
-    };
+  constructor($timeout) {
+    this.timeout = $timeout;
     this.desserts = [];
     this.start = new Date();
     this.end = new Date();
-    for (let i = 0; i < 500; i++) {
+    for (let i = 0; i < 100; i++) {
       this.desserts.push({
         service: 'af879as8d77f' + i,
         date: '17:15',
@@ -23,13 +20,20 @@ class AlertsController {
         price: 'Hernandez Jhonatan',
         ammount: 'Bogotá',
         bill: 'Nadia Alvarez',
-        created: 'Domicilios'
+        created: 'Domicilios',
+        stateStatus: _.random(1, 7)
       });
     }
   }
 
+  openMenu(menu, delay = 0) {
+    this.timeout(function () {
+      menu.open();
+    }, delay);
+  }
+
 }
 
-AlertsController.$inject = [];
+AlertsController.$inject = ['$timeout'];
 
 export { AlertsController };
