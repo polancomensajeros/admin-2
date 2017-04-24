@@ -1,0 +1,34 @@
+<md-dialog flex="30">
+    <md-dialog-content class="md-dialog-content" layout="column">
+        <h2>Ajustes</h2>
+        <md-input-container>
+            <label>Tipo de movimiento</label>
+            <md-select ng-model="ctrl.userState" flex>
+                <md-option><em>Selecciona una opción</em></md-option>
+                <md-option ng-repeat="state in ['opcion 1', 'opcion 2']" ng-value="state">
+                    {{state}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container>
+            <label>Monto</label>
+            <input ng-model="user.title">
+        </md-input-container>
+        <md-input-container class="md-block">
+            <label>Descripción</label>
+            <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus placeholder="Porque haces este ajuste?"></textarea>
+        </md-input-container>
+        <md-input-container>
+            <label>Factura</label>
+            <input ng-model="user.bill">
+        </md-input-container>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button ng-click="vm.cancel()">
+            Cancelar
+        </md-button>
+        <md-button class="md-primary" ng-click="vm.answer('useful')">
+            Ajustar
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

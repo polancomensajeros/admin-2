@@ -66,14 +66,31 @@ angular.module('app', [
   ngAnimate,
   ngMaterial,
   home.name,
-  common.name,
   shared.name,
   // Registrar el modulo usando su nombre
   micomponente.name
 ])
 ```
+Si se van a desarrollar servicios compartidos (factories, constants) deben ser registrados en el modulo shared.   
 
-Si se van a desarrollar servicios compartidos deben ser registrados en el modulo shared.
+Si un componente tiene componentes hijos con controllers independientes ($mdDialog), se debe crear una carpeta llamada *components* dentro de la carpeta del componente, 
+y dentro de esta carpeta crear sub-carpetas para cada uno de los componentes.
+
+### Testing
+
+Cada componente tiene su archivo de testing, se puede identificar por el patrón _component.spec.js_ 
+Para ejecutar las pruebas se usa el comando
+
+```
+npm test
+```
+La entrada a las pruebas es el archivo *karma.conf.js*, se usan los frameworks karma, mocha y chai. Gracias a este enfoque orientado a componentes
+cada controller se puede testear individualmente sin angular, ya que son solo clases de ES6.  
+
+### Recomendaciones
+
+Cada vez que se crea un nuevo componente es recomendable detener el servidor y correr de nuevo el comando *npm start*. Esto para evitar que el server muestre archivos html
+guardados en caché
 
 La aplicación hace uso del framework [Angular Material](https://material.angularjs.org/latest/) 
 

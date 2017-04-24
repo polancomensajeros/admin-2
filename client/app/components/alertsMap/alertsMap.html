@@ -1,0 +1,81 @@
+<md-card class="alertsMap" flex>
+  <div layout="row" layout-padding>
+    <md-autocomplete flex="60" md-search-text="vm.searchText" md-items="item in vm.querySearch(vm.searchText)" md-item-text="item.display"
+      md-min-length="3" placeholder="Por dirección o mensajero">
+      <md-item-template>
+        <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.display}}</span>
+      </md-item-template>
+      <md-not-found>
+        No hay resultados que coincidan con: "{{vm.searchText}}"
+      </md-not-found>
+    </md-autocomplete>
+    <span flex></span>
+    <md-select ng-model="Ciudad" placeholder="Ciudad" class="md-no-underline margin-top-0 margin-bottom-1">
+      <md-option value="axe">Bogotá</md-option>
+      <md-option value="sword">Barranquilla</md-option>
+      <md-option value="wand">Medellin</md-option>
+      <md-option value="pen">Bucaramanga</md-option>
+    </md-select>
+  </div>
+  <md-divider></md-divider>
+  <div layout="row" layout-padding ng-click="vm.resizeMap()">
+    <span class="md-subhead">Filtros</span>
+    <span flex></span>
+    <md-icon ng-if="!vm.showFilters" class="md-icon">add</md-icon>
+    <md-icon ng-if="vm.showFilters" class="md-icon">remove</md-icon>
+  </div>
+  <md-divider></md-divider>
+  <div layout="row" layout-padding ng-if="vm.showFilters">
+    <div flex>
+      <md-select ng-model="cali" placeholder="Calificación" class="md-no-underline margin-top-0 margin-bottom-1">
+        <md-option value="cali1">Calificación 1</md-option>
+        <md-option value="cali2">Calificación 2</md-option>
+        <md-option value="cali3">Calificación 3</md-option>
+        <md-option value="cali4">Calificación 4</md-option>
+        <md-option value="cali5">Calificación 5</md-option>
+      </md-select>
+      <md-checkbox ng-model="moto" aria-label="Moto">
+        Moto
+      </md-checkbox>
+      <div class="padding-left-1">
+        <md-checkbox ng-model="motovip" aria-label="moto">
+          VIP(12)
+        </md-checkbox>
+        <md-checkbox ng-model="motodsi" aria-label="moto">
+          Disponible(23)
+        </md-checkbox>
+        <md-checkbox ng-model="motoss" aria-label="moto">
+          Seguridad social(34)
+        </md-checkbox>
+      </div>
+    </div>
+    <div flex>
+      <md-select ng-model="todos" placeholder="Ver todos" class="md-no-underline margin-top-0 margin-bottom-1">
+      <md-option value="axe">Ver todos</md-option>
+      <md-option value="sword">Ver pocos</md-option>
+    </md-select>
+      <md-checkbox ng-model="bici" aria-label="bici">
+        Bicicleta
+      </md-checkbox>
+      <div class="padding-left-1">
+        <md-checkbox ng-model="bicivip" aria-label="bici">
+          VIP(12)
+        </md-checkbox>
+        <md-checkbox ng-model="bicidsi" aria-label="bici">
+          Disponible(23)
+        </md-checkbox>
+        <md-checkbox ng-model="biciss" aria-label="bici">
+          Seguridad social(34)
+        </md-checkbox>
+      </div>
+    </div>
+  </div>
+  <md-divider ng-if="vm.showFilters"></md-divider>
+  <md-card-content flex layout="column" class="padding-top-0">
+
+    <!-- Component -->
+    <service-map></service-map>
+    <!-- /Component -->
+
+  </md-card-content>
+</md-card>

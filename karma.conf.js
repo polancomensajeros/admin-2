@@ -37,15 +37,12 @@ module.exports = function(config) {
             loaders: [
                 /* add the appropriate loaders */
                 /* almost the same as the webpack.config */
-                { test: /\.html$/, loader: 'raw' },
-                { test: /\.styl$/, loader: 'style!css!stylus' },
-                { test: /\.css/, loader: 'style!css' },
-                { test: /\.js$/, loader: 'babel?stage=1', exclude: [/client\/lib/, /node_modules/] }
+                { test: /\.html$/, loader: 'raw-loader' },
+                { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader' },
+                { test: /\.css/, loader: 'style-loader!css-laoder' },
+                { test: /\.(png|jpg|jpeg)$/, loader: 'file-loader' },
+                { test: /\.js$/, loader: 'babel-loader', exclude: [/client\/lib/, /node_modules/] }
             ]
-        },
-
-        stylus: {
-            use: [require('jeet')(), require('rupture')()]
         }
     },
 

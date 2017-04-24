@@ -1,0 +1,57 @@
+<md-card class="messenger-movements">
+  <md-progress-linear ng-if="vm.loadingServices" md-mode="indeterminate"></md-progress-linear>
+  <md-card-title>
+    Servicios realizados
+  </md-card-title>
+  <md-card-content>
+    <div layout="row" layout-align="center center" ng-if="vm.loadingServices">
+      <small>Cargando servicios ...</small>
+    </div>
+    <md-toolbar ng-if="!vm.loadingServices" class="md-table-toolbar md-menu-toolbar" layout="row">
+      <span flex></span>
+      <md-autocomplete flex md-search-text="vm.searchText" md-items="item in vm.querySearch(vm.searchText)" md-item-text="item.display"
+        md-min-length="3" placeholder="Buscar">
+        <md-item-template>
+          <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.display}}</span>
+        </md-item-template>
+        <md-not-found>
+          No hay resultados que coincidan con: "{{vm.searchText}}"
+        </md-not-found>
+      </md-autocomplete>
+      <md-datepicker ng-model="vm.start" md-placeholder="Inicio"></md-datepicker>
+      <md-datepicker ng-model="vm.end" md-placeholder="Fin"></md-datepicker>
+    </md-toolbar>
+    <md-table-container ng-if="!vm.loadingServices">
+      <table md-table ng-model="vm.selected" md-progress="vm.promise">
+        <thead md-head md-order="vm.query.order" md-on-reorder="vm.getDesserts">
+          <tr md-row>
+            <th md-column md-order-by="nameToLower"><span>Servicio</span></th>
+            <th md-column md-numeric md-order-by="calories.value"><span>Fecha y hora</span></th>
+            <th md-column md-numeric>Usuario</th>
+            <th md-column md-numeric>Tipo de servicio</th>
+            <th md-column md-numeric>Estado</th>
+            <th md-column md-numeric>Valor</th>
+            <th md-column md-numeric>Calificación</th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="dessert in vm.desserts">
+            <td md-cell><a href="">{{dessert.service}}</a></td>
+            <td md-cell>{{dessert.date}}</td>
+            <td md-cell>{{dessert.description}}</td>
+            <td md-cell>{{dessert.price}}</td>
+            <td md-cell>
+              <div class="service-state state-3"></div>
+              <span>{{dessert.ammount}}</span>
+            </td>
+            <td md-cell>{{dessert.bill}}</td>
+            <td md-cell>{{dessert.created}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+
+    <md-table-pagination ng-if="!vm.loadingServices" md-limit="vm.query.limit" md-limit-options="[5, 10, 15]" md-page="vm.query.page" md-total="{{vm.desserts.count}}"
+      md-on-paginate="vm.getDesserts" md-page-select md-label="{page: 'Página:', rowsPerPage: 'Filas por página:', of: 'de'}"></md-table-pagination>
+  </md-card-content>
+</md-card>

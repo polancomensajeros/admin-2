@@ -1,0 +1,24 @@
+@import '../../../styles/variables';
+.service-card{
+  .p-title{
+    font-size: 12px;
+    font-weight: bold;
+    color: #8a8a8a;
+    display: block;
+  }
+  .properties{
+    margin-bottom: 9px;
+  }
+  .accordion-title{
+    color: $muColor;
+  }
+  p{
+    margin: 0.2em;
+  }
+  .service-cost.total{
+    border-top: solid #e0e0e0 1px;
+    margin-top: 0.5em;
+    padding-top: 0.5em;
+  }
+}
+  
