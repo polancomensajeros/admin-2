@@ -24,6 +24,11 @@ class SideBarController {
         icon: 'warning',
         name: 'Alertas',
         sref: 'alertsView'
+      },
+      {
+        icon: 'directions_bike',
+        name: 'Editar mensajero',
+        sref: 'editMessengerView'
       }
     ]
   }

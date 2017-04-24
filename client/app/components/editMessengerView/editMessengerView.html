@@ -1,0 +1,40 @@
+<section layout="column" flex>
+  <div layout="row" flex>
+    <side-bar flex></side-bar>
+    <div class="main-content" layout="column" flex>
+
+      <!-- Component -->
+        <top-bar></top-bar> 
+      <!-- /Component -->
+
+      <md-content layout-sm="column" layout-gt-sm="row" flex>
+        <div layout="column" flex="40" class="scrollable-full-column">
+          <div>
+
+            <!-- Component -->
+              <!--edit-messenger-menu></edit-messenger-menu-->
+            <!-- /Component -->
+
+          </div>
+          <div>
+
+            <!-- Component -->
+              <messenger-documents></messenger-documents>            
+            <!-- /Component -->
+
+          </div>
+        </div>
+        <div flex layout="column" class="scrollable-full-column">
+          <div>
+
+            <!-- Component -->
+              <edit-messenger-forms></edit-messenger-forms>
+            <!-- /Component -->
+
+          </div>
+        </div>
+
+      </md-content>
+    </div>
+  </div>
+</section>
