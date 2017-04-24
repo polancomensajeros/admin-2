@@ -5,7 +5,9 @@
 // Class representing a MessengerServices
 
 class MessengerServicesController {
-  constructor() {
+  constructor($timeout) {
+    var self = this;
+    this.loadingServices = true;
     this.selected = [];
     this.query = {
       order: 'name',
@@ -15,29 +17,32 @@ class MessengerServicesController {
     this.desserts = [];
     this.start = new Date();
     this.end = new Date();
-    for(let i = 0; i < 10; i++){
-      this.desserts.push({
-        service: 'af879as8d77f' + i,
-        date: '17-Nov-2016 / 17:23:32',
-        description: 'Farmatodo',
-        price: 'Mensajería',
-        ammount: 'En espera',
-        bill: '$1987',
-        created: '4.00'
-      });
-    }
+    $timeout(function () {
+      for (let i = 0; i < 10; i++) {
+        self.desserts.push({
+          service: 'af879as8d77f' + i,
+          date: '17-Nov-2016 / 17:23:32',
+          description: 'Farmatodo',
+          price: 'Mensajería',
+          ammount: 'En espera',
+          bill: '$1987',
+          created: '4.00'
+        });
+      }
+      self.loadingServices = false;
+    }, 1200);
   }
 
-  success(desserts){
+  success(desserts) {
     this.desserts = desserts;
   }
 
-  getDesserts(){
+  getDesserts() {
     this.promise = $nutrition.desserts.get(this.query, this.success).$promise;
   }
 
 }
 
-MessengerServicesController.$inject = [];
+MessengerServicesController.$inject = ['$timeout'];
 
-export {MessengerServicesController};
+export { MessengerServicesController };

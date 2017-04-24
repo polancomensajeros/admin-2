@@ -6,7 +6,9 @@
 
 class MessengerMovementsController {
 
-  constructor() {
+  constructor($timeout) {
+    var self = this;
+    this.loadingMovements = true;
     this.selected = [];
     this.query = {
       order: 'name',
@@ -16,29 +18,34 @@ class MessengerMovementsController {
     this.desserts = [];
     this.start = new Date();
     this.end = new Date();
-    for(let i = 0; i < 10; i++){
-      this.desserts.push({
-        service: 'af879as8d77f' + i,
-        date: '17-Nov-2016 / 17:23:32',
-        description: 'Retención por movimiento',
-        price: '4,345.66',
-        ammount: '234.00',
-        bill: '',
-        created: 'Sistema MU'
-      });
-    }
+
+    $timeout(function () {
+      for (let i = 0; i < 10; i++) {
+        self.desserts.push({
+          service: 'af879as8d77f' + i,
+          date: '17-Nov-2016 / 17:23:32',
+          description: 'Retención por movimiento',
+          price: '4,345.66',
+          ammount: '234.00',
+          bill: '',
+          created: 'Sistema MU'
+        });
+      }
+      self.loadingMovements = false;
+    }, 2000);
+
   }
 
-  success(desserts){
+  success(desserts) {
     this.desserts = desserts;
   }
 
-  getDesserts(){
+  getDesserts() {
     this.promise = $nutrition.desserts.get(this.query, this.success).$promise;
   }
 
 }
 
-MessengerMovementsController.$inject = [];
+MessengerMovementsController.$inject = ['$timeout'];
 
-export {MessengerMovementsController};
+export { MessengerMovementsController };

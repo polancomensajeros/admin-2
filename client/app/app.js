@@ -8,6 +8,7 @@ import 'ng-date-range-picker/src/picker.css';
 import 'angular-material-data-table/dist/md-data-table.min.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'lf-ng-md-file-input/dist/lf-ng-md-file-input.min.css';
+import 'angular-state-loader/angular-state-loader.css';
 
 import {appDirective} from './app.directive';
 
@@ -22,6 +23,7 @@ import ngMaterial from 'angular-material';
 import openLayersDirective from 'angular-openlayers-directive';
 import ngMaterialDataTable from 'angular-material-data-table'
 import lfNgMdFileInput from 'lf-ng-md-file-input';
+import ngStateLoader from 'angular-state-loader';
 
 // Layout 
 import {sideBar} from './components/sideBar/sideBar';
@@ -74,6 +76,7 @@ angular.module('app', [
   'openlayers-directive',
   ngMaterialDataTable,
   'lfNgMdFileInput',
+  'ec.stateloader',
 
   // shared dependencies
   shared.name,

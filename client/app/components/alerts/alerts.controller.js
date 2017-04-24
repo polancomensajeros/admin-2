@@ -12,8 +12,11 @@ class AlertsController {
     this.desserts = [];
     this.start = new Date();
     this.end = new Date();
-    for (let i = 0; i < 100; i++) {
-      this.desserts.push({
+    this.loadingAlerts = true;
+    var self = this;
+    $timeout(function(){
+      for (let i = 0; i < 100; i++) {
+      self.desserts.push({
         service: 'af879as8d77f' + i,
         date: '17:15',
         description: 'Sandy',
@@ -24,6 +27,8 @@ class AlertsController {
         stateStatus: _.random(1, 7)
       });
     }
+    self.loadingAlerts = false;
+    }, 2000)
   }
 
   openMenu(menu, delay = 0) {
