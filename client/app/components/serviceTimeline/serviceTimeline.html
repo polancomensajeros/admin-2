@@ -1,0 +1,19 @@
+<md-card class="service-timeline">
+  <md-card-content>
+    <ul>
+      <li class="service-event flex" layout="row" ng-repeat="event in vm.events | orderBy:'-'">
+        <div layout="row" layout-align="center start">
+          <span class="hour flex">{{event.hour}}</span>
+        </div>
+        <div class="dot-container" layout="row" layout-align="start start">
+          <i class="dot" style="background : {{event.color}};"></i>
+          <i class="line"></i>
+        </div>
+        <div flex layout="column" layout-align="start start">
+          <span flex class="title">{{event.title}}</span>
+          <small class="content">{{event.content}}</small>
+        </div>
+      </li>
+    </ul>
+  </md-card-content>
+</md-card>

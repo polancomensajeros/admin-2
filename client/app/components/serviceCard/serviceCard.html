@@ -1,0 +1,58 @@
+<md-card class="service-card">
+  <md-card-content layout="column">
+    
+    <div layout="row" class="properties">
+      <div flex>
+        <span class="p-title">ID DEL SERVICIO</span>
+        <span class="p-property">{{vm.service.uuid}}</span>
+      </div>
+      <div flex>
+        <span class="p-title">ESTADO</span>
+        <span class="p-property state">En espera</span>
+      </div>
+      <div flex>
+        <span class="p-title">TIPO DE SERVICIO</span>
+        <span class="p-property state">Domicilios</span>
+      </div>
+    </div>
+    <div layout="row" class="properties">
+      <div flex>
+        <span class="p-title">FORMA DE PAGO</span>
+        <span class="p-property state">Efectivo</span>
+      </div>
+      <div flex>
+        <span class="p-title">VALOR DECLARADO</span>
+        <span class="p-property state">$125.000 COP</span>
+      </div>
+      <div flex>
+        <span class="p-title">IDA Y VUELTA</span>
+        <span class="p-property state">No</span>
+      </div>
+    </div>
+    <div layout="column" class="bordered-container">
+      <div class="accordion-title" layout="row" ng-click="showContent = !showContent">
+        <div flex>
+          Costo del servicio
+        </div>
+        <div>
+          +
+        </div>
+      </div>
+      <div class="accordion-content" ng-if="showContent">
+        <br>
+        <p class="service-cost">
+          <span>Recargo paradas</span>
+          <span class="float-right">$0 COP</span>
+        </p>
+        <p class="service-cost">
+          <span>Recargo paradas</span>
+          <span class="float-right">$0 COP</span>
+        </p>
+        <p class="service-cost total">
+          <strong>Recargo paradas</strong>
+          <strong class="float-right">$0 COP</strong>
+        </p>
+      </div>
+    </div>
+  </md-card-content>
+</md-card> 

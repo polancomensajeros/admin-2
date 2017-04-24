@@ -1,2 +1,118 @@
-//@import '../styles';
+@import '../styles/variables.scss';
+@import '../styles/containers.scss';
+@import '../styles/fixes.scss';
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+main{
+    width: 100%;
+}
+
+[ui-view]{
+    height: 100%;
+    display: flex;
+}
+
+.main-content{
+    background: #f3f3f3;
+}
+
+.mu-txt{
+    color: $muColor;
+}
+
+.bordered-container{
+    border: solid #e0e0e0 1px;
+    padding: 0.4em;
+}
+
+.float-right{
+    float: right;
+}
+
+.transparent{
+    background: transparent !important;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.green-txt{
+    color: $greenColor !important;
+}
+
+/* Transitions for the ui-view, you can use them or not, I'd rather not */
+
+/*[ui-view].ng-enter{
+    opacity: 0;
+    transform: scale3d(0.5,0.5,0.5);
+}
+    
+
+[ui-view].ng-enter-active{
+    opacity: 1;
+    transform: scale3d(1,1,1);
+}
+
+[ui-view].ng-leave{
+    opacity: 1;
+    transform: translate3d(0,0,0);
+}
+    
+[ui-view].ng-leave-active{
+    opacity: 0;
+    transform: translate3d(100px, 0, 0);
+}
+
+[ui-view].ng-enter,[ui-view].ng-leave{
+    position: absolute;
+    left: 0;
+    right: 0;
+    transition: all .5s ease-in-out;
+}*/
+
+.corner-buttons{
+    position: fixed;
+    bottom: 1.5em;
+    right: 1.5em;
+}
+
+.scrollable-full-column{
+    overflow-y: scroll;
+    height: auto;
+}
+
+/// Service status dots
+
+.service-state{
+    width: 15px;
+    height: 15px;
+    background: #9b9b9b;
+    display: inline-block;
+    border-radius: 50%;
+    &.state-3{
+        background: #ffc64b;
+    }
+    &.state-4{
+        background: $muColor;
+    }
+    &.state-5{
+        background: $muColor;
+    }
+    &.state-6{
+        background: $muColor;
+    }
+    &.state-7{
+        background: red;
+    }
+}
+
+.transparent-toolbar{
+    background: transparent !important;
+}
+
+.srefer{
+    color: $muColor;
+    cursor: pointer;
+}

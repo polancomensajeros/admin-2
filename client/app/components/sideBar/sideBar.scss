@@ -1,0 +1,39 @@
+@import '../../../styles/variables';
+.sidebar-container{
+  width: $sideBarWidth;
+  flex: none !important;
+  -webkit-flex: none !important;
+  .main-sidenav{
+    height: 100%;
+    width: $sideBarWidth;
+    background: $sideBarBg;
+    md-toolbar, md-content{
+      background: $sideBarBg;
+    }
+    .logo{
+      height: 45px;
+      width: 45px;
+      margin-left: 26px;
+      margin-top: 10px;
+    }
+    ul{
+      li{
+        text-align: center;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 2em;
+        md-icon{
+          color: rgba(255, 255, 255, 0.5);
+          margin-bottom: 0.2em;
+        }
+        &.active{
+          color: white;
+          font-weight: 500;
+          md-icon{
+            color: white;
+          }
+        }
+      }
+    }
+  }  
+}
+

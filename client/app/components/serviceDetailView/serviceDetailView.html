@@ -1,0 +1,80 @@
+<section layout="column" flex>
+  <state-loader></state-loader>
+  <div layout="row" flex>
+    <side-bar flex></side-bar>
+    <div class="main-content" layout="column" flex>
+
+      <!-- Component -->
+        <top-bar></top-bar>
+      <!-- /Component -->
+
+
+      <!-- Component -->
+          <service-actions type="'toolbar'"></service-actions>
+      <!-- /Component -->
+
+      <md-content layout-sm="column" layout-gt-sm="row" flex>
+        <div layout="column" flex class="scrollable-full-column">
+          <div>
+
+            <!-- Component -->
+            <messenger-card messenger="{name: 'Juan sebastian Polanco Ramos', phone: '234234324', identification: '234234234', plate: 'AS 456'}"></messenger-card>
+            <!-- /Component -->
+
+          </div>
+          <div>
+
+            <!-- Component -->
+            <service-card service="{uuid: 'asdf'}"></service-card>
+            <!-- /Component -->
+
+          </div>
+          <div>
+
+            <!-- Component -->
+            <service-timeline></service-timeline>
+            <!-- /Component -->
+
+          </div>
+        </div>
+        <div layout="column" flex class="scrollable-full-column">
+          <div>
+
+            <!-- Component -->
+            <company-card></company-card>
+            <!-- /Component -->
+
+          </div>
+          <div>
+
+            <!-- Component -->
+            <service-instructions></service-instructions>
+            <!-- /Component -->
+
+          </div>
+          <div>
+
+            <!-- Component -->
+            <service-products></service-products>
+            <!-- /Component -->
+
+          </div>
+        </div>
+        <div layout="column" flex class="scrollable-full-column">
+          <div flex layout="column">
+
+            <!-- Component -->
+            <service-map carded="true"></service-map>
+            <!-- /Component -->
+
+          </div>
+        </div>
+        
+        <!-- Component -->
+          <!--service-actions type="'speedDial'"></service-actions-->
+        <!-- /Component -->
+
+      </md-content>
+    </div>
+  </div>
+</section>

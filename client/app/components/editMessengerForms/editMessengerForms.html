@@ -1,0 +1,113 @@
+<md-card class="editMessengerForms">
+  <md-card-content layout="column">
+    <span class="md-title" id="user-info">Información de usuario</span>
+    <md-input-container>
+      <label>Usuario</label>
+      <input ng-model="messenger.user">
+    </md-input-container>
+    <md-input-container>
+      <label>Contraseña</label>
+      <input ng-model="messenger.password">
+    </md-input-container>
+    <md-input-container>
+      <label>Email</label>
+      <input ng-model="messenger.email">
+    </md-input-container>
+    <md-input-container>
+      <label>Ciudad</label>
+      <md-select ng-model="messenger.city">
+        <md-option ng-value="Bogota">Bogotá</md-option>
+        <md-option ng-value="Ibague">Ibagué</md-option>
+      </md-select>
+    </md-input-container>
+    <md-input-container>
+      <label>Tipo</label>
+      <md-select ng-model="messenger.type">
+        <md-option ng-value="Moto">Moto</md-option>
+        <md-option ng-value="Bicicleta">Bicicleta</md-option>
+      </md-select>
+    </md-input-container>
+    <md-input-container>
+      <label>Celular</label>
+      <input ng-model="messenger.phone">
+    </md-input-container>
+    <md-input-container>
+      <label>Celular</label>
+      <input ng-model="messenger.phone2">
+    </md-input-container>
+    <md-input-container>
+      <label>Celular Daviplata</label>
+      <input ng-model="messenger.phone3">
+    </md-input-container>
+    <div layout="row" class="margin-bottom-2">
+      <div>
+        <md-switch ng-model="data.cb1" aria-label="Switch 1">
+          Domicilios
+        </md-switch>
+        <md-switch ng-model="data.cb2" aria-label="Switch 1">
+          Mensajería
+        </md-switch>
+        <md-switch ng-model="data.cb3" aria-label="Switch 1">
+          E-commerce
+        </md-switch>
+      </div>
+      <div>
+        <md-switch ng-model="data.cb4" aria-label="Switch 1">
+          VIP
+        </md-switch>
+        <md-switch ng-model="data.cb5" aria-label="Switch 1">
+          Seguridad social
+        </md-switch>
+        <md-switch ng-model="data.cb6" aria-label="Switch 1">
+          Activación
+        </md-switch>
+      </div>
+    </div>
+    <md-input-container>
+      <label>Equipo de la moto</label>
+      <md-select ng-model="messenger.type">
+        <md-option ng-value="Moto">Moto</md-option>
+        <md-option ng-value="Bicicleta">Bicicleta</md-option>
+      </md-select>
+    </md-input-container>
+    <md-input-container>
+      <label>Equipo del mensajero</label>
+      <md-select ng-model="messenger.type">
+        <md-option ng-value="Moto">Moto</md-option>
+        <md-option ng-value="Bicicleta">Bicicleta</md-option>
+      </md-select>
+    </md-input-container>
+    <md-input-container>
+      <label>Placa</label>
+      <input ng-model="messenger.plate">
+    </md-input-container>
+    <span class="md-title" id="basic-info">Información básica</span>
+    <md-input-container>
+      <label>Nombres</label>
+      <input ng-model="messenger.name">
+    </md-input-container>
+    <md-input-container>
+      <label>Apellidos</label>
+      <input ng-model="messenger.lastName">
+    </md-input-container>
+    <md-input-container>
+      <label>Teléfono</label>
+      <input ng-model="messenger.phone">
+    </md-input-container>
+    <md-input-container>
+      <label>Dirección</label>
+      <input ng-model="messenger.address">
+    </md-input-container>
+    <md-input-container>
+      <label>Cédula</label>
+      <input ng-model="messenger.identification">
+    </md-input-container>
+    <md-input-container>
+      <label>Nacimiento</label>
+      <md-datepicker ng-model="ctrl.myDate" name="dateField" md-min-date="ctrl.minDate" md-max-date="ctrl.maxDate"></md-datepicker>
+    </md-input-container>
+  </md-card-content>
+  <md-card-actions layout="row" layout-align="end center">
+    <md-button class="md-primary md-raised">Guardar cambios</md-button>
+  </md-card-actions>
+</md-card>

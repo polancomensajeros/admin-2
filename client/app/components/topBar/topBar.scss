@@ -1,0 +1,27 @@
+@import '../../../styles/variables';
+.main-topbar{
+  background: transparent !important;
+  color: $textColor !important;
+  .top-bar-title{
+    font-size: 1.7em;
+  }
+  md-icon{
+    color: $textColor !important;
+  }
+  .search{
+    .md-errors-spacer{
+      display: none !important;
+    }
+    md-input-container{
+      margin: 0;
+    }
+    input{
+      margin-top: 6px;
+      padding-right: 95px;
+    }
+  }
+  .search-btn{
+    margin-left: -86px;
+  }
+}
+  
