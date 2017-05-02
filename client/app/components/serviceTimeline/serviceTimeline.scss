@@ -3,10 +3,6 @@
 /*----------  General styles  ----------*/
 
 .service-timeline{
-  //max-height: 35.5em;
-  md-card-content{
-    //overflow-y: auto;
-  }
   md-card-actions{
     min-height: 36px;
   }
@@ -18,7 +14,6 @@
       .dot-container{
         padding: 0 8px 0 8px;
       }
-      .hour{}
       .dot{
         width: 10px;
         height: 10px;
@@ -33,9 +28,6 @@
         background: $borderColor;
         top: 9px;
         left: -6px;
-      }
-      .content, .title{
-        background: $appBg;
       }
     }
   }                                     

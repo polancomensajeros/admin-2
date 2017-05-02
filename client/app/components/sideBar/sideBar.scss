@@ -3,6 +3,10 @@
   width: $sideBarWidth;
   flex: none !important;
   -webkit-flex: none !important;
+  md-content{
+    background: $sideBarBg !important;
+    background-color: $sideBarBg !important;
+  }
   .main-sidenav{
     height: 100%;
     width: $sideBarWidth;

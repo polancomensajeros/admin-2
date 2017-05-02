@@ -1,8 +1,12 @@
 @import '../styles/variables.scss';
 @import '../styles/containers.scss';
 @import '../styles/fixes.scss';
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700);
+@import url(http://fonts.googleapis.com/css?family=Fira+Sans|Roboto:400,300,100,500,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+html, body, main{
+   // font-family: 'Fira Sans', sans-serif;
+}
 
 main{
     width: 100%;
@@ -41,36 +45,6 @@ main{
 .green-txt{
     color: $greenColor !important;
 }
-
-/* Transitions for the ui-view, you can use them or not, I'd rather not */
-
-/*[ui-view].ng-enter{
-    opacity: 0;
-    transform: scale3d(0.5,0.5,0.5);
-}
-    
-
-[ui-view].ng-enter-active{
-    opacity: 1;
-    transform: scale3d(1,1,1);
-}
-
-[ui-view].ng-leave{
-    opacity: 1;
-    transform: translate3d(0,0,0);
-}
-    
-[ui-view].ng-leave-active{
-    opacity: 0;
-    transform: translate3d(100px, 0, 0);
-}
-
-[ui-view].ng-enter,[ui-view].ng-leave{
-    position: absolute;
-    left: 0;
-    right: 0;
-    transition: all .5s ease-in-out;
-}*/
 
 .corner-buttons{
     position: fixed;
@@ -115,4 +89,19 @@ main{
 .srefer{
     color: $muColor;
     cursor: pointer;
+}
+
+main{
+    md-content{
+        background-color: $background !important;
+    }
+}
+
+md-card{
+    md-card-title{
+        font-weight: 700;
+        font-size: 20px;
+        text-transform: uppercase;
+        border-bottom: 1px solid #e0e0e0;
+    }
 }

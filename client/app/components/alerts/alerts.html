@@ -1,5 +1,5 @@
 <md-card class="alerts" flex>
-  <md-progress-linear ng-if="vm.loadingAlerts" md-mode="indeterminate"></md-progress-linear>
+  <md-progress-linear md-mode="query" ng-if="vm.loadingAlerts" md-mode="indeterminate"></md-progress-linear>
   <md-card-content>
     <div layout="row" layout-align="center center" ng-if="vm.loadingAlerts">
       <small>Cargando alertas ...</small>
