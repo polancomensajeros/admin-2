@@ -1,6 +1,21 @@
 @import '../../../styles/variables';
 .sidebar-container{
-  width: $sideBarWidth;
+  md-sidenav{
+    background: $sideBarBg !important;
+  }
+  a.md-button{
+    md-icon{
+      color: rgba(255, 255, 255, 0.5) !important;  
+    }
+    color: rgba(255, 255, 255, 0.5);
+    text-align: left;
+    &.active{
+      color: white !important;
+      md-icon{
+        color: white !important;
+      }
+    }
+  }
   flex: none !important;
   -webkit-flex: none !important;
   md-content{
@@ -38,6 +53,8 @@
         }
       }
     }
+    @media(max-width: $layout-sm){
+      display: none !important;
+    }
   }  
 }
-

@@ -26,6 +26,7 @@ class ServiceActionsController {
     const self = this;
     this.mdDialog.show({
       controller: controller,
+      controllerAs: 'vm',
       template: template,
       parent: angular.element(document.body),
       targetEvent: ev,

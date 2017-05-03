@@ -45,13 +45,15 @@ main{
 
 .corner-buttons{
     position: fixed;
-    bottom: 1.5em;
-    right: 1.5em;
+    bottom: 0.5em;
+    right: 0.5em;
 }
 
-.scrollable-full-column{
-    overflow-y: scroll;
-    height: auto;
+@media(min-width: $layout-sm){
+    .scrollable-full-column{
+        overflow-y: scroll;
+        height: auto;
+    }
 }
 
 /// Service status dots

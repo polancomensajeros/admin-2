@@ -3,7 +3,8 @@
  */
 
 class TopBarController {
-  constructor($q, $timeout, Titles) {
+  constructor($q, $timeout, Titles, $rootScope) {
+    this.rootScope = $rootScope;
     this.title = Titles.getTopbarTitle();
     this.simulateQuery = true;
     this.states = this.loadAll();
@@ -45,8 +46,12 @@ class TopBarController {
 
   }
 
+  toggleSideNav() {
+    this.rootScope.toggleSideNav();
+  }
+
 }
 
-TopBarController.$inject = ['$q', '$timeout', 'Titles'];
+TopBarController.$inject = ['$q', '$timeout', 'Titles', '$rootScope'];
 
 export { TopBarController };

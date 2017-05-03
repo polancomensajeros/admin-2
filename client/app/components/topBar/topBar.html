@@ -1,8 +1,11 @@
-<md-toolbar ng-if="true" class="md-primary main-topbar">
+<md-toolbar ng-if="true" class="md-primary main-topbar" ng-init="showSearch = false">
   <div class="md-toolbar-tools">
+    <md-button hide-gt-sm aria-label="Open menu with custom trigger" class="md-icon-button" ng-click="vm.toggleSideNav()">
+      <md-icon class="md-icon">menu</md-icon>
+    </md-button>
     <h2 class="top-bar-title" flex md-truncate>{{vm.title}}</h2>
     <md-autocomplete flex md-search-text="vm.searchText" md-items="item in vm.querySearch(vm.searchText)" md-item-text="item.display"
-      md-min-length="3" placeholder="Buscar">
+      md-min-length="3" placeholder="Buscar" hide show-gt-sm>
       <md-item-template>
         <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.display}}</span>
       </md-item-template>
@@ -14,6 +17,7 @@
     <md-button aria-label="Open menu with custom trigger" class="md-icon-button">
       <md-icon class="md-icon">notifications_none</md-icon>
     </md-button>
+
     <md-menu>
       <md-button aria-label="Open menu with custom trigger" class="md-icon-button" ng-click="$mdMenu.open()">
         <md-icon class="md-icon">person</md-icon>

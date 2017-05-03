@@ -120,6 +120,14 @@ angular.module('app', [
   editMessengerForms.name
 ])
 .directive('app', appDirective)
+.run(function($rootScope, $mdSidenav){
+  $rootScope.toggleSideNav = function(){
+    console.log('toggle sidenav');
+    $mdSidenav('sidenav-small')
+      .toggle()
+      .then(function () { });
+  }
+})
 .config(function($mdThemingProvider){
   // Configire theme colors
   $mdThemingProvider.theme('mensajeros') 
