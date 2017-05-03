@@ -1,12 +1,9 @@
 @import '../styles/variables.scss';
 @import '../styles/containers.scss';
+@import '../styles/forms.scss';
 @import '../styles/fixes.scss';
 @import url(http://fonts.googleapis.com/css?family=Fira+Sans|Roboto:400,300,100,500,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
-
-html, body, main{
-   // font-family: 'Fira Sans', sans-serif;
-}
 
 main{
     width: 100%;
@@ -97,11 +94,4 @@ main{
     }
 }
 
-md-card{
-    md-card-title{
-        font-weight: 700;
-        font-size: 20px;
-        text-transform: uppercase;
-        border-bottom: 1px solid #e0e0e0;
-    }
-}
+

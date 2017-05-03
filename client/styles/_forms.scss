@@ -1,0 +1,11 @@
+/*
+ * Forms overwrites
+ */
+md-input-container{
+    margin: 15px 0;
+    .md-errors-spacer {
+        float: right;
+        min-height: 0px;
+        min-width: 1px;
+    }
+}
