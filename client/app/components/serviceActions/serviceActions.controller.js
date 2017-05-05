@@ -30,7 +30,8 @@ class ServiceActionsController {
       template: template,
       parent: angular.element(document.body),
       targetEvent: ev,
-      clickOutsideToClose: true
+      clickOutsideToClose: true,
+      fullscreen: true
     })
     .then(function (answer) {
       console.log(answer);

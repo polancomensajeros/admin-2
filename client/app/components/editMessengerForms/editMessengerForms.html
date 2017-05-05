@@ -1,7 +1,7 @@
 <md-card class="editMessengerForms">
   <md-card-content layout="column">
     <span class="md-title margin-bottom-1 margin-top-0-5" id="user-info">Información de usuario</span>
-    <div layout="row">
+    <div layout="column" layout-gt-sm="row">
       <div layout="column" flex>
         <md-input-container>
           <label>Usuario</label>
@@ -45,8 +45,8 @@
         </md-input-container>
       </div>
     </div>
-    <div layout="row">
-      <div flex layout="row">
+    <div layout="column" layout-gt-sm="row">
+      <div flex layout="column" layout-gt-sm=row>
         <div>
           <md-input-container>
             <md-switch class="margin-0" ng-model="data.cb1" aria-label="Switch 1">
@@ -104,7 +104,7 @@
       </div>
     </div>
     <span class="md-title margin-bottom-1 margin-top-1" id="basic-info">Información básica</span>
-    <div layout="row">
+    <div layout="column" layout-gt-sm="row">
       <div flex layout="column">
         <md-input-container>
           <label>Nombres</label>

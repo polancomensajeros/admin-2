@@ -20,7 +20,10 @@
   </md-card-title>
   <md-card-actions ng-if="vm.actions" layout="row">
     <md-button class="md-primary" ng-click="vm.showAdjustmentModal($event)">Ajustes</md-button>
-    <md-button class="md-primary">Editar perfil</md-button>
+    <md-button class="md-primary">
+      <span hide-gt-sm>Editar</span>
+      <span hide show-gt-sm>Editar perfil</span>
+    </md-button>
     <span flex></span>
     <md-button class="md-warn" ng-click="vm.showBlockModal($event)">Bloquear</md-button>
   </md-card-actions>
