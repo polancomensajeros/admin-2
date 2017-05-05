@@ -1,5 +1,5 @@
 <md-dialog flex="80" class="dialog-90">
-    <md-dialog-content class="md-dialog-content" layout="row" style="padding: 0;">
+    <md-dialog-content class="md-dialog-content" layout="column" layout-gt-sm="row" style="padding: 0;">
         <div flex layout="column" class="scrollable-full-column padding-1">
             <span class="md-headline margin-top-0-5 margin-bottom-0-5">Crear servicio</span>
             <md-input-container>
@@ -25,7 +25,7 @@
                     <md-datepicker ng-model="ctrl.myDate" name="dateField"></md-datepicker>
                 </md-input-container>
             </div>
-            <div layout="row">
+            <div layout="column" layout-gt-sm="row">
                 <md-input-container flex>
                     <label>Hora</label>
                     <md-select required ng-model="ctrl.hour" flex>
@@ -54,7 +54,7 @@
                     </md-select>
                 </md-input-container>
             </div>
-            <div layout="row">
+            <div layout="column" layout-gt-sm="row">
                 <md-input-container flex>
                     <label>Valor declarado</label>
                     <input ng-model="user.value">
@@ -87,7 +87,7 @@
                 </div>
             </div>
         </div>
-        <div flex layout="column">
+        <div flex layout="column" hide show-gt-sm>
             <service-map carded="false"></service-map>
         </div>
     </md-dialog-content>
