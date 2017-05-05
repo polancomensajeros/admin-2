@@ -9,6 +9,8 @@ import 'angular-material-data-table/dist/md-data-table.min.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'lf-ng-md-file-input/dist/lf-ng-md-file-input.min.css';
 import 'angular-state-loader/angular-state-loader.css';
+import 'offline-js/themes/offline-theme-default.css';
+import 'offline-js/themes/offline-language-spanish.css';
 
 import {appDirective} from './app.directive';
 
@@ -24,6 +26,7 @@ import openLayersDirective from 'angular-openlayers-directive';
 import ngMaterialDataTable from 'angular-material-data-table'
 import lfNgMdFileInput from 'lf-ng-md-file-input';
 import ngStateLoader from 'angular-state-loader';
+import offlineJs from 'offline-js';
 
 // Layout 
 import {sideBar} from './components/sideBar/sideBar';
