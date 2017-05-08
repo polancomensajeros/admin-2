@@ -9,7 +9,7 @@ import 'angular-material-data-table/dist/md-data-table.min.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'lf-ng-md-file-input/dist/lf-ng-md-file-input.min.css';
 import 'angular-state-loader/angular-state-loader.css';
-import 'offline-js/themes/offline-theme-default.css';
+import 'offline-js/themes/offline-theme-dark.css';
 import 'offline-js/themes/offline-language-spanish.css';
 
 import {appDirective} from './app.directive';

@@ -15,6 +15,7 @@
   <!-- ngMaterialDatePicker is not webpack compatible, so moment js is here and not in app.js -->
   <script src="bundle.js"></script>
   <script>
+    Offline.options = {reconnect: {initialDelay: 10}};
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker
       .register('sw.js')
