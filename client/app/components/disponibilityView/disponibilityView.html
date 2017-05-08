@@ -1,0 +1,56 @@
+<section layout="column" flex class="disponibility-view">
+  <state-loader></state-loader>
+  <div layout="row" flex>
+    <side-bar flex></side-bar>
+    <div class="main-content" layout="column" flex>
+
+      <!-- Component -->
+      <top-bar></top-bar>
+      <!-- /Component -->
+
+      <md-content layout="column" layout-gt-md="row" flex>
+        <div layout-gt-md="column" flex-gt-md="" class="scrollable-full-column">
+          <md-card>
+            <md-toolbar clas="md-menu-toolbar">
+              <div class="md-toolbar-tools">
+                <h2 class="md-title">Activas</h2>
+                <div flex="" class="flex"></div>
+                <md-input-container md-no-float class="md-block">
+                  <input ng-model="user.address2" placeholder="Buscar">
+                </md-input-container>
+                <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date"></md-datepicker>
+                <md-button class="md-primary md-raised">
+                  Crear
+                </md-button>
+              </div>
+            </md-toolbar>
+            <md-card-content>
+              <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Activas">
+                  <md-content class="md-padding">
+                    <disponibility-active></disponibility-active>
+                  </md-content>
+                </md-tab>
+                <md-tab label="Alertas">
+                  <md-content class="md-padding">
+                    <messenger-services></messenger-services>
+                  </md-content>
+                </md-tab>
+                <md-tab label="Tarifas">
+                  <md-content class="md-padding">
+                    <messenger-services></messenger-services>
+                  </md-content>
+                </md-tab>
+                <md-tab label="Puntos">
+                  <md-content class="md-padding">
+                    <messenger-services></messenger-services>
+                  </md-content>
+                </md-tab>
+              </md-tabs>
+            </md-card-content>
+          </md-card>
+        </div>
+      </md-content>
+    </div>
+  </div>
+</section>

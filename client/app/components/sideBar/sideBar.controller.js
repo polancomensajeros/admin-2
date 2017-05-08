@@ -30,6 +30,11 @@ class SideBarController {
         icon: 'directions_bike',
         name: 'Editar mensajero',
         sref: 'editMessengerView'
+      },
+      {
+        icon: 'directions_bike',
+        name: 'Disponibilidades',
+        sref: 'disponibilityView'
       }
     ]
   }

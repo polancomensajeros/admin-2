@@ -43,7 +43,11 @@ gulp.task('serve', function() {
   browser({
     port: process.env.PORT || 4500,
     open: false,
-    ghostMode: false,
+    ghostMode: {
+      clicks: true,
+      forms: true,
+      scroll: false
+    },
     server: {
       baseDir: 'dist'
     }

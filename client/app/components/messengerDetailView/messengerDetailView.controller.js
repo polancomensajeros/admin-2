@@ -3,12 +3,13 @@
  */
 
 class MessengerDetailViewController {
-  constructor(Titles) {
+  constructor(Titles, $rootScope) {
+    $rootScope.transitioningToState = false;
     Titles.setTopbarTitle('Detalle del mensajero');
   }
 
 }
 
-MessengerDetailViewController.$inject = ['Titles'];
+MessengerDetailViewController.$inject = ['Titles', '$rootScope'];
 
 export {MessengerDetailViewController};

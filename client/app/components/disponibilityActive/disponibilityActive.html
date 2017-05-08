@@ -1,0 +1,44 @@
+<div>
+  <div layout="row" layout-align="center center" ng-if="vm.loadingDisponibilities">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
+  <md-table-container ng-if="!vm.loadingDisponibilities">
+    <table md-row-select multiple md-table ng-model="vm.selected" md-progress="vm.promise">
+      <thead md-head md-order="vm.query.order" md-on-reorder="vm.getDesserts">
+        <tr md-row>
+          <th md-column md-order-by="nameToLower"><span>Id Disponibilidad</span></th>
+          <th md-column md-numeric md-order-by="calories.value"><span>creación</span></th>
+          <th md-column md-numeric>Inicio</th>
+          <th md-column md-numeric>Finalización</th>
+          <th md-column md-numeric>Estado</th>
+          <th md-column md-numeric>Minimo garantizado</th>
+          <th md-column md-numeric>Aceptación</th>
+          <th md-column md-numeric>Equipamiento necesario</th>
+          <th md-column md-numeric>Puestos</th>
+          <th md-column md-numeric>Zonas</th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row md-select="disp" md-select-id="id" md-auto-select ng-repeat="disp in vm.disponibilities">
+          <td md-cell>{{disp.id}}</td>
+          <td md-cell>{{disp.created}}</td>
+          <td md-cell>{{disp.start}}</td>
+          <td md-cell>{{disp.end}}</td>
+          <td md-cell>{{disp.state}}</td>
+          <td md-cell>{{disp.min}}</td>
+          <td md-cell>{{disp.accepatance}}</td>
+          <td md-cell>{{disp.equipment}}</td>
+          <td md-cell>{{disp.spots}}</td>
+          <td md-cell>
+            <md-button class="md-icon-button md-primary">
+              <md-icon class="md-icon">explore</md-icon>
+            </md-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+
+  <md-table-pagination ng-if="!vm.loadingDisponibilities" md-limit="vm.query.limit" md-limit-options="[5, 10, 15]" md-page="vm.query.page"
+    md-total="{{vm.disponibilities.count}}" md-on-paginate="vm.getDesserts" md-page-select md-label="{page: 'Página:', rowsPerPage: 'Filas por página:', of: 'de'}"></md-table-pagination>
+</div>

@@ -5,12 +5,13 @@
 // Class representing a EditMessengerView
 
 class EditMessengerViewController {
-  constructor(Titles) {
+  constructor(Titles, $rootScope) {
+    $rootScope.transitioningToState = false;
     Titles.setTopbarTitle('Editar información del mensajero');
   }
 
 }
 
-EditMessengerViewController.$inject = ['Titles'];
+EditMessengerViewController.$inject = ['Titles', '$rootScope'];
 
 export {EditMessengerViewController};

@@ -37,6 +37,7 @@ import {serviceDetailView} from './components/serviceDetailView/serviceDetailVie
 import {messengerDetailView} from './components/messengerDetailView/messengerDetailView';
 import {alertsView} from './components/alertsView/alertsView';
 import {editMessengerView} from './components/editMessengerView/editMessengerView';
+import {disponibilityView} from './components/disponibilityView/disponibilityView';
 
 // ServiceDetailView components
 import {messengerCard} from './components/messengerCard/messengerCard';
@@ -63,6 +64,9 @@ import {alerts} from './components/alerts/alerts';
 // EditMessengerView components
 import {editMessengerMenu} from './components/editMessengerMenu/editMessengerMenu';
 import {editMessengerForms} from './components/editMessengerForms/editMessengerForms';
+
+// disponibilityView components
+import {disponibilityActive} from './components/disponibilityActive/disponibilityActive';
 
 // Shared factories and constants
 import {shared} from './shared/shared';
@@ -120,16 +124,26 @@ angular.module('app', [
   editMessengerView.name,
 
   editMessengerMenu.name,
-  editMessengerForms.name
+  editMessengerForms.name,
+
+  // Disponibilities view
+  disponibilityView.name,
+
+  disponibilityActive.name
 ])
 .directive('app', appDirective)
 .run(function($rootScope, $mdSidenav){
+
   $rootScope.toggleSideNav = function(){
-    console.log('toggle sidenav');
     $mdSidenav('sidenav-small')
       .toggle()
       .then(function () { });
   }
+
+$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+    $rootScope.transitioningToState = true;
+})
+
 })
 .config(function($mdThemingProvider){
   // Configire theme colors

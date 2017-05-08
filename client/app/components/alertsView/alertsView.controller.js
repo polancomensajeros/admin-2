@@ -5,12 +5,14 @@
 // Class representing a AlertsView
 
 class AlertsViewController {
-  constructor(Titles) {
+  constructor(Titles, $rootScope) {
+    $rootScope.transitioningToState = 'asd';
+    console.log($rootScope.transitioningToState);
     Titles.setTopbarTitle('Alertas');
   }
 
 }
 
-AlertsViewController.$inject = ['Titles'];
+AlertsViewController.$inject = ['Titles', '$rootScope'];
 
 export {AlertsViewController};
