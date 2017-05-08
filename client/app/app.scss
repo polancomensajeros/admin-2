@@ -56,6 +56,13 @@ main{
     }
 }
 
+@media(min-width: $layout-md){
+    .scrollable-full-column-md{
+        overflow-y: scroll;
+        height: auto;
+    }
+}
+
 /// Service status dots
 
 .service-state{
