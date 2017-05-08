@@ -63,6 +63,12 @@ main{
     }
 }
 
+@media(min-width: 1281px){
+    .main-menu-trigger{
+        display: none;
+    }
+}
+
 /// Service status dots
 
 .service-state{
