@@ -1,13 +1,12 @@
 <section layout="column" flex class="disponibility-view">
-  <state-loader></state-loader>
   <div layout="row" flex>
     <side-bar flex></side-bar>
     <div class="main-content" layout="column" flex>
 
       <!-- Component -->
-      <top-bar></top-bar>
+        <top-bar></top-bar>
       <!-- /Component -->
-
+      
       <md-content layout="column" layout-gt-md="row" flex>
         <div layout-gt-md="column" flex-gt-md="" class="scrollable-full-column">
           <md-card>
@@ -19,31 +18,31 @@
                   <input ng-model="user.address2" placeholder="Buscar">
                 </md-input-container>
                 <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date"></md-datepicker>
-                <md-button class="md-primary md-raised">
+                <md-button class="md-primary md-raised" ng-click="vmd.create()">
                   Crear
                 </md-button>
               </div>
             </md-toolbar>
             <md-card-content>
               <md-tabs md-dynamic-height md-border-bottom>
-                <md-tab label="Activas">
+                <md-tab label="Activas" md-on-select="vmd.setCurrentTab('actives')">
                   <md-content class="md-padding">
                     <disponibility-active></disponibility-active>
                   </md-content>
                 </md-tab>
-                <md-tab label="Alertas">
+                <md-tab label="Alertas" md-on-select="vmd.setCurrentTab('alerts')">
                   <md-content class="md-padding">
-                    <messenger-services></messenger-services>
+                    <disponibility-active></disponibility-active>
                   </md-content>
                 </md-tab>
-                <md-tab label="Tarifas">
+                <md-tab label="Tarifas" md-on-select="vmd.setCurrentTab('prices')">
                   <md-content class="md-padding">
-                    <messenger-services></messenger-services>
+                    <disponibility-active></disponibility-active>
                   </md-content>
                 </md-tab>
-                <md-tab label="Puntos">
+                <md-tab label="Puntos" md-on-select="vmd.setCurrentTab('spots')">
                   <md-content class="md-padding">
-                    <messenger-services></messenger-services>
+                    <disponibility-active></disponibility-active>
                   </md-content>
                 </md-tab>
               </md-tabs>

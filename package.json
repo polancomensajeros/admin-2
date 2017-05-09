@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "angular-aria": "^1.6.4",
+    "angular-material-datetimepicker": "^1.4.0",
     "angular-mocks": "~1.6.3",
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",

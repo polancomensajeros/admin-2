@@ -12,7 +12,8 @@ export const serviceMapDirective = ()=> {
     template,
     controllerAs: 'vm',
     scope: {
-      carded : '='
+      carded : '=',
+      mapHeight: '='
     },
     replace: true,
     restrict: 'E',

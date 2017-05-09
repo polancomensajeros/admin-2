@@ -16,7 +16,7 @@ var paths = {
   app: ['client/app/**/*.{js,scss,html}', 'client/styles/**/*.scss'],
   js: 'client/app/**/*!(.spec.js).js',
   sass: ['client/app/**/*.scss', 'client/style/**/*.scss'],
-  toCopy: ['client/index.html', 'client/manifest.json', 'client/sw.js', 'client/icons/icon-128-128.png', 'client/icons/icon-256-256.png', 'client/icons/icon-512-512.png'],
+  toCopy: ['client/index.html', 'client/manifest.json', 'client/sw.js', 'client/icons/icon-128-128.png', 'client/icons/icon-256-256.png', 'client/icons/icon-512-512.png', 'client/scripts/moment.js'],
   html: ['client/index.html', 'client/app/**/*.html'],
   dest: 'dist',
   blankTemplates: 'templates/component/*.**'

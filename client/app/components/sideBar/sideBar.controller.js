@@ -32,8 +32,8 @@ class SideBarController {
         sref: 'editMessengerView'
       },
       {
-        icon: 'directions_bike',
-        name: 'Disponibilidades',
+        icon: 'gps_fixed',
+        name: 'Disponi...',
         sref: 'disponibilityView'
       }
     ]

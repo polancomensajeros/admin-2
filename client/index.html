@@ -9,10 +9,11 @@
   <title>MU-ADMIN</title>
   <base href="/">
 </head>
-<body md-theme="mensajeros" layout="row">
+<body md-theme="default" layout="row">
 
   <app layout="row" flex></app>
   <!-- ngMaterialDatePicker is not webpack compatible, so moment js is here and not in app.js -->
+  <script src="scripts/moment.js"></script>
   <script src="bundle.js"></script>
   <script>
     Offline.options = {reconnect: {initialDelay: 10}};

@@ -10,7 +10,7 @@ export const disponibilityViewDirective = ()=> {
   return {
     controller,
     template,
-    controllerAs: 'vm',
+    controllerAs: 'vmd',
     scope: {},
     replace: true,
     restrict: 'E'

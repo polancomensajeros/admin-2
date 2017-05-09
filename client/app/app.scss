@@ -96,6 +96,12 @@ main{
 
 .transparent-toolbar{
     background: transparent !important;
+    color: black !important;
+    .md-icon-button{
+        md-icon{
+            color: inherit;
+        }
+    }
 }
 
 .srefer{

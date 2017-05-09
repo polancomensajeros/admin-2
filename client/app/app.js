@@ -1,6 +1,8 @@
 /**
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
+var moment = require('moment');
+moment().format();
 
 import 'normalize.css';
 import 'angular-material/angular-material.min.css';
@@ -11,6 +13,7 @@ import 'lf-ng-md-file-input/dist/lf-ng-md-file-input.min.css';
 import 'angular-state-loader/angular-state-loader.css';
 import 'offline-js/themes/offline-theme-dark.css';
 import 'offline-js/themes/offline-language-spanish.css';
+import 'angular-material-datetimepicker/css/material-datetimepicker.min.css';
 
 import {appDirective} from './app.directive';
 
@@ -23,7 +26,8 @@ import ngMaterial from 'angular-material';
 
 // External dependencies
 import openLayersDirective from 'angular-openlayers-directive';
-import ngMaterialDataTable from 'angular-material-data-table'
+import ngMaterialDataTable from 'angular-material-data-table';
+import ngMaterialDatePicker from 'angular-material-datetimepicker';
 import lfNgMdFileInput from 'lf-ng-md-file-input';
 import ngStateLoader from 'angular-state-loader';
 import offlineJs from 'offline-js';
@@ -84,6 +88,7 @@ angular.module('app', [
   ngMaterialDataTable,
   'lfNgMdFileInput',
   'ec.stateloader',
+  'ngMaterialDatePicker',
 
   // shared dependencies
   shared.name,
@@ -147,7 +152,7 @@ $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState
 })
 .config(function($mdThemingProvider){
   // Configire theme colors
-  $mdThemingProvider.theme('mensajeros') 
+  $mdThemingProvider.theme('default') 
   .primaryPalette('blue-grey')
   .warnPalette('deep-orange')
   .accentPalette('grey');

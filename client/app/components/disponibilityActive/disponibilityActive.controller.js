@@ -1,12 +1,15 @@
 /**
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
+import dispActiveZoneModal from './components/dispActiveZoneModal/dispActiveZoneModal.html';
+import { dispActiveZoneModalController as dispActiveZoneModalController } from './components/dispActiveZoneModal/dispActiveZoneModal.controller';
 
 // Class representing a DisponibilityActive
 
 class DisponibilityActiveController {
-  constructor($timeout) {
+  constructor($timeout, $mdDialog, $mdPanel) { 
     var self = this;
+    this.mdDialog = $mdDialog;
     this.loadingDisponibilities = true;
     this.selected = [];
     this.query = {
@@ -43,8 +46,34 @@ class DisponibilityActiveController {
     this.promise = $nutrition.desserts.get(this.query, this.success).$promise;
   }
 
+  closeModal() {
+    this.mdDialog.hide();
+  }
+
+  testingModals(ev, template, controller) {
+    const self = this;
+    this.mdDialog.show({
+      controller: controller,
+      controllerAs: 'vm',
+      template: template,
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      fullscreen: true
+    })
+      .then(function (answer) {
+        console.log(answer);
+      }, function () {
+        console.log('Dialog closed');
+      });
+  }
+
+  openZonesModal(ev) {
+    this.testingModals(ev, dispActiveZoneModal, dispActiveZoneModalController);
+  }
+
 }
 
-DisponibilityActiveController.$inject = ['$timeout'];
+DisponibilityActiveController.$inject = ['$timeout', '$mdDialog', '$mdPanel'];
 
 export { DisponibilityActiveController };
