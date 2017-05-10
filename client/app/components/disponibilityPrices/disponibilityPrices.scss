@@ -1,0 +1,8 @@
+/// @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+
+.disponibility-prices{
+  table.md-table.md-row-select td.md-cell:nth-child(n+3):nth-last-child(n+2), table.md-table.md-row-select th.md-column:nth-child(n+3):nth-last-child(n+2) {
+    padding: 0 2px 0 0 !important;
+  }
+}
+  
