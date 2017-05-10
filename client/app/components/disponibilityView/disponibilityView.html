@@ -9,7 +9,7 @@
       
       <md-content layout="column" layout-gt-md="row" flex>
         <div layout-gt-md="column" flex-gt-md="" class="scrollable-full-column">
-          <md-card>
+          <md-card class="scrollable-full-column">
             <md-toolbar clas="md-menu-toolbar">
               <div class="md-toolbar-tools">
                 <h2 class="md-title">Activas</h2>
@@ -32,7 +32,7 @@
                 </md-tab>
                 <md-tab label="Alertas" md-on-select="vmd.setCurrentTab('alerts')">
                   <md-content class="md-padding">
-                    <disponibility-active></disponibility-active>
+                    <alerts></alerts>
                   </md-content>
                 </md-tab>
                 <md-tab label="Tarifas" md-on-select="vmd.setCurrentTab('prices')">
@@ -42,7 +42,12 @@
                 </md-tab>
                 <md-tab label="Puntos" md-on-select="vmd.setCurrentTab('spots')">
                   <md-content class="md-padding">
-                    <disponibility-active></disponibility-active>
+                    <disponibility-spots></disponibility-spots>
+                  </md-content>
+                </md-tab>
+                <md-tab label="Zonas" md-on-select="vmd.setCurrentTab('zones')">
+                  <md-content class="md-padding">
+                    <disponibility-spots></disponibility-spots>
                   </md-content>
                 </md-tab>
               </md-tabs>

@@ -1,0 +1,76 @@
+<div>
+  <div layout="row" layout-align="center center" ng-if="vm.loadingDisponibilities">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
+  <md-table-container ng-if="!vm.loadingDisponibilities">
+    <table md-row-select multiple md-table ng-model="vm.selected" md-progress="vm.promise">
+      <thead md-head md-order="vm.query.order" md-on-reorder="vm.getDesserts">
+        <tr md-row>
+          <th md-column md-order-by="nameToLower"><span>Código</span></th>
+          <th md-column md-numeric md-order-by="calories.value"><span>ID cliente</span></th>
+          <th md-column md-numeric>Nombre</th>
+          <th md-column md-numeric>Finalización</th>
+          <th md-column md-numeric>Dirección</th>
+          <th md-column md-numeric>Empresa</th>
+          <th md-column md-numeric>Ciudad</th>
+          <th md-column md-numeric>Valor parqueadero</th>
+          <th md-column md-numeric>Teléfono</th>
+          <th md-column md-numeric>Extras</th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row md-select="disp" md-select-id="id" md-auto-select ng-repeat="disp in vm.disponibilities">
+          <td md-cell>{{disp.id}}</td>
+          <td md-cell>{{disp.created}}</td>
+          <td md-cell>{{disp.start}}</td>
+          <td md-cell>{{disp.end}}</td>
+          <td md-cell>{{disp.state}}</td>
+          <td md-cell>{{disp.min}}</td>
+          <td md-cell>{{disp.accepatance}}</td>
+          <td md-cell>{{disp.equipment}}</td>
+          <td md-cell>{{disp.spots}}</td>
+          <td md-cell>
+            <!-- Agent menu -->
+            <md-menu>
+              <md-button class="md-icon-button md-primary" ng-click="vm.openMenu($mdMenu)">
+                <md-icon class="md-icon">info</md-icon>
+              </md-button>
+              <md-menu-content class="popup" width="4">
+                <div layout="column" class="popup">
+                  <div layout="row" layout-align="space-between center">
+                    <div>
+                      <small>Creado por</small>
+                    </div>
+                    <div class="md-subhead">
+                      <strong class="srefer">Jhonatan Hernandez</strong>
+                    </div>
+                  </div>
+                  <div layout="row" layout-align="space-between center">
+                    <div>
+                      <small>Horario</small>
+                    </div>
+                    <div class="md-subhead">
+                      <small>Lunes a viernes 7AM - 5PM</small>
+                    </div>
+                  </div>
+                  <div layout="row" layout-align="space-between center">
+                    <div>
+                      <small>Creado</small>
+                    </div>
+                    <div class="md-subhead">
+                      <small class="srefer">2017-04-34</small>
+                    </div>
+                  </div>
+                </div>
+              </md-menu-content>
+            </md-menu>
+            <!-- /Agent menu -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+
+  <md-table-pagination ng-if="!vm.loadingDisponibilities" md-limit="vm.query.limit" md-limit-options="[5, 10, 15]" md-page="vm.query.page"
+    md-total="{{vm.disponibilities.count}}" md-on-paginate="vm.getDesserts" md-page-select md-label="{page: 'Página:', rowsPerPage: 'Filas por página:', of: 'de'}"></md-table-pagination>
+</div>

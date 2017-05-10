@@ -5,6 +5,9 @@
 import createDispModal from './components/createDispModal/createDispModal.html';
 import { createDispModalController as createDispModalController } from './components/createDispModal/createDispModal.controller';
 
+import createSpotModal from './components/createSpotModal/createSpotModal.html';
+import { createSpotModalController as createSpotModalController } from './components/createSpotModal/createSpotModal.controller';
+
 // Class representing a DisponibilityView
 
 class DisponibilityViewController {
@@ -40,6 +43,10 @@ class DisponibilityViewController {
     this.testingModals(ev, createDispModal, createDispModalController);
   }
 
+   openCreateSpotModal(ev) {
+    this.testingModals(ev, createSpotModal, createSpotModalController);
+  }
+
   create(){
     switch(this.currentTab){
       case 'actives':
@@ -52,7 +59,7 @@ class DisponibilityViewController {
         console.log('todo');
       break;
       case 'spots':
-        console.log('todo');
+        this.openCreateSpotModal();
       break;
     }
   }
