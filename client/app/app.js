@@ -73,6 +73,7 @@ import {editMessengerForms} from './components/editMessengerForms/editMessengerF
 import {disponibilityActive} from './components/disponibilityActive/disponibilityActive';
 import {disponibilityPrices} from './components/disponibilityPrices/disponibilityPrices';
 import {disponibilitySpots} from './components/disponibilitySpots/disponibilitySpots';
+import {disponibilityZones} from './components/disponibilityZones/disponibilityZones';
 
 // Shared factories and constants
 import {shared} from './shared/shared';
@@ -138,7 +139,8 @@ angular.module('app', [
 
   disponibilityActive.name,
   disponibilityPrices.name,
-  disponibilitySpots.name
+  disponibilitySpots.name,
+  disponibilityZones.name
 ])
 .directive('app', appDirective)
 .run(function($rootScope, $mdSidenav){

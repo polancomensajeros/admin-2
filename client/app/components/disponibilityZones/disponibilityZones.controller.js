@@ -1,16 +1,15 @@
 /**
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
-import dispActiveZoneModal from './components/dispActiveZoneModal/dispActiveZoneModal.html';
-import { dispActiveZoneModalController as dispActiveZoneModalController } from './components/dispActiveZoneModal/dispActiveZoneModal.controller';
+import viewZoneModal from './components/viewZoneModal/viewZoneModal.html';
+import { viewZoneModalController as viewZoneModalController } from './components/viewZoneModal/viewZoneModal.controller';
+// Class representing a DisponibilitySpots element
 
-// Class representing a DisponibilityActive
-
-class DisponibilityActiveController {
-  constructor($timeout, $mdDialog, $mdPanel, $rootScope) { 
-    $rootScope.selectedDisps = [];
+class DisponibilityZonesController {
+  constructor($timeout, $mdDialog, $mdPanel) {
     var self = this;
     this.mdDialog = $mdDialog;
+    this.timeout = $timeout;
     this.loadingDisponibilities = true;
     this.selected = [];
     this.query = {
@@ -24,15 +23,11 @@ class DisponibilityActiveController {
     $timeout(function () {
       for (let i = 0; i < 10; i++) {
         self.disponibilities.push({
-          id: '034412344' + i,
-          created: 'Abr 27, 2:00 p.m.',
-          start: 'Abr 27, 2:00 p.m.',
-          end: 'Abr 27, 2:00 p.m.',
-          min: '$45.000',
-          acceptance: '85%',
-          equipment: 'Maleta',
-          spots: '11/13',
-          zones: '1'
+          id: 'Farmatodo Norte -' + i,
+          created: 'Activo',
+          start: 'Bogotá',
+          end: 'Jose Contreras',
+          min: 'Abr 22, 3:29 PM'
         });
       }
       self.loadingDisponibilities = false;
@@ -69,12 +64,18 @@ class DisponibilityActiveController {
       });
   }
 
-  openZonesModal(ev) {
-    this.testingModals(ev, dispActiveZoneModal, dispActiveZoneModalController);
+  openMenu(menu, delay = 0) {
+    this.timeout(function () {
+      menu.open();
+    }, delay);
+  }
+
+  openViewZoneModal(ev){
+    this.testingModals(ev, viewZoneModal, viewZoneModalController);
   }
 
 }
 
-DisponibilityActiveController.$inject = ['$timeout', '$mdDialog', '$mdPanel', '$rootScope'];
+DisponibilityZonesController.$inject = ['$timeout', '$mdDialog', '$mdPanel'];
 
-export { DisponibilityActiveController };
+export { DisponibilityZonesController };

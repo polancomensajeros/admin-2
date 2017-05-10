@@ -8,17 +8,20 @@ import { createDispModalController as createDispModalController } from './compon
 import createSpotModal from './components/createSpotModal/createSpotModal.html';
 import { createSpotModalController as createSpotModalController } from './components/createSpotModal/createSpotModal.controller';
 
+import createZoneModal from './components/createZoneModal/createZoneModal.html';
+import { createZoneModalController as createZoneModalController } from './components/createZoneModal/createZoneModal.controller';
+
 // Class representing a DisponibilityView
 
 class DisponibilityViewController {
-  constructor($mdDialog, Titles) {
+  constructor($mdDialog, Titles, $rootScope) {
     Titles.setTopbarTitle('Disponibilidades');
     this.mdDialog = $mdDialog;
-    this.currentTab = 'actives';
+    this.currentTab = {i : 1, labelBtn : 'Disponibilidad'};
   }
 
-  setCurrentTab(tabName) {
-    this.currentTab = tabName;
+  setCurrentTab(tab) {
+    this.currentTab = tab;
   }
 
   testingModals(ev, template, controller) {
@@ -47,25 +50,32 @@ class DisponibilityViewController {
     this.testingModals(ev, createSpotModal, createSpotModalController);
   }
 
+   openCreateZoneModal(ev) {
+    this.testingModals(ev, createZoneModal, createZoneModalController);
+  }
+
   create(){
-    switch(this.currentTab){
-      case 'actives':
+    switch(parseInt(this.currentTab.i)){
+      case 1:
         this.openCreateDisponibilityModal();
       break;
-      case 'alerts':
+      case 2:
         console.log('todo');
       break;
-      case 'prices':
+      case 3:
         console.log('todo');
       break;
-      case 'spots':
+      case 4:
         this.openCreateSpotModal();
+      break;
+      case 5:
+        this.openCreateZoneModal();
       break;
     }
   }
 
 }
 
-DisponibilityViewController.$inject = ['$mdDialog', 'Titles'];
+DisponibilityViewController.$inject = ['$mdDialog', 'Titles', '$rootScope'];
 
 export { DisponibilityViewController };
