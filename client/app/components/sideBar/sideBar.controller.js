@@ -35,6 +35,11 @@ class SideBarController {
         icon: 'gps_fixed',
         name: 'Disponi...',
         sref: 'disponibilityView'
+      },
+      {
+        icon: 'face',
+        name: 'Login',
+        sref: 'loginView'
       }
     ]
   }

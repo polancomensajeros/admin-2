@@ -2,11 +2,20 @@ var gulp    = require('gulp');
 var sync    = require('run-sequence');
 var browser = require('browser-sync');
 var webpack = require('webpack-stream');
-var todo    = require('gulp-todoist');
 var path    = require('path');
 var yargs   = require('yargs').argv;
 var tpl     = require('gulp-template');
 var rename  = require('gulp-rename');
+var express = require('express');
+var proxy   = require('express-http-proxy');
+var app     = require('express')();
+
+app.use('/remoteapi', proxy('http://dev.api.mensajerosurbanos.com/'));
+app.use(express.static('dist'));
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
 
 /*
 map of paths for using with the tasks below
@@ -28,19 +37,18 @@ var resolveToComponents = function(glob){
   return path.join('client', 'app/components', glob); // app/components/{glob}
 };
 
-gulp.task('todo', function() {
-  return gulp.src(paths.js)
-    .pipe(todo({silent: false, verbose: true}));
-});
-
-gulp.task('build', ['todo'], function() {
+gulp.task('build', [], function() {
   return gulp.src(paths.entry)
     .pipe(webpack(require('./webpack.config')))
     .pipe(gulp.dest(paths.dest));
 });
 
 gulp.task('serve', function() {
-  browser({
+  app.listen(3000, function(){
+    console.log('expressing!!')
+  });
+
+  /*browser({
     port: process.env.PORT || 4500,
     open: false,
     ghostMode: {
@@ -51,7 +59,8 @@ gulp.task('serve', function() {
     server: {
       baseDir: 'dist'
     }
-  });
+  });*/
+
 });
 
 /*
