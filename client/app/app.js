@@ -23,6 +23,7 @@ import uiRouter from 'angular-ui-router';
 import ngAnimate from 'angular-animate';
 import ngSanitize from 'angular-sanitize';
 import ngMaterial from 'angular-material';
+import ngMessages from 'angular-messages';
 
 // External dependencies
 import openLayersDirective from 'angular-openlayers-directive';
@@ -37,6 +38,7 @@ import {sideBar} from './components/sideBar/sideBar';
 import {topBar} from './components/topBar/topBar';
 
 // Views
+import {loginView} from './components/loginView/loginView';
 import {serviceDetailView} from './components/serviceDetailView/serviceDetailView';
 import {messengerDetailView} from './components/messengerDetailView/messengerDetailView';
 import {alertsView} from './components/alertsView/alertsView';
@@ -85,6 +87,7 @@ angular.module('app', [
   ngAnimate,
   ngSanitize,
   ngMaterial,
+  ngMessages,
   
   // External dependencies 
   'openlayers-directive',
@@ -99,6 +102,10 @@ angular.module('app', [
   // navigation dependencies
   sideBar.name,
   topBar.name,
+
+  // Login view
+
+  loginView.name,
 
   // service detail view
   serviceDetailView.name,

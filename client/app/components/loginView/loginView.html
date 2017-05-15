@@ -1,0 +1,47 @@
+<div layout="column" layout-gt-sm="row" flex class="login-view">
+  <div flex-gt-sm="40" class="left-image"></div>
+  <div flex layout="column" layout-align="center center" class="right-col">
+    <md-card>
+      <md-card-content layout="column" class="padding-2">
+        <form name="loginForm" layout="column">
+          <img src="https://de2o5epq3l2io.cloudfront.net/front/img/logo-mu.svg" class="mu-logo">
+          <md-input-container>
+            <label>Email</label>
+            <input ng-model="vm.email" type="email" name="email" required>
+            <div ng-messages="loginForm.email.$error" role="alert">
+              <div ng-message="email">
+                Ingrese un email válido
+              </div>
+              <div ng-message="required">
+                Ingrese un email
+              </div>
+            </div>
+          </md-input-container>
+          <md-input-container ng-if="!vm.forgot">
+            <label>Contraseña</label>
+            <input ng-model="vm.password" name="password" type="password" required>
+            <div ng-messages="loginForm.password.$error" role="alert">
+              <div ng-message="required">
+                Ingrese su contraseña
+              </div>
+            </div>
+          </md-input-container>
+          <div layout="row" layout-align="end center" ng-if="!vm.forgot">
+            <small ng-click="vm.forgot = true" style="color: #cccccc;">Olvidé mi contraseña</small>
+          </div>
+        </form>
+      </md-card-content>
+      <md-card-actions layout="row" layout-align="end center">
+        <div ng-if="vm.forgot" class="margin-right-1">
+          <md-button ng-click="vm.forgot = false" class="md-secondary">
+            <small style="color: #a0a0a0;">Iniciar sesión</small>
+          </md-button>
+        </div>
+        <md-button ng-if="vm.forgot" class="md-primary md-raised">Recuperar contraseña</md-button>
+        <div ng-if="!vm.forgot">
+          <md-button class="md-primary md-raised">Iniciar sesión</md-button>
+        </div>
+      </md-card-actions>
+    </md-card>
+  </div>
+</div>
