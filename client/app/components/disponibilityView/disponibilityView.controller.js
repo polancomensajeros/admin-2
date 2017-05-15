@@ -15,7 +15,7 @@ import { createZoneModalController as createZoneModalController } from './compon
 
 class DisponibilityViewController {
   constructor($mdDialog, Titles, $rootScope) {
-    Titles.setTopbarTitle('Disponibilidades');
+    Titles.setTopbarTitle('Disponibilidades'); 
     this.mdDialog = $mdDialog;
     this.currentTab = {i : 1, labelBtn : 'Disponibilidad'};
   }

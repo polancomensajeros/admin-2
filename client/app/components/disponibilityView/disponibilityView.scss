@@ -10,5 +10,10 @@
       background: white !important;
     }
   }
+  md-table-container{
+    table.md-table.md-row-select td.md-cell:nth-child(n+3):nth-last-child(n+2), table.md-table.md-row-select th.md-column:nth-child(n+3):nth-last-child(n+2) {
+      padding: 0 27px 0 0;
+    }
+  }
 }
   
