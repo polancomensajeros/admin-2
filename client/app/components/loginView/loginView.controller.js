@@ -2,10 +2,13 @@
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
 
-// Class representing a LoginView
-
-class LoginViewController {
-  constructor($http, $rootScope) {
+import {Page} from '../../PageClass';
+class LoginViewController extends Page{
+  constructor($http, $rootScope, $cookies, $state) {
+    super(false, $cookies, $state);
+    if (angular.isDefined($cookies.getObject('user'))) {
+      $state.go('serviceDetailView');
+    }
     this.http = $http;
     this.rootScope = $rootScope;
     this.forgot = false;
@@ -22,9 +25,7 @@ class LoginViewController {
         self.loginInProcess = false;
       });
   }
-
 }
-
-LoginViewController.$inject = ['$http', '$rootScope'];
+LoginViewController.$inject = ['$http', '$rootScope', '$cookies', '$state'];
 
 export { LoginViewController };

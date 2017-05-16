@@ -11,10 +11,12 @@ import { createSpotModalController as createSpotModalController } from './compon
 import createZoneModal from './components/createZoneModal/createZoneModal.html';
 import { createZoneModalController as createZoneModalController } from './components/createZoneModal/createZoneModal.controller';
 
+import {Page} from '../../PageClass';
 // Class representing a DisponibilityView
 
-class DisponibilityViewController {
-  constructor($mdDialog, Titles, $rootScope) {
+class DisponibilityViewController extends Page{
+  constructor($mdDialog, Titles, $rootScope, $cookies, $state) {
+    super(true, $cookies, $state);
     Titles.setTopbarTitle('Disponibilidades'); 
     this.mdDialog = $mdDialog;
     this.currentTab = {i : 1, labelBtn : 'Disponibilidad'};
@@ -76,6 +78,6 @@ class DisponibilityViewController {
 
 }
 
-DisponibilityViewController.$inject = ['$mdDialog', 'Titles', '$rootScope'];
+DisponibilityViewController.$inject = ['$mdDialog', 'Titles', '$rootScope', '$cookies', '$state'];
 
 export { DisponibilityViewController };

@@ -152,7 +152,7 @@ angular.module('app', [
   disponibilityZones.name
 ])
   .directive('app', appDirective)
-  .run(function ($mdSidenav, $cookies, $rootScope, $state, $window, $log, ServiceSession) {
+  .run(function ($mdSidenav, $cookies, $rootScope, $state, $window, $log, ServiceSession, $mdToast) {
 
     $rootScope.toggleSideNav = function () {
       $mdSidenav('sidenav-small')
@@ -180,7 +180,7 @@ angular.module('app', [
       delete $rootScope.refresh_token;
       delete $rootScope.token_type;
 
-      $window.location.href = '/iniciar-sesion';
+      $state.go('loginView');
     };
 
     /**
@@ -190,7 +190,6 @@ angular.module('app', [
      * @param password
      */
     $rootScope.login = function (username, password, redirection) {
-      console.log('loginnn');
       return ServiceSession.login('password', username, password)
         .then(function (response) {
 
@@ -213,7 +212,12 @@ angular.module('app', [
               }
             });
         }, function(res){
-          console.log(res);
+          $mdToast.show(
+          $mdToast.simple()
+            .textContent('Usuario o contraseña incorrectos')
+            .position('bottom right')
+            .hideDelay(3000)
+        );
         });
     };
 

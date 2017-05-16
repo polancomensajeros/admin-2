@@ -2,6 +2,9 @@
   <div flex-gt-sm="40" class="left-image"></div>
   <div flex layout="column" layout-align="center center" class="right-col">
     <md-card>
+      <div style="min-height: 5px;">
+        <md-progress-linear ng-if="vm.loginInProcess" md-mode="indeterminate"></md-progress-linear>
+      </div>
       <md-card-content layout="column" class="padding-2">
         <form name="loginForm" layout="column">
           <img src="https://de2o5epq3l2io.cloudfront.net/front/img/logo-mu.svg" class="mu-logo">

@@ -23,9 +23,9 @@
         <md-icon class="md-icon">person</md-icon>
       </md-button>
       <md-menu-content width="4">
-        <md-menu-item ng-repeat="item in [1, 2, 3]">
-          <md-button>
-            Option {{item}}
+        <md-menu-item>
+          <md-button ng-click="vm.logout()">
+            Cerrar sesión
           </md-button>
         </md-menu-item>
     </md-menu>

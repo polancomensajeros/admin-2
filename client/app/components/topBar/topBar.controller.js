@@ -15,6 +15,10 @@ class TopBarController {
     this.title = title;
   }
 
+  logout(){
+    this.rootScope.logout();
+  }
+
   querySearch(query) {
     let results = query ? this.states.filter(this.createFilterFor(query)) : this.states;
     return results;
