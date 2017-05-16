@@ -3,7 +3,7 @@
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
 
-const serviceSession = ($http, $location, $cookies) => {
+const ServiceSession = ($http, $location, $cookies) => {
 
     /**
      * Oauth Login
@@ -13,17 +13,25 @@ const serviceSession = ($http, $location, $cookies) => {
      * @returns {Object} A $promise object
      */
     const login = function (grantType, username, password) {
+        
+        let stringData = 'grant_type=' + grantType;
+
+        let data = {
+            grant_type: grantType
+        }
+
+        if(grantType === 'password'){
+            stringData += '&username=' + username;
+            stringData += '&password=' + password;
+        }
+
         const req = {
             method: 'POST',
-            url: '/session/login',
+            url: '/oauth/token',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded'
             },
-            data: {
-                grantType: grantType,
-                username: username,
-                password: password
-            }
+            data: stringData
         };
 
         return $http(req);
@@ -36,11 +44,12 @@ const serviceSession = ($http, $location, $cookies) => {
     const refreshToken = function () {
         const req = {
             method: 'POST',
-            url: '/session/refreshToken',
+            url: '/oauth/token',
             headers: {
                 'Content-Type': 'application/json'
             },
             data: {
+                grant_type: 'refresh_token',
                 refreshToken: $cookies.get('refresh_token')
             }
         };
@@ -54,7 +63,7 @@ const serviceSession = ($http, $location, $cookies) => {
      */
     const getAuthUser = function (accessToken) {
         const req = {
-            url: '/session/getUser',
+            url: '/oauth/resources',
             method: 'GET',
             params: { access_token: accessToken }
         };
@@ -74,7 +83,7 @@ const serviceSession = ($http, $location, $cookies) => {
 
         const req = {
             method: 'POST',
-            url: 'session/recoveryPassword',
+            url: 'api/recoverpassword',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -99,7 +108,7 @@ const serviceSession = ($http, $location, $cookies) => {
 
         const req = {
             method: 'POST',
-            url: '/session/changePassword',
+            url: '/api/changepassword',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -114,6 +123,6 @@ const serviceSession = ($http, $location, $cookies) => {
     return { login, refreshToken, getAuthUser, recoveryPassword, changePassword };
 }
 
-serviceSession.$inject = ['$http', '$location', '$cookies'];
+ServiceSession.$inject = ['$http', '$location', '$cookies'];
 
-export { serviceSession };
+export { ServiceSession };

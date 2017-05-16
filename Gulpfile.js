@@ -1,21 +1,29 @@
-var gulp    = require('gulp');
-var sync    = require('run-sequence');
-var browser = require('browser-sync');
-var webpack = require('webpack-stream');
-var path    = require('path');
-var yargs   = require('yargs').argv;
-var tpl     = require('gulp-template');
-var rename  = require('gulp-rename');
-var express = require('express');
-var proxy   = require('express-http-proxy');
-var app     = require('express')();
+var gulp      = require('gulp');
+var sync      = require('run-sequence');
+var browser   = require('browser-sync');
+var webpack   = require('webpack-stream');
+var path      = require('path');
+var yargs     = require('yargs').argv;
+var tpl       = require('gulp-template');
+var rename    = require('gulp-rename');
+var express   = require('express');
+var request = require('request');
+var app       = require('express')();
 
-app.use('/remoteapi', proxy('http://dev.api.mensajerosurbanos.com/'));
-app.use(express.static('dist'));
-
-app.get('/', function (req, res) {
-  res.send('Hello World!');
+app.post('/oauth/token', function(req,res) {
+  var url = 'http://dev.api.mensajerosurbanos.com/oauth/token';
+  req.headers['client_id'] = process.env.CLIENT_ID;
+  req.headers['client_secret'] = process.env.CLIENT_SECRET;
+  req.pipe(request(url)).pipe(res);
 });
+
+app.get('/oauth/resources', function(req,res) {
+  res.send({
+    access_token: req.query.access_token
+  })
+});
+
+app.use(express.static('dist'));
 
 /*
 map of paths for using with the tasks below
@@ -43,24 +51,11 @@ gulp.task('build', [], function() {
     .pipe(gulp.dest(paths.dest));
 });
 
+/**
+ * Start express app on port 3000
+ */
 gulp.task('serve', function() {
-  app.listen(3000, function(){
-    console.log('expressing!!')
-  });
-
-  /*browser({
-    port: process.env.PORT || 4500,
-    open: false,
-    ghostMode: {
-      clicks: true,
-      forms: true,
-      scroll: false
-    },
-    server: {
-      baseDir: 'dist'
-    }
-  });*/
-
+  app.listen(3000, function(){ });
 });
 
 /*

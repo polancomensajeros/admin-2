@@ -5,22 +5,26 @@
 // Class representing a LoginView
 
 class LoginViewController {
-  constructor($http) {
+  constructor($http, $rootScope) {
     this.http = $http;
+    this.rootScope = $rootScope;
     this.forgot = false;
-    this.greeting = 'LoginViewController!';
+    this.loginInProcess = false;
   }
 
-  testProxy(){
-    this.http.get('/remoteapi/pruebas').then(function(res){
-      console.log(res.data);
-    }, function(res){
-      console.log(res.data);
-    });
+  login() {
+    const self = this;
+    this.loginInProcess = true;
+    this.rootScope.login(self.email, self.password, 'serviceDetailView')
+      .then(function () {
+        self.loginInProcess = false;
+      }, function () {
+        self.loginInProcess = false;
+      });
   }
 
 }
 
-LoginViewController.$inject = ['$http'];
+LoginViewController.$inject = ['$http', '$rootScope'];
 
-export {LoginViewController};
+export { LoginViewController };

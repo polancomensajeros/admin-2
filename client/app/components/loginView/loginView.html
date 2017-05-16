@@ -39,7 +39,7 @@
         </div>
         <md-button ng-if="vm.forgot" class="md-primary md-raised">Recuperar contraseña</md-button>
         <div ng-if="!vm.forgot">
-          <md-button ng-click="vm.testProxy()" class="md-primary md-raised">Iniciar sesión a-</md-button>
+          <md-button ng-click="vm.login()" ng-disabled="loginForm.$invalid" class="md-primary md-raised">Iniciar sesión</md-button>
         </div>
       </md-card-actions>
     </md-card>
