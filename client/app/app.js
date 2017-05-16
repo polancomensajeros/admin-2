@@ -179,7 +179,6 @@ angular.module('app', [
       delete $rootScope.expires_in;
       delete $rootScope.refresh_token;
       delete $rootScope.token_type;
-
       $state.go('loginView');
     };
 
@@ -211,13 +210,13 @@ angular.module('app', [
                 $state.go(redirection);
               }
             });
-        }, function(res){
+        }, function (res) {
           $mdToast.show(
-          $mdToast.simple()
-            .textContent('Usuario o contraseña incorrectos')
-            .position('bottom right')
-            .hideDelay(3000)
-        );
+            $mdToast.simple()
+              .textContent('Usuario o contraseña incorrectos')
+              .position('bottom right')
+              .hideDelay(3000)
+          );
         });
     };
 
@@ -234,6 +233,15 @@ angular.module('app', [
       });
       return promise;
     };
+
+    $rootScope.simpleToast = function(text, position, delay = 2000){
+      $mdToast.show(
+        $mdToast.simple()
+          .textContent(text)
+          .position(position)
+          .hideDelay(delay)
+       );
+    }
 
     /**
      * Refresh token, this function should be used when the session has expired.
@@ -266,9 +274,13 @@ angular.module('app', [
       .warnPalette('deep-orange')
       .accentPalette('grey');
 
+       var AuthAppConfig = {
+        useAuthTokenHeader: true
+       };
+
     /**
-   * http interceptor to scan requests and responses.
-   */
+      * http interceptor to scan requests and responses.
+      */
     $httpProvider.interceptors.push(function ($q, $rootScope, $cookies, $injector) {
       return {
         /**
@@ -296,7 +308,15 @@ angular.module('app', [
               });
             }
           } else {
-            $rootScope.error = method + ' on ' + url + ' failed with status ' + status;
+            if(status === 400 && angular.isDefined(rejection.data.message) && rejection.data.message === 'access_token is required'){
+              var deferred = $q.defer();
+              $rootScope.loginApp().then(deferred.resolve, deferred.reject);
+              return deferred.promise.then(function () {
+                return $http(rejection.config);
+              });
+            }else{
+              $rootScope.error = method + ' on ' + url + ' failed with status ' + status;
+            }
           }
           return $q.reject(rejection);
         },
@@ -309,7 +329,11 @@ angular.module('app', [
         request: function (config) {
           if (angular.isDefined($cookies.get('access_token'))) {
             var authToken = $cookies.get('access_token');
-            config.headers['X-Auth-Token'] = authToken;
+            if (AuthAppConfig.useAuthTokenHeader) {
+              config.headers['X-Auth-Token'] = authToken;
+            } else {
+              config.url = config.url + '?token=' + authToken;
+            }
           }
           return config || $q.when(config);
         }

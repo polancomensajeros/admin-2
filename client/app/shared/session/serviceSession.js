@@ -44,7 +44,7 @@ const ServiceSession = ($http, $location, $cookies) => {
     const refreshToken = function () {
         const req = {
             method: 'POST',
-            url: '/oauth/token',
+            url: '/refresh-token',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -76,20 +76,18 @@ const ServiceSession = ($http, $location, $cookies) => {
      * @param {string} email user email 
      */
     const recoveryPassword = function (email) {
-        const data = angular.toJson({
+        const data = {
             email: email,
             url: $location.host() + '/recuperar-contrasena'
-        });
+        };
 
         const req = {
             method: 'POST',
-            url: 'api/recoverpassword',
+            url: '/recoverpassword',
             headers: {
                 'Content-Type': 'application/json'
             },
-            data: {
-                jsonData: data
-            }
+            data: data
         };
 
         return $http(req);
@@ -97,7 +95,7 @@ const ServiceSession = ($http, $location, $cookies) => {
 
     /**
      * Changes the user password
-     * @param {string} password new passeord
+     * @param {string} password new password
      * @param {string} nonce 
      */
     const changePassword = function (password, nonce) {

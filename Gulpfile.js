@@ -23,6 +23,21 @@ app.get('/oauth/resources', function(req,res) {
   })
 });
 
+app.post('/recoverpassword', function(req, res){
+  var url = 'http://dev.api.mensajerosurbanos.com/recoverpassword';
+  req.headers['access_token'] = req.header('X-Auth-Token');
+  req.pipe(request(url)).pipe(res);
+});
+
+app.post('/refresh-token', function(req, res){
+  console.log('refresco');
+  var url = 'http://dev.api.mensajerosurbanos.com/oauth/token';
+  req.headers['client_id'] = process.env.CLIENT_ID;
+  req.headers['client_secret'] = process.env.CLIENT_SECRET;
+  console.log(req.headers);
+  req.pipe(request(url)).pipe(res);
+});
+
 app.use(express.static('dist'));
 
 /*
