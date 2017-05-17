@@ -6,13 +6,17 @@ import {Page} from '../../PageClass';
 class LoginViewController extends Page{
   constructor(ServiceSession, $rootScope) {
     super(false);
-    super.logout();
-    
-    this.ServiceSession = ServiceSession;
+    this.serviceSession = ServiceSession;
     this.rootScope = $rootScope;
     this.forgot = false;
     this.loginInProcess = false;
     this.instructionsSent = false;
+
+    this.logout();
+  }
+
+  logout(){
+    this.serviceSession.logout();
   }
 
   login() {
@@ -29,7 +33,7 @@ class LoginViewController extends Page{
   passwordRecovery(){
     const self = this;
     this.loginInProcess = true;
-    this.ServiceSession.recoveryPassword(this.email).then(function(){
+    this.serviceSession.recoveryPassword(this.email).then(function(){
       self.instructionsSent = true;
       self.loginInProcess = false;
     }, function(res){

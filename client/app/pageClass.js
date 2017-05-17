@@ -3,9 +3,8 @@
  */
 
 class Page {
-  constructor(loginRequired, $cookies, $state, ServiceSession) {
+  constructor(loginRequired, $cookies, $state) {
     this.loginRequired = loginRequired;
-    this.serviceSession = ServiceSession;
 
     if(this.loginRequired){
         if (angular.isUndefined($cookies.getObject('user'))) {
@@ -14,12 +13,8 @@ class Page {
     }
   }
 
-  logout(){
-    this.serviceSession.logout();
-  }
-
 }
 
-Page.$inject = ['$cookies', '$state', 'ServiceSession'];
+Page.$inject = ['$cookies', '$state'];
 
 export {Page};

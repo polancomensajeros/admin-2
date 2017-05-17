@@ -28,26 +28,6 @@ describe('LoginView', ()=>{
   });
 
   describe('Controller', ()=>{
-    it('should login an user correctly', ()=>{
-      const controller = makeController();
-      console.log(controller);
-      /*const controller = makeController();
-      controller.email = 's.polanco@mensajerosurbanos.com';
-      controller.password = '1qazxsw2';
-      controller.login().then(function(){
-        console.log('S');
-        console.log('U');
-        console.log('C');
-        console.log('C');
-        console.log('E');
-        console.log('S');
-        console.log('S');
-      });*/
-
-      //expect(controller.posts).to.be.an('array');
-      //expect(controller.posts[0]).to.have.property('author');
-      //expect(controller.posts[0]).to.have.property('title');
-    });
   });
 
   describe('Template', ()=>{

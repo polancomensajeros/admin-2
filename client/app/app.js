@@ -212,7 +212,7 @@ angular.module('app', [
             $mdToast.simple()
               .textContent('Usuario o contraseña incorrectos')
               .position('bottom right')
-              .hideDelay(3000)
+              .hideDelay(10000)
           );
         });
     };
