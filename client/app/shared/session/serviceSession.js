@@ -3,7 +3,7 @@
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
 
-const ServiceSession = ($http, $location, $cookies) => {
+const ServiceSession = ($http, $location, $cookies, $rootScope, $state) => {
 
     /**
      * Oauth Login
@@ -35,6 +35,21 @@ const ServiceSession = ($http, $location, $cookies) => {
         };
 
         return $http(req);
+    }
+
+    const logout = function(){
+        $cookies.remove('access_token');
+        $cookies.remove('expires_in');
+        $cookies.remove('refresh_token');
+        $cookies.remove('token_type');
+        $cookies.remove('selectedCity');
+        $cookies.remove('user');
+
+        delete $rootScope.access_token;
+        delete $rootScope.expires_in;
+        delete $rootScope.refresh_token;
+        delete $rootScope.token_type;
+        $state.go('loginView');
     }
 
     /**
@@ -118,9 +133,9 @@ const ServiceSession = ($http, $location, $cookies) => {
         return $http(req);
     }
 
-    return { login, refreshToken, getAuthUser, recoveryPassword, changePassword };
+    return { login, logout, refreshToken, getAuthUser, recoveryPassword, changePassword };
 }
 
-ServiceSession.$inject = ['$http', '$location', '$cookies'];
+ServiceSession.$inject = ['$http', '$location', '$cookies', '$rootScope', '$state'];
 
 export { ServiceSession };

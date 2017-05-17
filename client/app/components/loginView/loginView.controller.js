@@ -4,15 +4,12 @@
 
 import {Page} from '../../PageClass';
 class LoginViewController extends Page{
-  constructor($http, $rootScope, $cookies, $state, ServiceSession) {
-    super(false, $cookies, $state);
-    $rootScope.logout();
-    if (angular.isDefined($cookies.getObject('user'))) {
-      $state.go('serviceDetailView');
-    }
-    this.http = $http;
-    this.rootScope = $rootScope;
+  constructor(ServiceSession, $rootScope) {
+    super(false);
+    super.logout();
+    
     this.ServiceSession = ServiceSession;
+    this.rootScope = $rootScope;
     this.forgot = false;
     this.loginInProcess = false;
     this.instructionsSent = false;
@@ -36,13 +33,13 @@ class LoginViewController extends Page{
       self.instructionsSent = true;
       self.loginInProcess = false;
     }, function(res){
-      self.rootScope.simpleToast('Ocurrio un error, intentelo mas tarde', 'bottom right');
+      //self.rootScope.simpleToast('Ocurrio un error, intentelo mas tarde', 'bottom right');
       self.instructionsSent = false;
       self.loginInProcess = false;
     });
   }
 
 }
-LoginViewController.$inject = ['$http', '$rootScope', '$cookies', '$state', 'ServiceSession'];
+LoginViewController.$inject = ['ServiceSession', '$rootScope'];
 
 export { LoginViewController };
