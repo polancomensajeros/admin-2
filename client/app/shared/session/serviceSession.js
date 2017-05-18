@@ -114,20 +114,15 @@ const ServiceSession = ($http, $location, $cookies, $rootScope, $state) => {
      * @param {string} nonce 
      */
     const changePassword = function (password, nonce) {
-        const data = angular.toJson({
-            password: password,
-            nonce: nonce
-        });
+        const stringData = 'password=' + password + '&nonce=' + nonce;
 
         const req = {
             method: 'POST',
-            url: '/api/changepassword',
+            url: '/changePassword',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded'
             },
-            data: {
-                jsonData: data
-            }
+            data: data
         };
 
         return $http(req);

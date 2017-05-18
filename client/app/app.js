@@ -43,6 +43,7 @@ import { messengerDetailView } from './components/messengerDetailView/messengerD
 import { alertsView } from './components/alertsView/alertsView';
 import { editMessengerView } from './components/editMessengerView/editMessengerView';
 import { disponibilityView } from './components/disponibilityView/disponibilityView';
+import { passwordResetView } from './components/passwordResetView/passwordResetView';
 
 // ServiceDetailView components
 import { messengerCard } from './components/messengerCard/messengerCard';
@@ -105,6 +106,10 @@ angular.module('app', [
   // Login view
 
   loginView.name,
+
+  // Password reset view
+
+  passwordResetView.name,
 
   // service detail view
   serviceDetailView.name,
@@ -265,6 +270,12 @@ angular.module('app', [
 
   })
   .config(function ($mdThemingProvider, $locationProvider, $httpProvider) {
+
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    });
+    
     // Configure theme colors
     $mdThemingProvider.theme('default')
       .primaryPalette('blue-grey')
