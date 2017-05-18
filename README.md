@@ -1,6 +1,7 @@
 # ADMIN Mensajeros urbanos 2
 
-version 2.0 del administrador interno de mensajeros urbanos.
+versión 2017-05-18 
+Administrador 2 interno de mensajeros urbanos.
 
 ## Herramientas
 
