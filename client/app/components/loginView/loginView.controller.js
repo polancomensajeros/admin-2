@@ -11,8 +11,8 @@ class LoginViewController extends Page{
     this.forgot = false;
     this.loginInProcess = false;
     this.instructionsSent = false;
-
     this.logout();
+    $rootScope.loginApp();
   }
 
   logout(){
@@ -37,7 +37,7 @@ class LoginViewController extends Page{
       self.instructionsSent = true;
       self.loginInProcess = false;
     }, function(res){
-      //self.rootScope.simpleToast('Ocurrio un error, intentelo mas tarde', 'bottom right');
+      self.rootScope.simpleToast(res.data.message, 'bottom right');
       self.instructionsSent = false;
       self.loginInProcess = false;
     });

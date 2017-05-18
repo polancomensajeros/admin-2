@@ -8,7 +8,7 @@
       <md-card-content layout="column" class="padding-2">
         <img src="https://de2o5epq3l2io.cloudfront.net/front/img/logo-mu.svg" class="mu-logo">
         <div layout="column">
-          <p style="width: 18em;" ng-if="vm.instructionsSent"><small>Se ha enviado un correo electrónico con las instrucciones para cambiar la contraseña, por favor verífique.</small></p>
+          <p style="width: 18em;" ng-if="vm.instructionsSent"><small id="success-recovery">Se ha enviado un correo electrónico con las instrucciones para cambiar la contraseña, por favor verífique.</small></p>
         </div>
         <form ng-if="!vm.instructionsSent" name="loginForm" layout="column">
           <md-input-container>
