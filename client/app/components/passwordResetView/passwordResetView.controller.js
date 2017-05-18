@@ -13,20 +13,17 @@ class PasswordResetViewController extends Page {
     this.state = $state;
     this.recoveryInProgress = false;
     this.nonce = undefined;
+    this.success = false;
     $rootScope.loginApp();
     this.validateNonce();
   }
 
   validateNonce() {
-    let url = this.location.absUrl();
-    let index = url.indexOf('nonce');
-    if (index > 0) {
-      this.nonce = url.substring(index + 6, url.length);
-      if (angular.isUndefined(this.nonce) || this.nonce === '') {
-        this.state.go('loginView');
-      }
-    } else {
+    const nonce = this.location.search().nonce;
+    if(angular.isUndefined(nonce)){
       this.state.go('loginView');
+    }else{
+      this.nonce = nonce;
     }
   }
 
@@ -35,10 +32,14 @@ class PasswordResetViewController extends Page {
   }
 
   updatePassword() {
-    this.serviceSession.changePassword().then(function (res) {
-
-    }, function () {
-
+    this.recoveryInProgress = true;
+    const self = this;
+    this.serviceSession.changePassword(this.newPassword, this.nonce).then(function (res) {
+      self.success = true;
+      self.recoveryInProgress = false;
+    }, function (res) {
+       self.rootScope.simpleToast(res.data.message, 'bottom right');
+       self.recoveryInProgress = false;
     });
   }
 

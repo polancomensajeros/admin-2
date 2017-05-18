@@ -40,6 +40,7 @@ app.post('/refresh-token', function(req, res){
 
 app.post('/changePassword', function(req, res){
   var url = 'http://dev.api.mensajerosurbanos.com/changepassword';
+  req.headers['access_token'] = req.header('X-Auth-Token');
   req.pipe(request(url)).pipe(res);
 });
 

@@ -93,7 +93,7 @@ const ServiceSession = ($http, $location, $cookies, $rootScope, $state) => {
     const recoveryPassword = function (email) {
         const data = {
             email: email,
-            url: $location.host() + '/recuperar-contrasena'
+            url: $location.host() + '/password-reset'
         };
 
         const req = {
@@ -114,13 +114,16 @@ const ServiceSession = ($http, $location, $cookies, $rootScope, $state) => {
      * @param {string} nonce 
      */
     const changePassword = function (password, nonce) {
-        const stringData = 'password=' + password + '&nonce=' + nonce;
+        const data = angular.toJson({
+            password: password,
+            nonce: nonce
+        });
 
         const req = {
             method: 'POST',
             url: '/changePassword',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json'
             },
             data: data
         };
