@@ -10,42 +10,13 @@ var express   = require('express');
 var request = require('request');
 var app       = require('express')();
 
-app.use(express.static('dist'));
+require(__dirname + '/server/basicAndSessionRoutes')(app);
 
-app.post('/oauth/token', function(req,res) {
-  var url = 'http://dev.api.mensajerosurbanos.com/oauth/token';
-  req.headers['client_id'] = process.env.CLIENT_ID;
-  req.headers['client_secret'] = process.env.CLIENT_SECRET;
-  req.pipe(request(url)).pipe(res);
-});
-
-app.get('/oauth/resources', function(req,res) {
-  res.send({
-    access_token: req.query.access_token
-  })
-});
-
-app.post('/recoverpassword', function(req, res){
-  var url = 'http://dev.api.mensajerosurbanos.com/recoverpassword';
-  req.headers['access_token'] = req.header('X-Auth-Token');
-  req.pipe(request(url)).pipe(res);
-});
-
-app.post('/refresh-token', function(req, res){
-  var url = 'http://dev.api.mensajerosurbanos.com/oauth/token';
-  req.headers['client_id'] = process.env.CLIENT_ID;
-  req.headers['client_secret'] = process.env.CLIENT_SECRET;
-  req.pipe(request(url)).pipe(res);
-});
-
-app.post('/changePassword', function(req, res){
-  var url = 'http://dev.api.mensajerosurbanos.com/changepassword';
-  req.headers['access_token'] = req.header('X-Auth-Token');
-  req.pipe(request(url)).pipe(res);
-});
-
+/**
+ * Hack for the angular html5 mode
+ */
 app.all('/*', function(req, res) {
-  res.sendFile(__dirname + '/dist/index.html');
+    res.sendFile(__dirname + '/dist/index.html');
 });
 
 /*
