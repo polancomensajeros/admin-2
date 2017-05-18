@@ -1,0 +1,41 @@
+<md-dialog flex="40" class="dialog-90">
+    <md-toolbar class="transparent-toolbar">
+        <div class="md-toolbar-tools">
+            Zonas - ID 28718
+        </div>
+    </md-toolbar>
+    <md-dialog-content class="md-dialog-content" layout="column" style="padding: 0;">
+        <div>
+            <service-map carded="false"></service-map>
+        </div>
+        <md-toolbar layout="row" class="transparent-toolbar">
+            <div class="md-toolbar-tools">
+                <span>8/10 Mensajeros asignados</span>
+                <span flex></span>
+                <md-button class="md-icon-button demo-menu-open-button" ng-click="vm.openPanel($event)">
+                    <md-icon class="md-icon">person_add</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <div>
+            <!--md-list>
+                <md-list-item layout="row">
+                    <md-checkbox class="md-secondary" ng-model="all"></md-checkbox>
+                    <strong flex>Nombre</strong>
+                    <strong flex>Celular</strong>
+                    <strong>Eliminar</strong>
+                </md-list-item>
+            </md-list-->
+            <md-list>
+                <md-list-item ng-repeat="topping in [1,2,3]">
+                    <md-checkbox class="md-secondary" ng-model="topping"></md-checkbox>
+                    <span flex>Juan Sebastian Polanco Ramos</span>
+                    <span flex>313266463</span>
+                    <md-button class="md-icon-button">
+                        <md-icon class="md-icon">delete</md-icon>
+                    </md-button>
+                </md-list-item>
+            </md-list>
+        </div>
+    </md-dialog-content>
+</md-dialog>

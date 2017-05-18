@@ -5,7 +5,8 @@
 import muLogo from '../../../images/logo-mu.png';
 
 class SideBarController {
-  constructor($state) {
+  constructor($state, $rootScope) {
+    this.rootScope = $rootScope;
     this.state = $state;
     this.greeting = 'SideBarController!';
     this.muLogo = muLogo;
@@ -29,12 +30,26 @@ class SideBarController {
         icon: 'directions_bike',
         name: 'Editar mensajero',
         sref: 'editMessengerView'
+      },
+      {
+        icon: 'gps_fixed',
+        name: 'Disponi...',
+        sref: 'disponibilityView'
+      },
+      {
+        icon: 'face',
+        name: 'Login',
+        sref: 'loginView'
       }
     ]
   }
 
+  toggleSideNav() {
+    this.rootScope.toggleSideNav();
+  }
+
 }
 
-SideBarController.$inject = ['$state'];
+SideBarController.$inject = ['$state', '$rootScope'];
 
-export {SideBarController};
+export { SideBarController };

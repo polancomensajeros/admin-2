@@ -1,0 +1,62 @@
+<section layout="column" flex class="disponibility-view">
+  <div layout="row" flex>
+    <side-bar flex></side-bar>
+    <div class="main-content" layout="column" flex>
+
+      <!-- Component -->
+        <top-bar></top-bar>
+      <!-- /Component -->
+      
+      <md-content layout="column" layout-gt-md="row" flex>
+        <div layout-gt-md="column" flex-gt-md="" class="scrollable-full-column">
+          <md-card class="scrollable-full-column">
+            <md-toolbar clas="md-menu-toolbar">
+              <div class="md-toolbar-tools">
+                <small>{{selectedDisps}}</small>
+                <div flex="" class="flex"></div>
+                <md-input-container md-no-float class="md-block">
+                  <input ng-model="user.address2" placeholder="Buscar">
+                </md-input-container>
+                <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date"></md-datepicker>
+                <div ng-if="vmd.currentTab.i != 2 && vmd.currentTab.i != 3">
+                  <md-button class="md-primary md-raised" ng-click="vmd.create()">
+                    Crear {{vmd.currentTab.labelBtn}}
+                  </md-button>
+                </div>
+              </div>
+            </md-toolbar>
+            <md-card-content>
+              <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Activas" md-on-select="vmd.setCurrentTab({i : 1, labelBtn : 'Disponibilidad'})">
+                  <md-content class="md-padding">
+                    <disponibility-active></disponibility-active>
+                  </md-content>
+                </md-tab>
+                <md-tab label="Alertas" md-on-select="vmd.setCurrentTab({i : 2, labelBtn : ''})">
+                  <md-content class="md-padding">
+                    <alerts></alerts>
+                  </md-content>
+                </md-tab>
+                <md-tab label="Tarifas" md-on-select="vmd.setCurrentTab({i : 3, labelBtn : ''})">
+                  <md-content class="md-padding">
+                    <disponibility-prices></disponibility-prices>
+                  </md-content>
+                </md-tab>
+                <md-tab label="Puntos" md-on-select="vmd.setCurrentTab({i : 4, labelBtn : 'Punto'})">
+                  <md-content class="md-padding">
+                    <disponibility-spots></disponibility-spots>
+                  </md-content>
+                </md-tab>
+                <md-tab label="Zonas" md-on-select="vmd.setCurrentTab({i : 5, labelBtn : 'Zona'})">
+                  <md-content class="md-padding">
+                    <disponibility-zones></disponibility-zones>
+                  </md-content>
+                </md-tab>
+              </md-tabs>
+            </md-card-content>
+          </md-card>
+        </div>
+      </md-content>
+    </div>
+  </div>
+</section>

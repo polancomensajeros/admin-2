@@ -1,0 +1,130 @@
+<md-dialog flex="40" md-theme="mensajeros">
+    <md-dialog-content class="md-dialog-content" layout="column">
+        <div flex layout="column" class="scrollable-full-column padding-1">
+            <span class="md-headline margin-top-0 margin-bottom-0-5">Crear disponibilidad</span>
+            <md-input-container flex>
+                <label>Puntos</label>
+                <md-select required ng-model="vm.pay" flex>
+                    <md-option><em>Selecciona una opción</em></md-option>
+                    <md-option ng-repeat="state in ['opcion 1', 'opcion 2']" ng-value="state">
+                        {{state}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
+                <md-chips ng-model="vm.roFruitNames" name="fruitName" readonly="vm.readonly" md-removable="vm.removable" md-max-chips="5"
+                    placeholder="Agrega puntos...">
+                    <md-chip-template>
+                        <strong>{{$chip}}</strong>
+                    </md-chip-template>
+                </md-chips>
+            </md-input-container>
+            <div layout="column" layout-gt-sm="row">
+                <md-input-container>
+                    <label>Fecha inicio</label>
+                    <md-datepicker ng-model="vm.end" name="dateField"></md-datepicker>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Horas</label>
+                    <md-select required ng-model="vm.pay5" flex>
+                        <md-option ng-repeat="state in ['opcion 1', 'opcion 2']" ng-value="state">
+                            {{state}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Minutos</label>
+                    <md-select required ng-model="vm.pay6" flex>
+                        <md-option ng-repeat="state in ['opcion 1', 'opcion 2']" ng-value="state">
+                            {{state}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>AM / PM</label>
+                    <md-select required ng-model="vm.pay7" flex>
+                        <md-option ng-repeat="state in ['opcion 1', 'opcion 2']" ng-value="state">
+                            {{state}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div layout="column" layout-gt-sm="row">
+                <md-input-container>
+                    <label>Fecha fin</label>
+                    <md-datepicker ng-model="vm.end" name="dateField"></md-datepicker>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Horas</label>
+                    <md-select required ng-model="vm.pay1" flex>
+                        <md-option ng-repeat="state in ['opcion 1', 'opcion 2']" ng-value="state">
+                            {{state}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Minutos</label>
+                    <md-select required ng-model="vm.pay2" flex>
+                        <md-option ng-repeat="state in ['opcion 1', 'opcion 2']" ng-value="state">
+                            {{state}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>AM / PM</label>
+                    <md-select required ng-model="vm.pay3" flex>
+                        <md-option ng-repeat="state in ['opcion 1', 'opcion 2']" ng-value="state">
+                            {{state}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <md-input-container>
+                <label>Puestos disponibilidad</label>
+                <input ng-model="vm.steps">
+            </md-input-container>
+            <md-input-container flex>
+                <label>Equipamiento requerido</label>
+                <md-select required ng-model="vm.eq" flex>
+                    <md-option><em>Selecciona una opción</em></md-option>
+                    <md-option ng-repeat="state in ['opcion 1', 'opcion 2']" ng-value="state">
+                        {{state}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
+                <md-checkbox ng-model="data.cb1" aria-label="Servicios de <mensajeria></mensajeria>">
+                    Servicios de mensajeria
+                </md-checkbox>
+            </md-input-container>
+            <div layout="column" layout-gt-sm="row">
+                <md-input-container flex>
+                    <label>Minimo garantizado / hora</label>
+                    <input ng-model="vm.min">
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Porcentaje de aceptación</label>
+                    <input ng-model="vm.percentage">
+                </md-input-container>
+            </div>
+            <div layout="column" layout-gt-sm="row">
+                <md-input-container flex>
+                    <label>Tiempo promedio de espera</label>
+                    <input ng-model="vm.timeAvg">
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Programar disponibilidad</label>
+                    <input ng-model="vm.programDisp">
+                </md-input-container>
+            </div>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button ng-click="vm.cancel()">
+            Cancelar
+        </md-button>
+        <md-button ng-click="vm.answer('useful')">
+            Crear
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

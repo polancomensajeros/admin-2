@@ -1,7 +1,8 @@
 @import '../styles/variables.scss';
 @import '../styles/containers.scss';
+@import '../styles/forms.scss';
 @import '../styles/fixes.scss';
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700);
+@import url(https://fonts.googleapis.com/css?family=Fira+Sans|Roboto:400,300,100,500,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 main{
@@ -42,45 +43,30 @@ main{
     color: $greenColor !important;
 }
 
-/* Transitions for the ui-view, you can use them or not, I'd rather not */
-
-/*[ui-view].ng-enter{
-    opacity: 0;
-    transform: scale3d(0.5,0.5,0.5);
-}
-    
-
-[ui-view].ng-enter-active{
-    opacity: 1;
-    transform: scale3d(1,1,1);
-}
-
-[ui-view].ng-leave{
-    opacity: 1;
-    transform: translate3d(0,0,0);
-}
-    
-[ui-view].ng-leave-active{
-    opacity: 0;
-    transform: translate3d(100px, 0, 0);
-}
-
-[ui-view].ng-enter,[ui-view].ng-leave{
-    position: absolute;
-    left: 0;
-    right: 0;
-    transition: all .5s ease-in-out;
-}*/
-
 .corner-buttons{
     position: fixed;
-    bottom: 1.5em;
-    right: 1.5em;
+    bottom: 0.5em;
+    right: 0.5em;
 }
 
-.scrollable-full-column{
-    overflow-y: scroll;
-    height: auto;
+@media(min-width: $layout-sm){
+    .scrollable-full-column{
+        overflow-y: scroll;
+        height: auto;
+    }
+}
+
+@media(min-width: $layout-md){
+    .scrollable-full-column-md{
+        overflow-y: scroll;
+        height: auto;
+    }
+}
+
+@media(min-width: 1281px){
+    .main-menu-trigger{
+        display: none;
+    }
 }
 
 /// Service status dots
@@ -110,9 +96,36 @@ main{
 
 .transparent-toolbar{
     background: transparent !important;
+    color: black !important;
+    .md-icon-button{
+        md-icon{
+            color: inherit;
+        }
+    }
 }
 
 .srefer{
     color: $muColor;
     cursor: pointer;
+}
+
+main{
+    md-content{
+        background-color: $background !important;
+    }
+}
+
+// Scroll bar
+
+body::-webkit-scrollbar {
+    width: 0.2em;
+}
+ 
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }

@@ -28,12 +28,6 @@ describe('TopBar', ()=>{
 
   describe('Controller', ()=>{
     // test your controller here
-
-    it('should have a title property', ()=>{
-      let controller = makeController();
-
-      expect(controller).to.have.property('title');
-    });
   });
 
   describe('Template', ()=>{

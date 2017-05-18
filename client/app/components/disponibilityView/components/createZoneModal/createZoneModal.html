@@ -1,0 +1,35 @@
+<md-dialog flex="40" class="dialog-90">
+    <md-toolbar class="transparent-toolbar">
+        <div class="md-toolbar-tools">
+            Crear zona
+        </div>
+    </md-toolbar>
+    <md-dialog-content class="md-dialog-content" layout="column" style="padding: 0;">
+        <div>
+            <service-map carded="false"></service-map>
+        </div>
+        <div layout-padding layout="column">
+            <md-input-container flex>
+                <label>Ciudad</label>
+                <md-select required ng-model="vm.pay" flex>
+                    <md-option><em>Selecciona una opción</em></md-option>
+                    <md-option ng-repeat="state in ['opcion 1', 'opcion 2']" ng-value="state">
+                        {{state}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
+                <label>Nombre</label>
+                <input ng-model="vm.name">
+            </md-input-container>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button ng-click="vm.cancel()">
+            Cancelar
+        </md-button>
+        <md-button ng-click="vm.answer('useful')">
+            Crear
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

@@ -2,15 +2,17 @@
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
 
-// Class representing a EditMessengerView
+import {Page} from '../../PageClass';
 
-class EditMessengerViewController {
-  constructor(Titles) {
+class EditMessengerViewController extends Page {
+  constructor(Titles, $rootScope, $cookies, $state) {
+    super(true, $cookies, $state);
+    $rootScope.transitioningToState = false;
     Titles.setTopbarTitle('Editar información del mensajero');
   }
 
 }
 
-EditMessengerViewController.$inject = ['Titles'];
+EditMessengerViewController.$inject = ['Titles', '$rootScope', '$cookies', '$state'];
 
 export {EditMessengerViewController};

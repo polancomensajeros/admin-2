@@ -1,0 +1,23 @@
+/// @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+@import '../../../styles/variables';
+
+.login-view{
+  md-card{
+    @media(min-width: $layout-sm){
+      min-width: 450px;
+      min-height: 450px;
+    }
+    .mu-logo{
+      width: 126px;
+      margin-bottom: 5em;
+    }
+  }
+  .left-image{
+    background: url("https://images.unsplash.com/photo-1445264918150-66a2371142a2?dpr=1&auto=compress,format&fit=crop&w=1199&h=1499&q=80&cs=tinysrgb&crop=&bg=");
+    background-size: cover;
+  }
+  .right-col{
+    background: #eef1f5;
+  }
+}
+  

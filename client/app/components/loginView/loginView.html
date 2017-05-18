@@ -1,0 +1,55 @@
+<div layout="column" layout-gt-sm="row" flex class="login-view">
+  <div flex-gt-sm="40" class="left-image"></div>
+  <div flex layout="column" layout-align="center center" class="right-col">
+    <md-card>
+      <div style="min-height: 5px;">
+        <md-progress-linear ng-if="vm.loginInProcess" md-mode="indeterminate"></md-progress-linear>
+      </div>
+      <md-card-content layout="column" class="padding-2">
+        <img src="https://de2o5epq3l2io.cloudfront.net/front/img/logo-mu.svg" class="mu-logo">
+        <div layout="column">
+          <p style="width: 18em;" ng-if="vm.instructionsSent"><small id="success-recovery">Se ha enviado un correo electrónico con las instrucciones para cambiar la contraseña, por favor verífique.</small></p>
+        </div>
+        <form ng-if="!vm.instructionsSent" name="loginForm" layout="column">
+          <md-input-container>
+            <label>Email</label>
+            <input ng-model="vm.email" type="email" name="email" required>
+            <div ng-messages="loginForm.email.$error" role="alert">
+              <div ng-message="email">
+                Ingrese un email válido
+              </div>
+              <div ng-message="required">
+                Ingrese un email
+              </div>
+            </div>
+          </md-input-container>
+          <md-input-container ng-if="!vm.forgot">
+            <label>Contraseña</label>
+            <input ng-model="vm.password" name="password" type="password" required>
+            <div ng-messages="loginForm.password.$error" role="alert">
+              <div ng-message="required">
+                Ingrese su contraseña
+              </div>
+            </div>
+          </md-input-container>
+          <div layout="row" layout-align="end center" ng-if="!vm.forgot">
+            <small ng-click="vm.forgot = true" style="color: #cccccc;">Olvidé mi contraseña</small>
+          </div>
+          <md-card-actions ng-if="!vm.instructionsSent" layout="row" layout-align="end center">
+            <div ng-if="vm.forgot" class="margin-right-1">
+              <md-button ng-click="vm.forgot = false" class="md-secondary">
+                <small style="color: #a0a0a0;">Iniciar sesión</small>
+              </md-button>
+            </div>
+            <div ng-if="vm.forgot">
+              <md-button ng-click="vm.passwordRecovery()" ng-disabled="loginForm.email.$invalid || vm.loginInProcess" class="md-primary md-raised">Recuperar contraseña</md-button>
+            </div>
+            <div ng-if="!vm.forgot">
+              <md-button ng-click="vm.login()" ng-disabled="loginForm.$invalid || vm.loginInProcess" class="md-primary md-raised">Iniciar sesión</md-button>
+            </div>
+          </md-card-actions>
+        </form>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

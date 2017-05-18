@@ -39,7 +39,7 @@ module.exports = function(config) {
                 /* almost the same as the webpack.config */
                 { test: /\.html$/, loader: 'raw-loader' },
                 { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader' },
-                { test: /\.css/, loader: 'style-loader!css-laoder' },
+                { test: /\.css/, loader: 'style-loader!css-loader' },
                 { test: /\.(png|jpg|jpeg)$/, loader: 'file-loader' },
                 { test: /\.js$/, loader: 'babel-loader', exclude: [/client\/lib/, /node_modules/] }
             ]

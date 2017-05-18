@@ -15,7 +15,7 @@ class AlertsController {
     this.loadingAlerts = true;
     var self = this;
     $timeout(function(){
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 30; i++) {
       self.desserts.push({
         service: 'af879as8d77f' + i,
         date: '17:15',
