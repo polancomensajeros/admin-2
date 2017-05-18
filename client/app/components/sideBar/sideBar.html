@@ -14,4 +14,25 @@
     </md-content>
 
   </md-sidenav>
+
+  <md-sidenav class="md-sidenav-left" md-component-id="sidenav-small" md-whiteframe="4">
+    <md-content layout-padding>
+      <div layout="row" layout-align="center center">
+        <img ng-src="{{vm.muLogo}}" alt="">
+      </div>
+      <ul>
+        <li ng-repeat="navIcon in vm.navIcons" class="pointer" layout="column">
+          <md-button flex ui-sref="{{navIcon.sref}}" ng-class="{ active: vm.state.includes(navIcon.sref) }">
+            <md-icon class="md-icon">{{navIcon.icon}}</md-icon>
+            <small>{{navIcon.name}}</small>
+          </md-button>
+        </li>
+      </ul>
+      <md-button ng-click="vm.toggleSideNav()" class="md-primary" hide-gt-md>
+        Cerrar
+      </md-button>
+    </md-content>
+
+  </md-sidenav>
+
 </div>

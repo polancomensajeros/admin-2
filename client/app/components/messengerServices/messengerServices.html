@@ -7,7 +7,7 @@
     <div layout="row" layout-align="center center" ng-if="vm.loadingServices">
       <small>Cargando servicios ...</small>
     </div>
-    <md-toolbar ng-if="!vm.loadingServices" class="md-table-toolbar md-menu-toolbar" layout="row">
+    <md-toolbar ng-if="!vm.loadingServices" class="md-table-toolbar md-menu-toolbar margin-top-1" layout="row" hide show-gt-sm>
       <span flex></span>
       <md-autocomplete flex md-search-text="vm.searchText" md-items="item in vm.querySearch(vm.searchText)" md-item-text="item.display"
         md-min-length="3" placeholder="Buscar">

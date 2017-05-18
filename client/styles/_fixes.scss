@@ -52,3 +52,42 @@
         }
     }
 }
+
+ /*
+  * Md-cards
+  */
+
+md-card{
+    md-card-title{
+        font-weight: 700;
+        font-size: 20px;
+        text-transform: uppercase;
+        border-bottom: 1px solid #e0e0e0;
+    }
+}
+
+/*
+ * md-data-table
+ */
+
+ @media(max-width: $layout-sm){
+     md-table-container{
+        max-width: 85vw;
+     }
+ }
+
+ md-table-container{
+    table.md-table:not(.md-row-select) td.md-cell:nth-child(n+2):nth-last-child(n+2), table.md-table:not(.md-row-select) th.md-column:nth-child(n+2):nth-last-child(n+2) {
+        padding: 0 35px 0 0;
+    }
+ }
+
+ /*
+  * Offline.js
+  */
+
+  .offline-ui{
+      font-weight: inherit !important;
+      font-family: Roboto,Helvetica Neue,sans-serif !important;
+      background: #222D32 !important;
+  }

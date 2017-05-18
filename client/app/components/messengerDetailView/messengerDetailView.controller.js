@@ -2,13 +2,17 @@
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
 
-class MessengerDetailViewController {
-  constructor(Titles) {
+import {Page} from '../../PageClass';
+
+class MessengerDetailViewController extends Page{
+  constructor(Titles, $rootScope, $cookies, $state) {
+    super(true, $cookies, $state);
+    $rootScope.transitioningToState = false;
     Titles.setTopbarTitle('Detalle del mensajero');
   }
 
 }
 
-MessengerDetailViewController.$inject = ['Titles'];
+MessengerDetailViewController.$inject = ['Titles', '$rootScope', '$cookies', '$state'];
 
 export {MessengerDetailViewController};

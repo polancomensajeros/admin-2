@@ -1,8 +1,21 @@
 /// @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
+@import '../../../styles/variables';
+
 
 .alerts{
   md-autocomplete{
     margin: 6px;
+  }
+
+  @media(min-width: 1280px) and (max-width: 1410px){
+    table.md-table{
+      td.md-cell {
+        font-size: 10px;
+      }
+      th.md-column {
+        font-size: 11px;
+      }
+    } 
   }
 }
 

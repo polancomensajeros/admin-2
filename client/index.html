@@ -2,13 +2,26 @@
 <html lang="en" ng-app="app">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="manifest" href="manifest.json">
   <title>MU-ADMIN</title>
   <base href="/">
 </head>
-<body md-theme="mensajeros" layout="row">
+<body md-theme="default" layout="row">
 
   <app layout="row" flex></app>
   <!-- ngMaterialDatePicker is not webpack compatible, so moment js is here and not in app.js -->
+  <script src="scripts/moment.js"></script>
   <script src="bundle.js"></script>
+  <script>
+    Offline.options = {reconnect: {initialDelay: 10}};
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+      .register('sw.js')
+      .then(() => { console.log('Service Worker Registered'); });
+    }
+  </script>
 </body>
 </html>
