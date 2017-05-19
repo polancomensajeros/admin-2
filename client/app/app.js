@@ -24,6 +24,7 @@ import ngSanitize from 'angular-sanitize';
 import ngMaterial from 'angular-material';
 import ngMessages from 'angular-messages';
 import ngCookies from 'angular-cookies';
+import ngLocalStorage from 'angular-local-storage';
 
 // External dependencies
 import openLayersDirective from 'angular-openlayers-directive';
@@ -90,6 +91,7 @@ angular.module('app', [
   ngMaterial,
   ngMessages,
   ngCookies,
+  ngLocalStorage,
 
   // External dependencies 
   'openlayers-directive',
@@ -159,12 +161,15 @@ angular.module('app', [
   disponibilityZones.name
 ])
 .directive('app', appDirective)
-.config(function ($mdThemingProvider, $locationProvider, $httpProvider) {
+.config(function ($mdThemingProvider, $locationProvider, $httpProvider, localStorageServiceProvider) {
 
     $locationProvider.html5Mode({
       enabled: true,
       requireBase: false
     });
+
+    localStorageServiceProvider
+    .setPrefix('admin-2-0');
     
     // Configure theme colors
     $mdThemingProvider.theme('default')

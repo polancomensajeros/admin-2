@@ -8,7 +8,7 @@ import _ from 'lodash';
  * This class handles all the $rootScope functions
  */
 class appController {
-  constructor($rootScope, $cookies, $state, $mdSidenav, ServiceSession, $mdToast) {
+  constructor($rootScope, $cookies, $state, $mdSidenav, ServiceSession, $mdToast, Cities) {
 
     /**
     * Logout function. delete all session cookies and rootScope variables.
@@ -133,9 +133,14 @@ class appController {
       }
     }
 
+    /**
+     * Get cities from the API
+     */
+    Cities.get();
+
   }
 }
 
-appController.$inject = ['$rootScope', '$cookies', '$state', '$mdSidenav', 'ServiceSession', '$mdToast'];
+appController.$inject = ['$rootScope', '$cookies', '$state', '$mdSidenav', 'ServiceSession', '$mdToast', 'Cities'];
 
 export { appController };
