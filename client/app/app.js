@@ -44,6 +44,7 @@ import { alertsView } from './components/alertsView/alertsView';
 import { editMessengerView } from './components/editMessengerView/editMessengerView';
 import { disponibilityView } from './components/disponibilityView/disponibilityView';
 import { passwordResetView } from './components/passwordResetView/passwordResetView';
+import { dashboardView } from './components/dashboardView/dashboardView';
 
 // ServiceDetailView components
 import { messengerCard } from './components/messengerCard/messengerCard';
@@ -106,6 +107,10 @@ angular.module('app', [
   // Login view
 
   loginView.name,
+
+  // Dashboard view
+
+  dashboardView.name,
 
   // Password reset view
 
