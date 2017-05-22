@@ -15,9 +15,8 @@ module.exports = function(app){
     });
 
     app.get('/oauth/resources', function(req,res) {
-        res.send({
-            access_token: req.query.access_token
-        });
+        var url = conf.apiUrl + '/oauth/resources?access_token=' + req.header('X-Auth-Token');
+        req.pipe(request(url)).pipe(res);
     });
 
     app.post('/recoverpassword', function(req, res){
@@ -30,6 +29,7 @@ module.exports = function(app){
         var url = conf.apiUrl + '/oauth/token';
         req.headers['client_id'] = process.env.CLIENT_ID;
         req.headers['client_secret'] = process.env.CLIENT_SECRET;
+        console.log(req.headers);
         req.pipe(request(url)).pipe(res);
     });
 

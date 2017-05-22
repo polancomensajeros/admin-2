@@ -6,40 +6,33 @@ import { viewZoneModalController as viewZoneModalController } from './components
 // Class representing a DisponibilitySpots element
 
 class DisponibilityZonesController {
-  constructor($timeout, $mdDialog, $mdPanel) {
-    var self = this;
+  constructor($timeout, $mdDialog, $mdPanel, Zones, $rootScope, $scope) {
+    this.Zones = Zones;
     this.mdDialog = $mdDialog;
     this.timeout = $timeout;
-    this.loadingDisponibilities = true;
-    this.selected = [];
+    this.rootScope = $rootScope;
     this.query = {
       order: 'name',
       limit: 5,
-      page: 1
+      page: 1,
+      totalZones: 0
     };
-    this.disponibilities = [];
-    this.start = new Date();
-    this.end = new Date();
-    $timeout(function () {
-      for (let i = 0; i < 10; i++) {
-        self.disponibilities.push({
-          id: 'Farmatodo Norte -' + i,
-          created: 'Activo',
-          start: 'Bogotá',
-          end: 'Jose Contreras',
-          min: 'Abr 22, 3:29 PM'
-        });
-      }
-      self.loadingDisponibilities = false;
-    }, 1200);
+    this.loadingZones = true;
+    this.$scope = $scope;
+    $scope.getZones = () => this.getZones();
+    this.getZones();
   }
 
-  success(desserts) {
-    this.desserts = desserts;
-  }
-
-  getDesserts() {
-    this.promise = $nutrition.desserts.get(this.query, this.success).$promise;
+  getZones(){
+    const self = this;
+    this.Zones.get(this.query.page, this.query.limit).then(function(res){
+      self.loadingZones = false;
+      self.zones = res.data.data.result;
+      self.query.totalZones = res.data.data.total_item;
+    }, function(res){
+      self.rootScope.simpleToast(res.data.data.message);
+      self.loadingZones = false;
+    });
   }
 
   closeModal() {
@@ -76,6 +69,6 @@ class DisponibilityZonesController {
 
 }
 
-DisponibilityZonesController.$inject = ['$timeout', '$mdDialog', '$mdPanel'];
+DisponibilityZonesController.$inject = ['$timeout', '$mdDialog', '$mdPanel', 'Zones', '$rootScope', '$scope'];
 
 export { DisponibilityZonesController };

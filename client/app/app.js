@@ -28,6 +28,7 @@ import ngLocalStorage from 'angular-local-storage';
 
 // External dependencies
 import openLayersDirective from 'angular-openlayers-directive';
+import openlayers from 'openlayers/dist/ol-debug';
 import ngMaterialDataTable from 'angular-material-data-table';
 import lfNgMdFileInput from 'lf-ng-md-file-input';
 import ngStateLoader from 'angular-state-loader';
@@ -78,6 +79,8 @@ import { disponibilityActive } from './components/disponibilityActive/disponibil
 import { disponibilityPrices } from './components/disponibilityPrices/disponibilityPrices';
 import { disponibilitySpots } from './components/disponibilitySpots/disponibilitySpots';
 import { disponibilityZones } from './components/disponibilityZones/disponibilityZones';
+
+import { createZoneMap } from './components/disponibilityView/components/createZoneModal/components/createZoneMap/createZoneMap';
 
 // Shared factories and constants
 import { shared } from './shared/shared';
@@ -158,7 +161,10 @@ angular.module('app', [
   disponibilityActive.name,
   disponibilityPrices.name,
   disponibilitySpots.name,
-  disponibilityZones.name
+  disponibilityZones.name,
+
+  // Zone modal components
+  createZoneMap.name
 ])
 .directive('app', appDirective)
 .config(function ($mdThemingProvider, $locationProvider, $httpProvider, localStorageServiceProvider) {

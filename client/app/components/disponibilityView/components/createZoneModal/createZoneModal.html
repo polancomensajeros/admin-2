@@ -1,4 +1,4 @@
-<md-dialog flex="60" class="dialog-90">
+<md-dialog flex="65" class="dialog-90">
     <md-toolbar class="transparent-toolbar">
         <div class="md-toolbar-tools">
             Crear zona
@@ -6,14 +6,14 @@
     </md-toolbar>
     <md-dialog-content class="md-dialog-content" layout="column" style="padding: 0;">
         <div>
-            <service-map carded="false"></service-map>
+            <div id="map"></div>
         </div>
         <form name="createZoneForm" layout-padding layout="column">
             <md-input-container flex>
                 <label>Ciudad</label>
-                <md-select required ng-model="vm.city" name="city" flex>
+                <md-select required ng-model="vm.city" name="city" ng-change="vm.centerMap(vm.city);" flex>
                     <md-option><em>Selecciona una opción</em></md-option>
-                    <md-option ng-repeat="city in vm.cities" ng-value="city.id">
+                    <md-option ng-repeat="city in vm.cities" ng-value="city">
                         {{city.name}}
                     </md-option>
                 </md-select>
@@ -38,7 +38,7 @@
         <md-button ng-click="vm.cancel()">
             Cancelar
         </md-button>
-        <md-button class="md-primary" ng-click="vm.answer('useful')" ng-disabled="createZoneForm.$invalid">
+        <md-button class="md-primary" ng-click="vm.createZone(vm.city, vm.name, vm.zonePolygon)" ng-disabled="createZoneForm.$invalid || !vm.zonePolygon.length">
             Crear
         </md-button>
     </md-dialog-actions>

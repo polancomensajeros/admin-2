@@ -8,7 +8,7 @@ import _ from 'lodash';
  * This class handles all the $rootScope functions
  */
 class appController {
-  constructor($rootScope, $cookies, $state, $mdSidenav, ServiceSession, $mdToast, Cities) {
+  constructor($rootScope, $cookies, $state, $mdSidenav, ServiceSession, $mdToast, Cities, localStorageService) {
 
     /**
     * Logout function. delete all session cookies and rootScope variables.
@@ -40,7 +40,7 @@ class appController {
     /**
      * Shows a simple toast notification
      */
-    $rootScope.simpleToast = function(text, position, delay = 2000){
+    $rootScope.simpleToast = function(text, position = 'bottom right', delay = 2000){
       $mdToast.show(
         $mdToast.simple()
           .textContent(text)
@@ -141,6 +141,6 @@ class appController {
   }
 }
 
-appController.$inject = ['$rootScope', '$cookies', '$state', '$mdSidenav', 'ServiceSession', '$mdToast', 'Cities'];
+appController.$inject = ['$rootScope', '$cookies', '$state', '$mdSidenav', 'ServiceSession', '$mdToast', 'Cities', 'localStorageService'];
 
 export { appController };
