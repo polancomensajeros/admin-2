@@ -22,7 +22,7 @@
           <td md-cell>{{zone.user_created}}</td>
           <td md-cell>{{zone.datecreate}}</td>
           <td md-cell>
-            <md-button class="md-icon-button md-primary" ng-click="vm.openViewZoneModal()">
+            <md-button class="md-icon-button md-primary" ng-click="vm.openViewZoneModal($event, zone.polygons)">
               <md-icon class="md-icon">map</md-icon>
             </md-button>
           </td>
