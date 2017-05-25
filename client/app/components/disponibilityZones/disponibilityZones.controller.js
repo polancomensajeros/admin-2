@@ -24,6 +24,7 @@ class DisponibilityZonesController {
 
   getZones(){
     const self = this;
+    self.loadingZones = true;
     this.Zones.get(this.query.page, this.query.limit).then(function(res){
       self.loadingZones = false;
       self.zones = res.data.data.result;
@@ -46,18 +47,16 @@ class DisponibilityZonesController {
     const self = this;
     this.mdDialog.show({
       controller: function($timeout){
-      console.log(polygons);
       let vm = this;
       let points = polygons.split(',');
       let pointsArray = [];
       for (var i in points) {
-        let latLon = points[i].split(' ');
-        pointsArray.push([latLon[0], latLon[1]]);
+        const latLon = points[i].split(' ');
+        const pointerPoint = ol.proj.fromLonLat([parseFloat(latLon[0]), parseFloat(latLon[1])], 'EPSG:3857', 'EPSG:4326');
+        pointsArray.push([pointerPoint[0], pointerPoint[1]]);
       }
-      console.log(pointsArray);
 
       let polygon = new ol.geom.Polygon([pointsArray]);
-      polygon.transform('EPSG:4326', 'EPSG:3857');
 
       const feature = new ol.Feature(polygon);
 
@@ -99,9 +98,8 @@ class DisponibilityZonesController {
 
         // Add the vector layer to the map.
         vm.map.addLayer(vectorLayer);
-        const location = ol.proj.transform([pointsArray[1][0], pointsArray[1][1]], 'EPSG:4326', 'EPSG:3857');
-        vm.map.getView().setCenter(location);
-        vm.map.getView().setZoom(12)
+        var extent = vectorLayer.getSource().getExtent();
+        vm.map.getView().fit(extent, vm.map.getSize());
       }
 
       },
@@ -113,9 +111,9 @@ class DisponibilityZonesController {
       fullscreen: true
     })
     .then(function (answer) {
-      console.log(answer);
+      //self.getZones();
     }, function () {
-      console.log('Dialog closed');
+      //self.getZones();
     });
   }
 

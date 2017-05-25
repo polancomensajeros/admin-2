@@ -76,14 +76,15 @@ class createZoneModalController {
 
   createZone(city, name, polygon){
     const self = this;
-    console.log(self.user);
     let polygonStr = '';
     polygon.forEach(function(point) {
-     polygonStr += point[0] + ' ' + point[1] + ','; 
+     const pointLatLonged = ol.proj.transform(point, 'EPSG:3857', 'EPSG:4326')
+     polygonStr += pointLatLonged[0] + ' ' + pointLatLonged[1] + ','; 
     });
+    polygonStr = polygonStr.slice(0, -1);
     this.Zones.create(city.id, name, polygonStr, self.user.id).then(function(){
-      self.rootScope.simpleToast('Ocurrio un error en el servidor, intentelo de nuevo', 'bottom right');
-      self.cancel;
+      self.rootScope.simpleToast('Zona guardada', 'bottom right');
+      self.cancel();
     }, function(){
       self.rootScope.simpleToast('Ocurrio un error en el servidor, intentelo de nuevo', 'bottom right');
     });

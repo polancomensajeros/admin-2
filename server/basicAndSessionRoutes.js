@@ -29,7 +29,6 @@ module.exports = function(app){
         var url = conf.apiUrl + '/oauth/token';
         req.headers['client_id'] = process.env.CLIENT_ID;
         req.headers['client_secret'] = process.env.CLIENT_SECRET;
-        console.log(req.headers);
         req.pipe(request(url)).pipe(res);
     });
 

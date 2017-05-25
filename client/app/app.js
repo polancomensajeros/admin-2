@@ -32,7 +32,7 @@ import openlayers from 'openlayers/dist/ol-debug';
 import ngMaterialDataTable from 'angular-material-data-table';
 import lfNgMdFileInput from 'lf-ng-md-file-input';
 import ngStateLoader from 'angular-state-loader';
-import offlineJs from 'offline-js';
+//import offlineJs from 'offline-js';
 
 // Layout 
 import { sideBar } from './components/sideBar/sideBar';

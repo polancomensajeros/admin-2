@@ -11,7 +11,7 @@ const zones = ($http, $q) => {
   const get = function(page, itemsPerPage) {
     const data = {
         currentPage: page,
-        items_for_page: itemsPerPage
+        item_for_page: itemsPerPage
     };
     const req = {
         method: 'POST',

@@ -11,7 +11,7 @@ module.exports = function(app){
     });
 
     app.post('/create-zone', function(req,res) {
-        var url = conf.apiUrl + '/availability';
+        var url = conf.apiUrl + '/Add-zone';
         req.headers['access_token'] = req.header('X-Auth-Token');
         req.pipe(request(url)).pipe(res);
     });
