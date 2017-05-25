@@ -2,7 +2,7 @@
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
 
-import {Page} from '../../PageClass';
+import {Page} from '../../classes/PageClass';
 import dashpic from '../../../images/dashboard.png';
 
 class DashboardViewController extends Page{

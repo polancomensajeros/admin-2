@@ -2,7 +2,7 @@
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
 
-import {Page} from '../../PageClass';
+import {Page} from '../../classes/PageClass';
 
 class LoginViewController extends Page{
   constructor(ServiceSession, $rootScope) {

@@ -11,7 +11,7 @@ import { createSpotModalController as createSpotModalController } from './compon
 import createZoneModal from './components/createZoneModal/createZoneModal.html';
 import { createZoneModalController as createZoneModalController } from './components/createZoneModal/createZoneModal.controller';
 
-import {Page} from '../../PageClass';
+import {Page} from '../../classes/PageClass';
 // Class representing a DisponibilityView
 
 class DisponibilityViewController extends Page{
