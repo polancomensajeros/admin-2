@@ -7,7 +7,7 @@ import { Table } from '../../classes/tableClass';
 class DisponibilityZonesController extends Table {
   constructor($mdDialog, Zones, $rootScope, $scope, $cookies) {
     // This is a table controller, so it extends from the Table class
-    super(5, 1, 'ASC', 'id', Zones, $rootScope, $scope);
+    super(1, 5, Zones, $scope, $rootScope, 'name');
 
     /**
      * Is mandatory for each table that extends the Table class to bind the
@@ -41,14 +41,12 @@ class DisponibilityZonesController extends Table {
    */
   toggleZone(zone){
     const self = this;
-    const currentStatus = !zone.status;
-    const newStatus = zone.status ? 1 : 0;
-    const statusText = zone.status ? 'Zona activada!' : 'Zona desactivada!';
+    const newStatus = zone.status === 'Activo' ? 1 : 0;
+    const statusText = zone.status === 'Activo' ? 'Zona activada!' : 'Zona desactivada!';
     this.Zones.toggleZone(zone.id, newStatus, self.user.id).then(function(){
       self.rootScope.simpleToast(statusText);
     }, function(){
       self.rootScope.simpleToast('Imposible cambiar el estado!');
-      zone.status = currentStatus;
     });
   }
 

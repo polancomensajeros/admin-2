@@ -8,24 +8,26 @@
 class Table {
 
   /**
-   * Creates a table object
-   * @param {int} limit mac amaount of items to get
-   * @param {int} page number of the page to get
-   * @param {string} orderType asc or desc 
-   * @param {Factory} tableFactory the factory to get the data from
-   * @param {$scope} scope $scope of the table
-   * @param {$rootScope} rootScope rootScope of the table
+   * Instantiates a Table object
+   * @param {int} page page to get
+   * @param {int} limit items per page
+   * @param {Factory} tableFactory factory with the data functions
+   * @param {$scope} $scope $scope of the table
+   * @param {$rootScope} $rootScope $rootScope of the table
+   * @param {string} orderName column to order with
+   * @param {string} filter text to filter
+   * @param {string} filterName name of the column to filter
    */
-  constructor(limit, page, orderType, orderField, tableFactory, $scope, $rootScope) {
-    this.limit = limit;
+  constructor(page, limit, tableFactory, $scope, $rootScope, orderName, filter, filterName) {
     this.page = page;
-    this.orderType = orderType;
-    this.orderField = orderField;
-    this.total = 0;
+    this.limit = limit;
     this.tableFactory = tableFactory;
     this.scope = $scope;
     this.rootScope = $rootScope;
-    
+    this.orderName = orderName;
+    this.filter = filter;
+    this.filterName = filterName;
+    this.total = 0;
     this.scope.getData = () => this.getData();
   }
 
@@ -35,16 +37,16 @@ class Table {
   getData() {
     const self = this;
     self.loadingData = true; // Show loading indicator
-    self.tableFactory.get(this.page, this.limit).then(function(res){
+    self.tableFactory.get(this.page, this.limit, this.orderName, this.filter, this.filterName).then(function (res) {
       self.loadingData = false;
-      self.tableData = res.data.data.result;
-      self.total = res.data.data.total_item;
-    }, function(res){
+      self.tableData = res.data.data;
+      self.total = res.data.properties.total_rows;
+    }, function (res) {
       self.loadingData = false;
-      self.rootScope.simpleToast(res.data.data.message);
+      self.rootScope.simpleToast(res.data.message);
     });
   }
 
 }
 
-export {Table};
+export { Table };

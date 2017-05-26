@@ -23,6 +23,12 @@ describe('Administrate zones', function () {
     expect(disponibilitiesPage.zonesTab.zones.count()).toBeGreaterThan(1);
   });
 
+  it('Should toggle Correctly on of the zones', function(){
+    disponibilitiesPage.zonesTab.zones.first().element(by.binding('zone.status')).click();
+    browser.sleep(variables.SLEEP_TIME);
+    expect(disponibilitiesPage.toast.getText()).toEqual(['Zona Activada!', 'Zona desactivada!']);
+  });
+
   it('should create a new Zone', function(){
     disponibilitiesPage.zonesTab.createZoneBtn.click();
     browser.sleep(variables.SLEEP_TIME);

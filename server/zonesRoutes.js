@@ -4,8 +4,9 @@ var conf    = new Config();
 
 module.exports = function(app){
 
-    app.post('/get-zones', function(req, res){
-        var url = conf.apiUrl + '/List-zone';
+    app.get('/get-zones', function(req, res){
+        var queryParams = req.originalUrl.split('?')[1];
+        var url = conf.apiUrl + '/List-zone?' + queryParams;
         req.headers['access_token'] = req.header('X-Auth-Token');
         req.pipe(request(url)).pipe(res);
     });

@@ -9,18 +9,31 @@ const zones = ($http, $q) => {
    * @param {int} itemsPerPage The number of items per page
    * @returns {Object} $promise object
    */
-  const get = function(page, itemsPerPage) {
-    const data = {
-        currentPage: page,
-        item_for_page: itemsPerPage
+  const get = function(page, itemsPerPage, orderColumnName, filter = false, filterName = false) {
+    let data = {
+        page: page,
+        limit: itemsPerPage
     };
+    let order = 'ASC';
+    let orderName = orderColumnName;
+    let splitedOrder = orderName.split('');
+    if(splitedOrder[0] === '-') {
+        order = 'DESC';
+        orderName = orderName.slice(1);
+    };
+    data.order = order;
+    data.order_name = orderName;
+    if(filter && filterName){
+        data.filter = filter;
+        data.filterName = filterName;
+    }
     const req = {
-        method: 'POST',
+        method: 'GET',
         url: '/get-zones',
         headers: {
             'Content-Type': 'application/json'
         },
-        data: data
+        params: data
     };
 
     return $http(req);

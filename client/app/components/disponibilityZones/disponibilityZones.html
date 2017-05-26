@@ -4,13 +4,13 @@
   </div>
   <md-table-container>
     <table md-row-select multiple md-table ng-model="vm.selected" md-progress="vm.promise">
-      <thead md-head md-order="vm.query.order" md-on-reorder="vm.getDesserts">
+      <thead md-head md-order="vm.orderName" md-on-reorder="getData">
         <tr md-row>
-          <th md-column><span>Nombre</span></th>
+          <th md-column md-order-by="name"><span>Nombre</span></th>
           <th md-column><span>Activa</span></th>
-          <th md-column>Ciudad</th>
-          <th md-column>Creador</th>
-          <th md-column>Fecha creado</th>
+          <th md-column md-order-by="city">Ciudad</th>
+          <th md-column md-order-by="user_created">Creador</th>
+          <th md-column md-order-by="datecreate">Fecha creado</th>
           <th md-column>Ver zona</th>
         </tr>
       </thead>
@@ -18,9 +18,10 @@
         <tr md-row md-auto-select ng-repeat="zone in vm.tableData">
           <td md-cell>{{zone.name}}</td>
           <td md-cell>
-            <md-checkbox ng-model="zone.status" aria-label="Estado" ng-change="vm.toggleZone(zone)"></md-checkbox>
+            <md-checkbox ng-model="zone.status" ng-true-value="'Activo'"
+              ng-false-value="'Inactivo'" aria-label="Estado" ng-change="vm.toggleZone(zone)"></md-checkbox>
           </td>
-          <td md-cell>{{zone.ciudad}}</td>
+          <td md-cell>{{zone.city}}</td>
           <td md-cell>{{zone.user_created}}</td>
           <td md-cell>{{zone.datecreate}}</td>
           <td md-cell>
