@@ -27,27 +27,27 @@
             </md-toolbar>
             <md-card-content>
               <md-tabs md-dynamic-height md-border-bottom>
-                <md-tab label="Activas" md-on-select="vmd.setCurrentTab({i : 1, labelBtn : 'Disponibilidad'})">
+                <md-tab id="disponibilitiesTrigger" label="Activas" md-on-select="vmd.setCurrentTab({i : 1, labelBtn : 'Disponibilidad'})">
                   <md-content class="md-padding">
                     <disponibility-active></disponibility-active>
                   </md-content>
                 </md-tab>
-                <md-tab label="Alertas" md-on-select="vmd.setCurrentTab({i : 2, labelBtn : ''})">
+                <md-tab id="alertsTrigger" label="Alertas" md-on-select="vmd.setCurrentTab({i : 2, labelBtn : ''})">
                   <md-content class="md-padding">
                     <alerts></alerts>
                   </md-content>
                 </md-tab>
-                <md-tab label="Tarifas" md-on-select="vmd.setCurrentTab({i : 3, labelBtn : ''})">
+                <md-tab id="pricesTrigger" label="Tarifas" md-on-select="vmd.setCurrentTab({i : 3, labelBtn : ''})">
                   <md-content class="md-padding">
                     <disponibility-prices></disponibility-prices>
                   </md-content>
                 </md-tab>
-                <md-tab label="Puntos" md-on-select="vmd.setCurrentTab({i : 4, labelBtn : 'Punto'})">
+                <md-tab id="spotsTrigger" label="Puntos" md-on-select="vmd.setCurrentTab({i : 4, labelBtn : 'Punto'})">
                   <md-content class="md-padding">
                     <disponibility-spots></disponibility-spots>
                   </md-content>
                 </md-tab>
-                <md-tab label="Zonas" md-on-select="vmd.setCurrentTab({i : 5, labelBtn : 'Zona'})">
+                <md-tab id="zonesTrigger" label="Zonas" md-on-select="vmd.setCurrentTab({i : 5, labelBtn : 'Zona'})">
                   <md-content class="md-padding">
                     <disponibility-zones></disponibility-zones>
                   </md-content>

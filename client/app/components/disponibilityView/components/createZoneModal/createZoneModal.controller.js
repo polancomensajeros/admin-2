@@ -3,15 +3,15 @@
  */
 
 class createZoneModalController {
-  constructor($rootScope, $cookies, $mdDialog, $timeout, $mdPanel, Cities, Zones) {
+  constructor($rootScope, $cookies, $mdDialog, $timeout, $mdPanel, Cities, Zones, $scope) {
 
     this.rootScope = $rootScope;
+    this.scope = $scope;
     this.mdDialog = $mdDialog;
     this.cities = Cities.getState();
     this.city = this.cities[0];
     this.timeout = $timeout;
     this.Zones = Zones;
-    console.log($cookies.getObject('user'));
     this.user = $cookies.getObject('user');
     const self = this;
     $timeout(function(){
@@ -85,6 +85,8 @@ class createZoneModalController {
     this.Zones.create(city.id, name, polygonStr, self.user.id).then(function(){
       self.rootScope.simpleToast('Zona guardada', 'bottom right');
       self.cancel();
+      // Broadcast the getTableData function
+      self.rootScope.$broadcast('zoneCreated');
     }, function(){
       self.rootScope.simpleToast('Ocurrio un error en el servidor, intentelo de nuevo', 'bottom right');
     });
@@ -92,7 +94,7 @@ class createZoneModalController {
 
 }
 
-createZoneModalController.$inject = ['$rootScope', '$cookies', '$mdDialog', '$timeout', '$mdPanel', 'Cities', 'Zones'];
+createZoneModalController.$inject = ['$rootScope', '$cookies', '$mdDialog', '$timeout', '$mdPanel', 'Cities', 'Zones', '$scope'];
 
 export { createZoneModalController };
 

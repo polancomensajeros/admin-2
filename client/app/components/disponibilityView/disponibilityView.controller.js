@@ -15,11 +15,15 @@ import {Page} from '../../classes/PageClass';
 // Class representing a DisponibilityView
 
 class DisponibilityViewController extends Page{
-  constructor($mdDialog, Titles, $rootScope, $cookies, $state) {
+  constructor($mdDialog, Titles, $rootScope, $cookies, $state, $scope) {
     super(true, $cookies, $state);
     Titles.setTopbarTitle('Disponibilidades'); 
     this.mdDialog = $mdDialog;
     this.currentTab = {i : 1, labelBtn : 'Disponibilidad'};
+
+    $scope.$on('zoneCreated', function(){
+      $scope.$broadcast('getZones', 1);
+    });
   }
 
   setCurrentTab(tab) {
@@ -78,6 +82,6 @@ class DisponibilityViewController extends Page{
 
 }
 
-DisponibilityViewController.$inject = ['$mdDialog', 'Titles', '$rootScope', '$cookies', '$state'];
+DisponibilityViewController.$inject = ['$mdDialog', 'Titles', '$rootScope', '$cookies', '$state', '$scope'];
 
 export { DisponibilityViewController };
