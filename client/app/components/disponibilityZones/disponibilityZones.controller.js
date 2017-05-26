@@ -5,12 +5,10 @@ import viewZoneModal from './components/viewZoneModal/viewZoneModal.html';
 import { Table } from '../../classes/tableClass';
 
 class DisponibilityZonesController extends Table {
-  constructor($mdDialog, Zones, $rootScope, $scope) {
+  constructor($mdDialog, Zones, $rootScope, $scope, $cookies) {
     // This is a table controller, so it extends from the Table class
     super(5, 1, 'ASC', 'id', Zones, $rootScope, $scope);
 
-    this.mdDialog = $mdDialog;
-    
     /**
      * Is mandatory for each table that extends the Table class to bind the
      * super getData() function to the controller $scope  
@@ -24,6 +22,11 @@ class DisponibilityZonesController extends Table {
     $scope.$on('getZones', function(){
       $scope.getData();
     });
+
+    this.mdDialog = $mdDialog;
+    this.Zones = Zones;
+    this.rootScope = $rootScope;
+    this.user = $cookies.getObject('user');
   }
 
   /**
@@ -31,6 +34,22 @@ class DisponibilityZonesController extends Table {
    */
   closeModal() {
     this.mdDialog.hide();
+  }
+
+  /**
+   * Toggles the state of one of the zones
+   */
+  toggleZone(zone){
+    const self = this;
+    const currentStatus = !zone.status;
+    const newStatus = zone.status ? 1 : 0;
+    const statusText = zone.status ? 'Zona activada!' : 'Zona desactivada!';
+    this.Zones.toggleZone(zone.id, newStatus, self.user.id).then(function(){
+      self.rootScope.simpleToast(statusText);
+    }, function(){
+      self.rootScope.simpleToast('Imposible cambiar el estado!');
+      zone.status = currentStatus;
+    });
   }
 
   /**
@@ -123,6 +142,6 @@ class DisponibilityZonesController extends Table {
 
 }
 
-DisponibilityZonesController.$inject = ['$mdDialog', 'Zones', '$rootScope', '$scope'];
+DisponibilityZonesController.$inject = ['$mdDialog', 'Zones', '$rootScope', '$scope', '$cookies'];
 
 export { DisponibilityZonesController };

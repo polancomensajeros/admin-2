@@ -7,7 +7,7 @@
       <thead md-head md-order="vm.query.order" md-on-reorder="vm.getDesserts">
         <tr md-row>
           <th md-column><span>Nombre</span></th>
-          <th md-column><span>Estado</span></th>
+          <th md-column><span>Activa</span></th>
           <th md-column>Ciudad</th>
           <th md-column>Creador</th>
           <th md-column>Fecha creado</th>
@@ -17,7 +17,9 @@
       <tbody md-body>
         <tr md-row md-auto-select ng-repeat="zone in vm.tableData">
           <td md-cell>{{zone.name}}</td>
-          <td md-cell>{{zone.status}}</td>
+          <td md-cell>
+            <md-checkbox ng-model="zone.status" aria-label="Estado" ng-change="vm.toggleZone(zone)"></md-checkbox>
+          </td>
           <td md-cell>{{zone.ciudad}}</td>
           <td md-cell>{{zone.user_created}}</td>
           <td md-cell>{{zone.datecreate}}</td>

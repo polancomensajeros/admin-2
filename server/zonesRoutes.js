@@ -15,5 +15,11 @@ module.exports = function(app){
         req.headers['access_token'] = req.header('X-Auth-Token');
         req.pipe(request(url)).pipe(res);
     });
+
+    app.post('/toggle-zone', function(req,res) {
+        var url = conf.apiUrl + '/Change-status-zone';
+        req.headers['access_token'] = req.header('X-Auth-Token');
+        req.pipe(request(url)).pipe(res);
+    });
     
 }

@@ -4,6 +4,7 @@ const zones = ($http, $q) => {
     let allZones = [];
 
   /**
+   * Gets all the zones paginated
    * @param {int} page The page to ask for
    * @param {int} itemsPerPage The number of items per page
    * @returns {Object} $promise object
@@ -26,6 +27,7 @@ const zones = ($http, $q) => {
   };
 
   /**
+   * Creates a new zone
    * @param {int} cityId id of the city
    * @param {string} name The name of the city
    * @param {string} polygon String with the data of the polygon
@@ -51,11 +53,35 @@ const zones = ($http, $q) => {
     return $http(req);
   }
 
+  /**
+   * Toggles the state of a zone
+   * @param {int} zoneId the zone id
+   * @param {int} status the status
+   * @param {int} userId the user id
+   */
+  const toggleZone = (zoneId, status, userId) =>{
+    const data = {
+        id_zone: zoneId,
+        status: status,
+        id_user: parseInt(userId)
+    };
+    const req = {
+        method: 'POST',
+        url: '/toggle-zone',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: data
+    };
+
+    return $http(req);
+  }
+
   const getState = () =>{
     return allZones;
   }
 
-  return {get, create};
+  return {get, create, toggleZone};
 };
 
 zones.$inject = ['$http', '$q'];
