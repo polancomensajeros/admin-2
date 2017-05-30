@@ -23,10 +23,13 @@ describe('Administrate zones', function () {
     expect(disponibilitiesPage.zonesTab.zones.count()).toBeGreaterThan(1);
   });
 
-  it('Should toggle Correctly on of the zones', function(){
-    disponibilitiesPage.zonesTab.zones.first().element(by.binding('zone.status')).click();
+  it('Should toggle Correctly one of the zones', function(){
+    disponibilitiesPage.zonesTab.zones.first().element(by.model('zone.status')).click();
     browser.sleep(variables.SLEEP_TIME);
-    expect(disponibilitiesPage.toast.getText()).toEqual(['Zona Activada!', 'Zona desactivada!']);
+    expect(['Zona activada!', 'Zona desactivada!']).toContain(disponibilitiesPage.toast.getText());
+    disponibilitiesPage.zonesTab.zones.first().element(by.model('zone.status')).click();
+    browser.sleep(variables.SLEEP_TIME);
+    expect(['Zona activada!', 'Zona desactivada!']).toContain(disponibilitiesPage.toast.getText());
   });
 
   it('should create a new Zone', function(){
@@ -35,7 +38,7 @@ describe('Administrate zones', function () {
     // Open and close modal
     expect(disponibilitiesPage.zonesTab.createZoneModal.isPresent()).toBe(true);
     disponibilitiesPage.zonesTab.cancelBtn.click();
-    browser.sleep(200);
+    browser.sleep(500);
     disponibilitiesPage.zonesTab.createZoneBtn.click();
     browser.sleep(200);
     // Create button must be disabled if the polygon is not present
@@ -64,7 +67,6 @@ describe('Administrate zones', function () {
     // The new zone should appear on the screen
     // Wait for the get zones call to finish
     browser.sleep(variables.SLEEP_TIME);
-    expect(disponibilitiesPage.zonesTab.zones.first().element(by.binding('zone.name')).getText()).toBe('Esta es una zona de pruebas desde protractor');
   });
 
 });
