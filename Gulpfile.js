@@ -12,6 +12,7 @@ var app       = require('express')();
 
 require(__dirname + '/server/basicAndSessionRoutes')(app);
 require(__dirname + '/server/zonesRoutes')(app);
+require(__dirname + '/server/pricesRoutes')(app);
 
 /**
  * Hack for the angular html5 mode

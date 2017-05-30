@@ -1,7 +1,8 @@
 import _ from 'lodash';
 
 const zones = ($http, $q) => {
-    let allZones = [];
+   let allZones = [];
+   let filters = [];
 
   /**
    * Gets all the zones paginated
@@ -94,7 +95,15 @@ const zones = ($http, $q) => {
     return allZones;
   }
 
-  return {get, create, toggleZone};
+  const getFilters = () =>{
+      return filters;
+  }
+
+  const setFilters = (newFilters) =>{
+    filters = newFilters;
+  }
+
+  return {get, create, toggleZone, getFilters, setFilters};
 };
 
 zones.$inject = ['$http', '$q'];

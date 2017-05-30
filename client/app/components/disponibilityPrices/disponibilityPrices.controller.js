@@ -1,77 +1,47 @@
 /**
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
+import { Table } from '../../classes/tableClass';
 
-// Class representing a DisponibilityActive
-
-class DisponibilityPricesController {
-  constructor($timeout, $mdDialog, $mdPanel) { 
-    var self = this;
-    this.mdDialog = $mdDialog;
-    this.loadingDisponibilities = true;
-    this.selected = [];
-    this.query = {
-      order: 'name',
-      limit: 5,
-      page: 1
-    };
-    this.disponibilities = [];
-    this.start = new Date();
-    this.end = new Date();
-    $timeout(function () {
-      for (let i = 0; i < 10; i++) {
-        self.disponibilities.push({
-          id: '034412344' + i,
-          created: 'Abr 27, 2:00 p.m.',
-          start: 'Abr 27, 2:00 p.m.',
-          end: 'Abr 27, 2:00 p.m.',
-          min: '$45.000',
-          acceptance: '85%',
-          equipment: 'Maleta',
-          spots: '11/13',
-          zones: '1'
-        });
-      }
-      self.loadingDisponibilities = false;
-    }, 1200);
-  }
-
-  success(desserts) {
-    this.desserts = desserts;
-  }
-
-  getDesserts() {
-    this.promise = $nutrition.desserts.get(this.query, this.success).$promise;
-  }
-
-  closeModal() {
-    this.mdDialog.hide();
-  }
-
-  testingModals(ev, template, controller) {
+class DisponibilityPricesController extends Table {
+  constructor($mdDialog, Prices, $rootScope, $scope, $cookies, $interval) {
+    // This is a table controller, so it extends from the Table class
+    super(1, 10, Prices, $scope, $rootScope, 'name');
     const self = this;
-    this.mdDialog.show({
-      controller: controller,
-      controllerAs: 'vm',
-      template: template,
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose: true,
-      fullscreen: true
-    })
-      .then(function (answer) {
-        console.log(answer);
-      }, function () {
-        console.log('Dialog closed');
-      });
-  }
+    /**
+     * Is mandatory for each table that extends the Table class to bind the
+     * super getData() function to the controller $scope  
+     */
+    $scope.getData = () => super.getData();
+    super.getData();
+    
+    /**
+     * After a Prices is created retrieve the Prices again
+     */
+    $scope.$on('getPrices', function(){
+      $scope.getData();
+    });
 
-  //openZonesModal(ev) {
-  //  this.testingModals(ev, dispActiveZoneModal, dispActiveZoneModalController);
-  //}
+    $scope.$on('filterPrices', function(event, args){
+      self.filter = args.filter;
+      self.filterName = args.filterName;
+      $scope.getData();
+    });
+
+    this.mdDialog = $mdDialog;
+    this.Prices = Prices;
+    this.rootScope = $rootScope;
+    this.user = $cookies.getObject('user');
+    
+    $interval(function(){
+      let d = new Date();
+      self.currentHour = d.getHours();
+    }, 1000)
+  }
 
 }
 
-DisponibilityPricesController.$inject = ['$timeout', '$mdDialog', '$mdPanel'];
+DisponibilityPricesController.$inject = ['$mdDialog', 'Prices', '$rootScope', '$scope', '$cookies', '$interval'];
 
 export { DisponibilityPricesController };
+

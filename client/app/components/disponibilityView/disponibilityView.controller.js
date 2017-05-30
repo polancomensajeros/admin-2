@@ -15,11 +15,13 @@ import { Page } from '../../classes/PageClass';
 // Class representing a DisponibilityView
 
 class DisponibilityViewController extends Page {
-  constructor($mdDialog, Titles, $rootScope, $cookies, $state, $scope) {
+  constructor($mdDialog, Titles, $rootScope, $cookies, $state, $scope, Zones, Prices) {
     super(true, $cookies, $state);
     Titles.setTopbarTitle('Disponibilidades');
     this.mdDialog = $mdDialog;
     this.currentTab = { i: 1, labelBtn: 'Disponibilidad' };
+    this.Zones = Zones;
+    this.Prices = Prices;
     const self = this;
     this.scope = $scope;
     /**
@@ -33,12 +35,30 @@ class DisponibilityViewController extends Page {
      * Create the filters for the table
      */
     $scope.$on('createFilters', function (event, args) {
-      self.filters = args.filters;
+      //self.filters = args.filters;
     });
   }
 
   setCurrentTab(tab) {
     this.currentTab = tab;
+    const self = this;
+    switch (parseInt(self.currentTab.i)) {
+      case 1:
+        console.log('todo');
+        break;
+      case 2:
+        console.log('todo');
+        break;
+      case 3:
+        self.filters = self.Prices.getFilters()
+        break;
+      case 4:
+        console.log('todo');
+        break;
+      case 5:
+        self.filters = self.Zones.getFilters()
+        break;
+    }
   }
 
   filterTable() {
@@ -51,7 +71,10 @@ class DisponibilityViewController extends Page {
         console.log('todo');
         break;
       case 3:
-        console.log('todo');
+        self.scope.$broadcast('filterPrices', {
+          filterName: self.filterName,
+          filter: self.filter
+        });
         break;
       case 4:
         console.log('todo');
@@ -117,6 +140,6 @@ class DisponibilityViewController extends Page {
 
 }
 
-DisponibilityViewController.$inject = ['$mdDialog', 'Titles', '$rootScope', '$cookies', '$state', '$scope'];
+DisponibilityViewController.$inject = ['$mdDialog', 'Titles', '$rootScope', '$cookies', '$state', '$scope', 'Zones', 'Prices'];
 
 export { DisponibilityViewController };

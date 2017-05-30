@@ -7,7 +7,7 @@ import { Table } from '../../classes/tableClass';
 class DisponibilityZonesController extends Table {
   constructor($mdDialog, Zones, $rootScope, $scope, $cookies) {
     // This is a table controller, so it extends from the Table class
-    super(1, 5, Zones, $scope, $rootScope, 'name');
+    super(1, 10, Zones, $scope, $rootScope, 'name');
     const self = this;
     /**
      * Is mandatory for each table that extends the Table class to bind the

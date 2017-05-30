@@ -24,7 +24,7 @@
                     <input ng-model="vmd.filter" placeholder="Buscar">
                   </md-input-container>
                   <md-input-container style="margin-top: 9px; margin-left: -11px;">
-                    <md-button type="submit" style="margin-left: 1px;" ng-click="vmd.filterTable()" class="md-primary md-fab md-mini">
+                    <md-button ng-disabled="filterForm.$invalid" type="submit" style="margin-left: 1px;" ng-click="vmd.filterTable()" class="md-primary md-fab md-mini">
                       <md-icon class="md-icon">search</md-icon>
                     </md-button>
                   </md-input-container>
