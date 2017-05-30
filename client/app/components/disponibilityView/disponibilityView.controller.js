@@ -11,23 +11,58 @@ import { createSpotModalController as createSpotModalController } from './compon
 import createZoneModal from './components/createZoneModal/createZoneModal.html';
 import { createZoneModalController as createZoneModalController } from './components/createZoneModal/createZoneModal.controller';
 
-import {Page} from '../../classes/PageClass';
+import { Page } from '../../classes/PageClass';
 // Class representing a DisponibilityView
 
-class DisponibilityViewController extends Page{
+class DisponibilityViewController extends Page {
   constructor($mdDialog, Titles, $rootScope, $cookies, $state, $scope) {
     super(true, $cookies, $state);
-    Titles.setTopbarTitle('Disponibilidades'); 
+    Titles.setTopbarTitle('Disponibilidades');
     this.mdDialog = $mdDialog;
-    this.currentTab = {i : 1, labelBtn : 'Disponibilidad'};
-
-    $scope.$on('zoneCreated', function(){
+    this.currentTab = { i: 1, labelBtn: 'Disponibilidad' };
+    const self = this;
+    this.scope = $scope;
+    /**
+     * After creating a zone broadcast the getZones functions
+     */
+    $scope.$on('zoneCreated', function () {
       $scope.$broadcast('getZones', 1);
+    });
+
+    /**
+     * Create the filters for the table
+     */
+    $scope.$on('createFilters', function (event, args) {
+      self.filters = args.filters;
     });
   }
 
   setCurrentTab(tab) {
     this.currentTab = tab;
+  }
+
+  filterTable() {
+    const self = this;
+    switch (parseInt(this.currentTab.i)) {
+      case 1:
+        console.log('todo');
+        break;
+      case 2:
+        console.log('todo');
+        break;
+      case 3:
+        console.log('todo');
+        break;
+      case 4:
+        console.log('todo');
+        break;
+      case 5:
+        self.scope.$broadcast('filterZones', {
+          filterName: self.filterName,
+          filter: self.filter
+        });
+        break;
+    }
   }
 
   testingModals(ev, template, controller) {
@@ -52,31 +87,31 @@ class DisponibilityViewController extends Page{
     this.testingModals(ev, createDispModal, createDispModalController);
   }
 
-   openCreateSpotModal(ev) {
+  openCreateSpotModal(ev) {
     this.testingModals(ev, createSpotModal, createSpotModalController);
   }
 
-   openCreateZoneModal(ev) {
+  openCreateZoneModal(ev) {
     this.testingModals(ev, createZoneModal, createZoneModalController);
   }
 
-  create(){
-    switch(parseInt(this.currentTab.i)){
+  create() {
+    switch (parseInt(this.currentTab.i)) {
       case 1:
         this.openCreateDisponibilityModal();
-      break;
+        break;
       case 2:
         console.log('todo');
-      break;
+        break;
       case 3:
         console.log('todo');
-      break;
+        break;
       case 4:
         this.openCreateSpotModal();
-      break;
+        break;
       case 5:
         this.openCreateZoneModal();
-      break;
+        break;
     }
   }
 

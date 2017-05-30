@@ -8,7 +8,7 @@ class DisponibilityZonesController extends Table {
   constructor($mdDialog, Zones, $rootScope, $scope, $cookies) {
     // This is a table controller, so it extends from the Table class
     super(1, 5, Zones, $scope, $rootScope, 'name');
-
+    const self = this;
     /**
      * Is mandatory for each table that extends the Table class to bind the
      * super getData() function to the controller $scope  
@@ -20,6 +20,12 @@ class DisponibilityZonesController extends Table {
      * After a zones is created retrieve the zones again
      */
     $scope.$on('getZones', function(){
+      $scope.getData();
+    });
+
+    $scope.$on('filterZones', function(event, args){
+      self.filter = args.filter;
+      self.filterName = args.filterName;
       $scope.getData();
     });
 

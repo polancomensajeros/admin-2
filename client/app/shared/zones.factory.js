@@ -25,7 +25,7 @@ const zones = ($http, $q) => {
     data.order_name = orderName;
     if(filter && filterName){
         data.filter = filter;
-        data.filterName = filterName;
+        data.filter_name = filterName;
     }
     const req = {
         method: 'GET',

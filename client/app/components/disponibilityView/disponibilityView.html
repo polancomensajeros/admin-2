@@ -4,21 +4,33 @@
     <div class="main-content" layout="column" flex>
 
       <!-- Component -->
-        <top-bar></top-bar>
+      <top-bar></top-bar>
       <!-- /Component -->
-      
+
       <md-content layout="column" layout-gt-md="row" flex>
         <div layout-gt-md="column" flex-gt-md="" class="scrollable-full-column">
           <md-card class="scrollable-full-column">
             <md-toolbar clas="md-menu-toolbar">
               <div class="md-toolbar-tools">
-                <small>{{selectedDisps}}</small>
+                <form name="filterForm" class="searcher padding-top-0-5" layout="row">
+                  <md-input-container>
+                    <md-select required ng-model="vmd.filterName" name="filter" flex>
+                      <md-option ng-repeat="filter in vmd.filters" ng-value="filter.value">
+                        {{filter.name}}
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
+                  <md-input-container md-no-float class="md-block">
+                    <input ng-model="vmd.filter" placeholder="Buscar">
+                  </md-input-container>
+                  <md-input-container style="margin-top: 9px; margin-left: -11px;">
+                    <md-button type="submit" style="margin-left: 1px;" ng-click="vmd.filterTable()" class="md-primary md-fab md-mini">
+                      <md-icon class="md-icon">search</md-icon>
+                    </md-button>
+                  </md-input-container>
+                </form>
                 <div flex="" class="flex"></div>
-                <md-input-container md-no-float class="md-block">
-                  <input ng-model="user.address2" placeholder="Buscar">
-                </md-input-container>
-                <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date"></md-datepicker>
-                <div ng-if="vmd.currentTab.i != 2 && vmd.currentTab.i != 3">
+                <div ng-if="vmd.currentTab.i != 2 && vmd.currentTab.i != 3" class="padding-top-0-5">
                   <md-button class="md-primary md-raised" ng-click="vmd.create()">
                     Crear {{vmd.currentTab.labelBtn}}
                   </md-button>

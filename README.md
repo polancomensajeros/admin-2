@@ -130,13 +130,27 @@ Las pruebas e2e deben ser usadas para probar la funcionalidad general de la apli
 Las pruebas unitarias deben ser usadas para probar funciones especificas de los controladores, por ejemplo calculos locales, operaciones sobre arreglos, conexiones de sockets etc
 
 ### Express
-Se usa el framework *express.js* como proxy para las peticiones a la API
+Se usa el framework *express.js* como proxy para las peticiones a la API.
+
+Las rutas de la aplicacion estan declaradas dentro de la carpeta __server__ en el root de la aplicacion.
+
+Son necesarias las variables de entorno para el correcto funcinamiento de la aplicacion, pueden agregarse en un archivo .env, dentro de la configuracion del servidor o al lanzar el comando npm start
+
+```
+CLIENT_ID=578e5be772830_frontmu CLIENT_SECRET=7f8b9f769ecc5a4505569e6e7a4804ec8b49b865 NODE_ENV=development npm start
+```
+
+#### Entornos
+Se usan dos entornos, development y production
 ### Offline
-La aplicacion funciona offline, cachea archivos de html y js
+La aplicacion funciona offline, cachea archivos de html y js. Es una Progressive web app.
 ### Recomendaciones generales
 
 Cada vez que se crea un nuevo componente es recomendable detener el servidor y correr de nuevo el comando *npm start*. Esto para evitar que el server muestre archivos html
 guardados en caché. 
+
+#### Tips
+. Al usar la sintaxis **controllerAs** los eventos de $broadcast deben ser llamados por el $rootScope y no por los $scope locales.
 
 La aplicación hace uso del framework [Angular Material](https://material.angularjs.org/latest/) 
 
@@ -149,11 +163,13 @@ Para mas información sobre la arquitectura utilizada leer [Este documento](http
 Si por alguna razon ocurre un error imposible de solucionar, o una duda que no se pueda resolver, me pueden escribir a mi correo personal
 
 
-
-
 Juan Sebastian Polanco Ramos
 
+s.polanco@mensajerosurbanos.com
+
 jspolancor@gmail.com
+
+Mensajeros urbanos
 
 2017
 

@@ -41,6 +41,11 @@ class Table {
       self.loadingData = false;
       self.tableData = res.data.data;
       self.total = res.data.properties.total_rows;
+      // If there is filters inside the response, trigger the function for 
+      // building the filters
+      if(res.data.properties.filter.length){
+        self.rootScope.$broadcast('createFilters', { filters: res.data.properties.filter });
+      }
     }, function (res) {
       self.loadingData = false;
       self.rootScope.simpleToast(res.data.message);
