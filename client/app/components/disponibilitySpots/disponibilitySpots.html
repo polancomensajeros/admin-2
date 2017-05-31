@@ -1,34 +1,30 @@
 <div>
-  <div layout="row" layout-align="center center" ng-if="vm.loadingDisponibilities">
-    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  <div layout="row" layout-align="center center" style="height: 5px;">
+    <md-progress-linear ng-if="vm.loadingData" md-mode="query"></md-progress-linear>
   </div>
-  <md-table-container ng-if="!vm.loadingDisponibilities">
-    <table md-row-select multiple md-table ng-model="vm.selected" md-progress="vm.promise">
-      <thead md-head md-order="vm.query.order" md-on-reorder="vm.getDesserts">
+  <md-table-container>
+    <table md-table>
+      <thead md-head md-order="vm.orderName" md-on-reorder="getData">
         <tr md-row>
-          <th md-column md-order-by="nameToLower"><span>Código</span></th>
-          <th md-column md-numeric md-order-by="calories.value"><span>ID cliente</span></th>
-          <th md-column md-numeric>Nombre</th>
-          <th md-column md-numeric>Finalización</th>
-          <th md-column md-numeric>Dirección</th>
-          <th md-column md-numeric>Empresa</th>
-          <th md-column md-numeric>Ciudad</th>
-          <th md-column md-numeric>Valor parqueadero</th>
-          <th md-column md-numeric>Teléfono</th>
+          <th md-column md-numeric md-order-by="id_point_client"><span>ID cliente</span></th>
+          <th md-column md-numeric md-order-by="name">Nombre</th>
+          <th md-column md-numeric md-order-by="address">Dirección</th>
+          <th md-column md-numeric md-order-by="company">Empresa</th>
+          <th md-column md-numeric md-order-by="city">Ciudad</th>
+          <th md-column md-numeric md-order-by="parking">Valor parqueadero</th>
+          <th md-column md-numeric md-order-by="phone">Teléfono</th>
           <th md-column md-numeric>Extras</th>
         </tr>
       </thead>
       <tbody md-body>
-        <tr md-row md-select="disp" md-select-id="id" md-auto-select ng-repeat="disp in vm.disponibilities">
-          <td md-cell>{{disp.id}}</td>
-          <td md-cell>{{disp.created}}</td>
-          <td md-cell>{{disp.start}}</td>
-          <td md-cell>{{disp.end}}</td>
-          <td md-cell>{{disp.state}}</td>
-          <td md-cell>{{disp.min}}</td>
-          <td md-cell>{{disp.accepatance}}</td>
-          <td md-cell>{{disp.equipment}}</td>
-          <td md-cell>{{disp.spots}}</td>
+        <tr md-row md-select="disp" md-select-id="id" md-auto-select ng-repeat="spot in vm.tableData">
+          <td md-cell>{{spot.id_point_client}}</td>
+          <td md-cell>{{spot.name}}</td>
+          <td md-cell>{{spot.address}}</td>
+          <td md-cell>{{spot.company}}</td>
+          <td md-cell>{{spot.city}}</td>
+          <td md-cell>{{spot.parking}}</td>
+          <td md-cell>{{spot.phone}}</td>
           <td md-cell>
             <!-- Agent menu -->
             <md-menu>
@@ -42,7 +38,7 @@
                       <small>Creado por</small>
                     </div>
                     <div class="md-subhead">
-                      <strong class="srefer">Jhonatan Hernandez</strong>
+                      <strong class="srefer">{{spot.user_created}}</strong>
                     </div>
                   </div>
                   <div layout="row" layout-align="space-between center">
@@ -50,7 +46,7 @@
                       <small>Horario</small>
                     </div>
                     <div class="md-subhead">
-                      <small>Lunes a viernes 7AM - 5PM</small>
+                      <small>{{spot.schedule}}</small>
                     </div>
                   </div>
                   <div layout="row" layout-align="space-between center">
@@ -58,7 +54,7 @@
                       <small>Creado</small>
                     </div>
                     <div class="md-subhead">
-                      <small class="srefer">2017-04-34</small>
+                      <small class="srefer">{{spot.datecreate}}</small>
                     </div>
                   </div>
                 </div>
@@ -71,6 +67,6 @@
     </table>
   </md-table-container>
 
-  <md-table-pagination ng-if="!vm.loadingDisponibilities" md-limit="vm.query.limit" md-limit-options="[5, 10, 15]" md-page="vm.query.page"
-    md-total="{{vm.disponibilities.count}}" md-on-paginate="vm.getDesserts" md-page-select md-label="{page: 'Página:', rowsPerPage: 'Filas por página:', of: 'de'}"></md-table-pagination>
+  <md-table-pagination md-limit="vm.limit" md-limit-options="[5, 10, 15]" md-page="vm.page"
+    md-total="{{vm.total}}" md-on-paginate="getData" md-page-select md-label="{page: 'Página:', rowsPerPage: 'Filas por página:', of: 'de'}"></md-table-pagination>
 </div>

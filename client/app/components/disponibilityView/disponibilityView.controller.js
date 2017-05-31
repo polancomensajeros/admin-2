@@ -15,13 +15,14 @@ import { Page } from '../../classes/PageClass';
 // Class representing a DisponibilityView
 
 class DisponibilityViewController extends Page {
-  constructor($mdDialog, Titles, $rootScope, $cookies, $state, $scope, Zones, Prices) {
+  constructor($mdDialog, Titles, $rootScope, $cookies, $state, $scope, Zones, Prices, Spots) {
     super(true, $cookies, $state);
     Titles.setTopbarTitle('Disponibilidades');
     this.mdDialog = $mdDialog;
     this.currentTab = { i: 1, labelBtn: 'Disponibilidad' };
     this.Zones = Zones;
     this.Prices = Prices;
+    this.Spots = Spots;
     const self = this;
     this.scope = $scope;
     /**
@@ -53,7 +54,7 @@ class DisponibilityViewController extends Page {
         self.filters = self.Prices.getFilters()
         break;
       case 4:
-        console.log('todo');
+        self.filters = self.Spots.getFilters()
         break;
       case 5:
         self.filters = self.Zones.getFilters()
@@ -77,7 +78,10 @@ class DisponibilityViewController extends Page {
         });
         break;
       case 4:
-        console.log('todo');
+        self.scope.$broadcast('filterSpots', {
+          filterName: self.filterName,
+          filter: self.filter
+        });
         break;
       case 5:
         self.scope.$broadcast('filterZones', {
@@ -140,6 +144,6 @@ class DisponibilityViewController extends Page {
 
 }
 
-DisponibilityViewController.$inject = ['$mdDialog', 'Titles', '$rootScope', '$cookies', '$state', '$scope', 'Zones', 'Prices'];
+DisponibilityViewController.$inject = ['$mdDialog', 'Titles', '$rootScope', '$cookies', '$state', '$scope', 'Zones', 'Prices', 'Spots'];
 
 export { DisponibilityViewController };

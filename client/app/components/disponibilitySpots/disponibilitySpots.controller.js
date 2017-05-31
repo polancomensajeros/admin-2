@@ -1,70 +1,41 @@
 /**
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
+import { Table } from '../../classes/tableClass';
 
-// Class representing a DisponibilitySpots element
-
-class DisponibilitySpotsController {
-  constructor($timeout, $mdDialog, $mdPanel) {
-    var self = this;
-    this.mdDialog = $mdDialog;
-    this.timeout = $timeout;
-    this.loadingDisponibilities = true;
-    this.selected = [];
-    this.query = {
-      order: 'name',
-      limit: 5,
-      page: 1
-    };
-    this.disponibilities = [];
-    this.start = new Date();
-    this.end = new Date();
-    $timeout(function () {
-      for (let i = 0; i < 10; i++) {
-        self.disponibilities.push({
-          id: 'CRV-DG22-BOG' + i,
-          created: '8465241',
-          start: 'Cruz verde La chucua',
-          end: 'Calle falsa 123',
-          min: 'Cruz verde',
-          acceptance: 'Bogotá',
-          equipment: '$2000',
-          spots: '445 654458',
-          zones: '1'
-        });
-      }
-      self.loadingDisponibilities = false;
-    }, 1200);
-  }
-
-  success(desserts) {
-    this.desserts = desserts;
-  }
-
-  getDesserts() {
-    this.promise = $nutrition.desserts.get(this.query, this.success).$promise;
-  }
-
-  closeModal() {
-    this.mdDialog.hide();
-  }
-
-  testingModals(ev, template, controller) {
+class DisponibilitySpotsController extends Table {
+  constructor($mdDialog, Spots, $rootScope, $scope, $cookies, $timeout, $mdPanel) {
+    // This is a table controller, so it extends from the Table class
+    super(1, 10, Spots, $scope, $rootScope, 'name');
     const self = this;
-    this.mdDialog.show({
-      controller: controller,
-      controllerAs: 'vm',
-      template: template,
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose: true,
-      fullscreen: true
-    })
-      .then(function (answer) {
-        console.log(answer);
-      }, function () {
-        console.log('Dialog closed');
-      });
+    /**
+     * Is mandatory for each table that extends the Table class to bind the
+     * super getData() function to the controller $scope  
+     */
+    $scope.getData = () => super.getData();
+    super.getData();
+
+    /**
+     * After a Spots is created retrieve the Spots again
+     */
+    $scope.$on('getSpots', function () {
+      $scope.getData();
+    });
+
+    /**
+     * Gets the filtered data from the factory
+     */
+    $scope.$on('filterSpots', function (event, args) {
+      self.filter = args.filter;
+      self.filterName = args.filterName;
+      $scope.getData();
+    });
+
+    this.mdDialog = $mdDialog;
+    this.Spots = Spots;
+    this.rootScope = $rootScope;
+    this.timeout = $timeout;
+    this.user = $cookies.getObject('user');
   }
 
   openMenu(menu, delay = 0) {
@@ -75,6 +46,7 @@ class DisponibilitySpotsController {
 
 }
 
-DisponibilitySpotsController.$inject = ['$timeout', '$mdDialog', '$mdPanel'];
+DisponibilitySpotsController.$inject = ['$mdDialog', 'Spots', '$rootScope', '$scope', '$cookies', '$timeout', '$mdPanel'];
 
 export { DisponibilitySpotsController };
+
