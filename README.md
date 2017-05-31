@@ -78,6 +78,13 @@ Si se van a desarrollar servicios compartidos (factories, constants) deben ser r
 Si un componente tiene componentes hijos con controllers independientes ($mdDialog), se debe crear una carpeta llamada *components* dentro de la carpeta del componente, 
 y dentro de esta carpeta crear sub-carpetas para cada uno de los componentes.
 
+### Clases
+Las clases generales estan en la ruta : __client/app/classes__
+#### PageClass
+Cada componente que sea una vista debe heredar de **PageClass**. __loginRequired__ define si la vista necesita o no que el usuario este logueado
+
+### TableClass
+Los componentes que sean tablas heredan de **TableClass**, en esta clase estan definidos los metodos para obtener los datos de un endpoint, paginarlos, reordenarlos y filtrarlos. Al instanciarla se debe pasar como parametro el factory que consumira la API
 ### Testing
 
 #### Unit testing
