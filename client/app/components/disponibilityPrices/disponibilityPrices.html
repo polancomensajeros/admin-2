@@ -36,30 +36,30 @@
       <tbody md-body>
         <tr md-row ng-repeat="price in vm.tableData">
           <td md-cell>{{price.city}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 0}">{{price.hour0000}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 1}">{{price.hour0100}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 2}">{{price.hour0200}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 3}">{{price.hour0300}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 4}">{{price.hour0400}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 5}">{{price.hour0500}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 6}">{{price.hour0600}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 7}">{{price.hour0700}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 8}">{{price.hour0800}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 9}">{{price.hour0900}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 10}">{{price.hour1000}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 11}">{{price.hour1100}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 12}">{{price.hour1200}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 13}">{{price.hour1300}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 14}">{{price.hour1400}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 15}">{{price.hour1500}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 16}">{{price.hour1600}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 17}">{{price.hour1700}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 18}">{{price.hour1800}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 19}">{{price.hour1900}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 20}">{{price.hour2000}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 21}">{{price.hour2100}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 22}">{{price.hour2200}}</td>
-          <td md-cell ng-class="{'current-hour' : vm.currentHour == 23}">{{price.hour2300}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour0000, 'hour0000')" ng-class="{'current-hour' : vm.currentHour == 0}">{{price.hour0000}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour0100, 'hour0100')" ng-class="{'current-hour' : vm.currentHour == 1}">{{price.hour0100}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour0200, 'hour0200')" ng-class="{'current-hour' : vm.currentHour == 2}">{{price.hour0200}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour0300, 'hour0300')" ng-class="{'current-hour' : vm.currentHour == 3}">{{price.hour0300}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour0400, 'hour0400')" ng-class="{'current-hour' : vm.currentHour == 4}">{{price.hour0400}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour0500, 'hour0500')" ng-class="{'current-hour' : vm.currentHour == 5}">{{price.hour0500}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour0600, 'hour0600')" ng-class="{'current-hour' : vm.currentHour == 6}">{{price.hour0600}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour0700, 'hour0700')" ng-class="{'current-hour' : vm.currentHour == 7}">{{price.hour0700}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour0800, 'hour0800')" ng-class="{'current-hour' : vm.currentHour == 8}">{{price.hour0800}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour0900, 'hour0900')" ng-class="{'current-hour' : vm.currentHour == 9}">{{price.hour0900}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour1000, 'hour1000')" ng-class="{'current-hour' : vm.currentHour == 10}">{{price.hour1000}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour1100, 'hour1100')" ng-class="{'current-hour' : vm.currentHour == 11}">{{price.hour1100}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour1200, 'hour1200')" ng-class="{'current-hour' : vm.currentHour == 12}">{{price.hour1200}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour1300, 'hour1300')" ng-class="{'current-hour' : vm.currentHour == 13}">{{price.hour1300}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour1400, 'hour1400')" ng-class="{'current-hour' : vm.currentHour == 14}">{{price.hour1400}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour1500, 'hour1500')" ng-class="{'current-hour' : vm.currentHour == 15}">{{price.hour1500}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour1600, 'hour1600')" ng-class="{'current-hour' : vm.currentHour == 16}">{{price.hour1600}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour1700, 'hour1700')" ng-class="{'current-hour' : vm.currentHour == 17}">{{price.hour1700}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour1800, 'hour1800')" ng-class="{'current-hour' : vm.currentHour == 18}">{{price.hour1800}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour1900, 'hour1900')" ng-class="{'current-hour' : vm.currentHour == 19}">{{price.hour1900}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour2000, 'hour2000')" ng-class="{'current-hour' : vm.currentHour == 20}">{{price.hour2000}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour2100, 'hour2100')" ng-class="{'current-hour' : vm.currentHour == 21}">{{price.hour2100}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour2200, 'hour2200')" ng-class="{'current-hour' : vm.currentHour == 22}">{{price.hour2200}}</td>
+          <td md-cell ng-click="editPrice($event, price.id, price.hour2300, 'hour2300')" ng-class="{'current-hour' : vm.currentHour == 23}">{{price.hour2300}}</td>
         </tr>
       </tbody>
     </table>
