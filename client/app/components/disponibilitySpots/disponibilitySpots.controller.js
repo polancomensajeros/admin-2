@@ -44,6 +44,20 @@ class DisponibilitySpotsController extends Table {
     }, delay);
   }
 
+   /**
+   * Toggles the state of one of the spots
+   */
+  toggleSpot(spot){
+    const self = this;
+    const newStatus = spot.status === 'Activo' ? 1 : 0;
+    const statusText = spot.status === 'Activo' ? 'Punto activado!' : 'Punto desactivado!';
+    this.Spots.toggleSpot(spot.id, newStatus, self.user.id).then(function(){
+      self.rootScope.simpleToast(statusText);
+    }, function(){
+      self.rootScope.simpleToast('Imposible cambiar el estado!');
+    });
+  }
+
 }
 
 DisponibilitySpotsController.$inject = ['$mdDialog', 'Spots', '$rootScope', '$scope', '$cookies', '$timeout', '$mdPanel'];

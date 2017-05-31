@@ -7,6 +7,7 @@
       <thead md-head md-order="vm.orderName" md-on-reorder="getData">
         <tr md-row>
           <th md-column md-numeric md-order-by="id_point_client"><span>ID cliente</span></th>
+          <th md-column md-numeric>Activo</th>
           <th md-column md-numeric md-order-by="name">Nombre</th>
           <th md-column md-numeric md-order-by="address">Dirección</th>
           <th md-column md-numeric md-order-by="company">Empresa</th>
@@ -19,6 +20,10 @@
       <tbody md-body>
         <tr md-row md-select="disp" md-select-id="id" md-auto-select ng-repeat="spot in vm.tableData">
           <td md-cell>{{spot.id_point_client}}</td>
+          <td md-cell>
+            <md-checkbox ng-model="spot.status" ng-true-value="'Activo'"
+              ng-false-value="'Inactivo'" aria-label="Estado" ng-change="vm.toggleSpot(spot)"></md-checkbox>
+          </td>
           <td md-cell>{{spot.name}}</td>
           <td md-cell>{{spot.address}}</td>
           <td md-cell>{{spot.company}}</td>

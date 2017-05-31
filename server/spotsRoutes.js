@@ -13,5 +13,11 @@ module.exports = function(app){
         req.headers['access_token'] = req.header('X-Auth-Token');
         req.pipe(request(url)).pipe(res);
     });
+
+    app.post('/toggle-spot', function(req,res) {
+        var url = conf.apiUrl + '/Change-status-store';
+        req.headers['access_token'] = req.header('X-Auth-Token');
+        req.pipe(request(url)).pipe(res);
+    });
     
 }

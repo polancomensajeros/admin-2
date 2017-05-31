@@ -41,6 +41,30 @@ const spots = ($http, $q) => {
         return $http(req);
     };
 
+     /**
+     * Toggles the state of a spot
+     * @param {int} spotId the spot id
+     * @param {int} status the status
+     * @param {int} userId the user id
+     */
+    const toggleSpot = (spotId, status, userId) =>{
+        const data = {
+            id_store: spotId,
+            status: status,
+            id_user: parseInt(userId)
+        };
+        const req = {
+            method: 'POST',
+            url: '/toggle-spot',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: data
+        };
+
+        return $http(req);
+    }
+
     /**
      * Get state of the spots
      */
@@ -64,7 +88,7 @@ const spots = ($http, $q) => {
     }
 
 
-    return { get, getState, getFilters, setFilters };
+    return { get, getState, toggleSpot, getFilters, setFilters };
 };
 
 spots.$inject = ['$http', '$q'];
