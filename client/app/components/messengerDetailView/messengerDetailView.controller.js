@@ -2,7 +2,7 @@
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
 
-import {Page} from '../../PageClass';
+import {Page} from '../../classes/PageClass';
 
 class MessengerDetailViewController extends Page{
   constructor(Titles, $rootScope, $cookies, $state) {

@@ -2,7 +2,7 @@
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
 
-import { Page } from '../../PageClass';
+import { Page } from '../../classes/PageClass';
 
 class PasswordResetViewController extends Page {
   constructor(ServiceSession, $rootScope, $location, $state) {

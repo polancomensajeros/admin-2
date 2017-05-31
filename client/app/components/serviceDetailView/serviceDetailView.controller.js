@@ -1,7 +1,7 @@
 /**
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
-import {Page} from '../../PageClass';
+import {Page} from '../../classes/PageClass';
 class ServiceDetailViewController extends Page{
   constructor(Titles, $rootScope, $cookies, $state) {
     super(true, $cookies, $state);

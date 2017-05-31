@@ -15,9 +15,8 @@ module.exports = function(app){
     });
 
     app.get('/oauth/resources', function(req,res) {
-        res.send({
-            access_token: req.query.access_token
-        });
+        var url = conf.apiUrl + '/oauth/resources?access_token=' + req.header('X-Auth-Token');
+        req.pipe(request(url)).pipe(res);
     });
 
     app.post('/recoverpassword', function(req, res){
@@ -35,6 +34,12 @@ module.exports = function(app){
 
     app.post('/changePassword', function(req, res){
         var url = conf.apiUrl + '/changepassword';
+        req.headers['access_token'] = req.header('X-Auth-Token');
+        req.pipe(request(url)).pipe(res);
+    });
+
+    app.post('/cities', function(req, res){
+        var url = conf.apiUrl + '/cities';
         req.headers['access_token'] = req.header('X-Auth-Token');
         req.pipe(request(url)).pipe(res);
     });

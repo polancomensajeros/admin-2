@@ -2,7 +2,8 @@
  * @author Juan Sebastian Polanco Ramos <s.polanco@mensajerosurbanos.com>
  */
 
-import {Page} from '../../PageClass';
+import {Page} from '../../classes/PageClass';
+
 class LoginViewController extends Page{
   constructor(ServiceSession, $rootScope) {
     super(false);
@@ -22,7 +23,7 @@ class LoginViewController extends Page{
   login() {
     const self = this;
     this.loginInProcess = true;
-    this.rootScope.login(self.email, self.password, 'serviceDetailView')
+    this.rootScope.login(self.email, self.password, 'dashboardView')
       .then(function () {
         self.loginInProcess = false;
       }, function () {

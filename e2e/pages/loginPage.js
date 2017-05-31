@@ -3,6 +3,8 @@
 var variables = require('../helpers/variables.js');
 
 module.exports = {
+    stateUrl: 'login',
+
     email :         element(by.model('vm.email')),
     password :      element(by.model('vm.password')),
     loginBtn:       element(by.css('[ng-click="vm.login()"]')),
@@ -16,7 +18,17 @@ module.exports = {
     recoveryErrorToastText: 'El correo electrónico enviado no se encuentra registrado',
     successRecovery: element(by.id('success-recovery')),
     successRecoveryText: 'Se ha enviado un correo electrónico con las instrucciones para cambiar la contraseña, por favor verífique.',
-
+    /**
+     * Logins an user
+     */
+    login: function(){
+        this.go();
+        this.resetForm();
+        this.email.sendKeys(this.userEmail);
+        this.password.sendKeys(this.userPass);
+        this.loginBtn.click();
+        browser.sleep(variables.SLEEP_TIME);
+    },
     /**
      * Resets the main form
      */
@@ -28,7 +40,7 @@ module.exports = {
      * Go to login page
      */
     go: function() {
-        browser.driver.get( variables.ADMIN_PATH + 'login');
+        browser.driver.get( variables.ADMIN_PATH + this.stateUrl);
         browser.ignoreSynchronization = true;
         browser.waitForAngular();
         browser.sleep(2000);

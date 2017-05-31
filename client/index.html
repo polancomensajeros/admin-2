@@ -16,7 +16,6 @@
   <script src="scripts/moment.js"></script>
   <script src="bundle.js"></script>
   <script>
-    Offline.options = {reconnect: {initialDelay: 10}};
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker
       .register('sw.js')

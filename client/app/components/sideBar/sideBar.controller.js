@@ -12,6 +12,11 @@ class SideBarController {
     this.muLogo = muLogo;
     this.navIcons = [
       {
+        icon: 'dashboard',
+        name: 'Dashboard',
+        sref: 'dashboardView'
+      },
+      {
         icon: 'assignment',
         name: 'Servicio',
         sref: 'serviceDetailView'

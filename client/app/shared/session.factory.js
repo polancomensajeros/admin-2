@@ -78,9 +78,12 @@ const ServiceSession = ($http, $location, $cookies, $rootScope, $state) => {
      */
     const getAuthUser = function (accessToken) {
         const req = {
-            url: '/oauth/resources',
             method: 'GET',
-            params: { access_token: accessToken }
+            url: '/oauth/resources',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            params: {access_token : accessToken}
         };
 
         return $http(req);

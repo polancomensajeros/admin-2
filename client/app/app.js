@@ -24,13 +24,15 @@ import ngSanitize from 'angular-sanitize';
 import ngMaterial from 'angular-material';
 import ngMessages from 'angular-messages';
 import ngCookies from 'angular-cookies';
+import ngLocalStorage from 'angular-local-storage';
 
 // External dependencies
 import openLayersDirective from 'angular-openlayers-directive';
+import openlayers from 'openlayers/dist/ol-debug';
 import ngMaterialDataTable from 'angular-material-data-table';
 import lfNgMdFileInput from 'lf-ng-md-file-input';
 import ngStateLoader from 'angular-state-loader';
-import offlineJs from 'offline-js';
+//import offlineJs from 'offline-js';
 
 // Layout 
 import { sideBar } from './components/sideBar/sideBar';
@@ -44,6 +46,7 @@ import { alertsView } from './components/alertsView/alertsView';
 import { editMessengerView } from './components/editMessengerView/editMessengerView';
 import { disponibilityView } from './components/disponibilityView/disponibilityView';
 import { passwordResetView } from './components/passwordResetView/passwordResetView';
+import { dashboardView } from './components/dashboardView/dashboardView';
 
 // ServiceDetailView components
 import { messengerCard } from './components/messengerCard/messengerCard';
@@ -77,6 +80,8 @@ import { disponibilityPrices } from './components/disponibilityPrices/disponibil
 import { disponibilitySpots } from './components/disponibilitySpots/disponibilitySpots';
 import { disponibilityZones } from './components/disponibilityZones/disponibilityZones';
 
+import { createZoneMap } from './components/disponibilityView/components/createZoneModal/components/createZoneMap/createZoneMap';
+
 // Shared factories and constants
 import { shared } from './shared/shared';
 
@@ -89,6 +94,7 @@ angular.module('app', [
   ngMaterial,
   ngMessages,
   ngCookies,
+  ngLocalStorage,
 
   // External dependencies 
   'openlayers-directive',
@@ -106,6 +112,10 @@ angular.module('app', [
   // Login view
 
   loginView.name,
+
+  // Dashboard view
+
+  dashboardView.name,
 
   // Password reset view
 
@@ -151,130 +161,21 @@ angular.module('app', [
   disponibilityActive.name,
   disponibilityPrices.name,
   disponibilitySpots.name,
-  disponibilityZones.name
+  disponibilityZones.name,
+
+  // Zone modal components
+  createZoneMap.name
 ])
-  .directive('app', appDirective)
-  .run(function ($mdSidenav, $cookies, $rootScope, $state, $window, $log, ServiceSession, $mdToast) {
-
-    $rootScope.toggleSideNav = function () {
-      $mdSidenav('sidenav-small')
-        .toggle()
-        .then(function () { });
-    }
-
-    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-      $rootScope.transitioningToState = true;
-    });
-
-    /**
-    * Logout function delete all session cookies and rootScope variables.
-    */
-    $rootScope.logout = function () {
-      $cookies.remove('access_token');
-      $cookies.remove('expires_in');
-      $cookies.remove('refresh_token');
-      $cookies.remove('token_type');
-      $cookies.remove('selectedCity');
-      $cookies.remove('user');
-
-      delete $rootScope.access_token;
-      delete $rootScope.expires_in;
-      delete $rootScope.refresh_token;
-      delete $rootScope.token_type;
-      $state.go('loginView');
-    };
-
-    /**
-     * Login function try to begin a session, and if exist a service created when a user is in a no login
-     * status, try to create the service and go to the track view.
-     * @param username
-     * @param password
-     */
-    $rootScope.login = function (username, password, redirection) {
-      return ServiceSession.login('password', username, password)
-        .then(function (response) {
-
-          $cookies.put('access_token', response.data.access_token);
-          $cookies.put('expires_in', response.data.expires_in);
-          $cookies.put('refresh_token', response.data.refresh_token);
-          $cookies.put('token_type', response.data.token_type);
-
-          $rootScope.access_token = $cookies.get('access_token');
-          $rootScope.expires_in = $cookies.get('expires_in');
-          $rootScope.refresh_token = $cookies.get('refresh_token');
-          $rootScope.token_type = $cookies.get('token_type');
-
-          return ServiceSession.getAuthUser($cookies.get('access_token'))
-            .then(function (response) {
-              $cookies.putObject('user', response.data);
-              $rootScope.user = $cookies.getObject('user');
-              if (angular.isDefined(redirection)) {
-                $state.go(redirection);
-              }
-            });
-        }, function (res) {
-          $mdToast.show(
-            $mdToast.simple()
-              .textContent('Usuario o contraseña incorrectos')
-              .position('bottom right')
-              .hideDelay(10000)
-          );
-        });
-    };
-
-    /**
-    * Create a session with app credentials.
-    * @returns {*}
-    */
-    $rootScope.loginApp = function () {
-      var promise = ServiceSession.login('client_credentials');
-      promise.then(function (response) {
-        $cookies.put('access_token', response.data.access_token);
-        $cookies.put('expires_in', response.data.expires_in);
-        $cookies.put('token_type', response.data.token_type);
-      });
-      return promise;
-    };
-
-    $rootScope.simpleToast = function(text, position, delay = 2000){
-      $mdToast.show(
-        $mdToast.simple()
-          .textContent(text)
-          .position(position)
-          .hideDelay(delay)
-       );
-    }
-
-    /**
-     * Refresh token, this function should be used when the session has expired.
-     * @returns {*}
-     */
-    $rootScope.refreshToken = function () {
-      var promise = ServiceSession.refreshToken();
-      promise.then(function (response) {
-        $cookies.put('access_token', response.data.access_token);
-        $cookies.put('expires_in', response.data.expires_in);
-        $cookies.put('token_type', response.data.token_type);
-        $cookies.put('refresh_token', response.data.refresh_token);
-      });
-      return promise;
-    };
-
-    if (angular.isUndefined($cookies.get('access_token'))) {
-      if (angular.isUndefined($cookies.getObject('user'))) {
-        $rootScope.loginApp();
-      } else {
-        $rootScope.refreshToken();
-      }
-    }
-
-  })
-  .config(function ($mdThemingProvider, $locationProvider, $httpProvider) {
+.directive('app', appDirective)
+.config(function ($mdThemingProvider, $locationProvider, $httpProvider, localStorageServiceProvider) {
 
     $locationProvider.html5Mode({
       enabled: true,
       requireBase: false
     });
+
+    localStorageServiceProvider
+    .setPrefix('admin-2-0');
     
     // Configure theme colors
     $mdThemingProvider.theme('default')
@@ -282,9 +183,9 @@ angular.module('app', [
       .warnPalette('deep-orange')
       .accentPalette('grey');
 
-       var AuthAppConfig = {
-        useAuthTokenHeader: true
-       };
+    var AuthAppConfig = {
+    useAuthTokenHeader: true
+    };
 
     /**
       * http interceptor to scan requests and responses.
@@ -348,4 +249,4 @@ angular.module('app', [
       };
     });
 
-  });
+});

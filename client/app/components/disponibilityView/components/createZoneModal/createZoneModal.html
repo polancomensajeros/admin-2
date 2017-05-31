@@ -1,4 +1,4 @@
-<md-dialog flex="40" class="dialog-90">
+<md-dialog flex="65" class="dialog-90" id="create-zone-modal">
     <md-toolbar class="transparent-toolbar">
         <div class="md-toolbar-tools">
             Crear zona
@@ -6,29 +6,39 @@
     </md-toolbar>
     <md-dialog-content class="md-dialog-content" layout="column" style="padding: 0;">
         <div>
-            <service-map carded="false"></service-map>
+            <div id="map"></div>
         </div>
-        <div layout-padding layout="column">
+        <form name="createZoneForm" layout-padding layout="column">
             <md-input-container flex>
                 <label>Ciudad</label>
-                <md-select required ng-model="vm.pay" flex>
+                <md-select required ng-model="vm.city" name="city" ng-change="vm.centerMap(vm.city);" flex>
                     <md-option><em>Selecciona una opción</em></md-option>
-                    <md-option ng-repeat="state in ['opcion 1', 'opcion 2']" ng-value="state">
-                        {{state}}
+                    <md-option ng-repeat="city in vm.cities" ng-value="city">
+                        {{city.name}}
                     </md-option>
                 </md-select>
+                <div ng-messages="createZoneForm.city.$error" role="alert">
+                    <div ng-message="required">
+                        Seleccione una ciudad
+                    </div>
+                </div>
             </md-input-container>
             <md-input-container>
                 <label>Nombre</label>
-                <input ng-model="vm.name">
+                <input ng-model="vm.name" name="name" required>
+                <div ng-messages="createZoneForm.name.$error" role="alert">
+                    <div ng-message="required">
+                        Ingrese un nombre
+                    </div>
+                </div>
             </md-input-container>
-        </div>
+        </form>
     </md-dialog-content>
     <md-dialog-actions>
         <md-button ng-click="vm.cancel()">
             Cancelar
         </md-button>
-        <md-button ng-click="vm.answer('useful')">
+        <md-button class="md-primary" ng-click="vm.createZone(vm.city, vm.name, vm.zonePolygon)" ng-disabled="createZoneForm.$invalid || !vm.zonePolygon.length">
             Crear
         </md-button>
     </md-dialog-actions>

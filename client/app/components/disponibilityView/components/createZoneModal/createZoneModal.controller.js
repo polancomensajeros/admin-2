@@ -3,87 +3,98 @@
  */
 
 class createZoneModalController {
-  constructor($mdDialog, $timeout, $mdPanel) {
+  constructor($rootScope, $cookies, $mdDialog, $timeout, $mdPanel, Cities, Zones, $scope) {
+
+    this.rootScope = $rootScope;
+    this.scope = $scope;
     this.mdDialog = $mdDialog;
+    this.cities = Cities.getState();
+    this.city = this.cities[0];
     this.timeout = $timeout;
-    this.mdPanel = $mdPanel;
-    this.dateTime = new Date();
-    this.date = new Date();
-    this.addresses = [];
-
-    this.desserts = [
-      'Apple Pie',
-      'Donut',
-      'Fudge',
-      'Cupcake',
-      'Ice Cream',
-      'Tiramisu'
-    ];
-
-    for (var i = 0; i < 4; i++) {
-      this.addresses.push({
-        name: 'Carrera falsa 123',
-        description: 'Chia aute  venmo, keffiyeh labore wolf lomo.  Brunch selfies flannel helvetica'
-      });
-    }
-
+    this.Zones = Zones;
+    this.user = $cookies.getObject('user');
+    const self = this;
+    $timeout(function(){
+      self.initMap();
+      self.centerMap(self.cities[0]);
+    }, 100);
+    this.zonePolygon = [];
   }
 
-  openPanel(ev) {
-    var position = this.mdPanel.newPanelPosition()
-      .relativeTo('.demo-menu-open-button')
-      .addPanelPosition(this.mdPanel.xPosition.ALIGN_START, this.mdPanel.yPosition.BELOW);
+  cancel(){
+    this.mdDialog.cancel();
+  }
+  
+  centerMap(city){
+    const location = ol.proj.transform([city.longitud, city.latitude], 'EPSG:4326', 'EPSG:3857');
+    this.map.getView().setCenter(location);
+    this.map.getView().setZoom(13)
+  }
 
-    var config = {
-      attachTo: angular.element(document.body),
-      controller: function(mdPanelRef){
-         let vm = this;
-         this.mdPanelRef = mdPanelRef;
-         this.fruitNames = ['Pepe Colubi', 'Juan Polanco', 'Soy otro señor'];
+  initMap(){
+    const self = this;
 
-         vm.close = function(){
-           console.log('Cerrando el panel');
-           this.mdPanelRef.close();
-         }
-      },
-      controllerAs: 'vm',
-      template: `
-        <md-card>
-          <md-card-title>
-            <span class="md-subhead">Agregar mensajeros<span>
-          </md-card-title>
-          <md-card-content>
-             <md-chips placeholder="Nombre del mensajero" ng-model="vm.fruitNames" readonly="false"></md-chips>
-          </md-card-content>
-          <md-card-actions layout="row" layout-align="end center">
-            <md-button ng-click="vm.close()">
-              Cancelar
-            </md-button>
-            <md-button class="md-primary">
-              Agregar
-            </md-button>
-          </md-card-actions>
-        </md-card>
-      `,
-      panelClass: 'demo-menu-example',
-      position: position,
-      locals: {
-        'selected': this.selected,
-        'desserts': this.desserts
-      },
-      openFrom: ev,
-      clickOutsideToClose: true,
-      escapeToClose: true,
-      focusOnOpen: true,
-      zIndex: 80
-    };
+    this.raster = new ol.layer.Tile({
+      source: new ol.source.XYZ({
+        url: 'https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG9sYW5jb21lbnNhamVyb3MiLCJhIjoiY2oxZTA5eGJwMDAzaDJxa2V2MmhrYmJlaCJ9.dPXLNDhHsxUls7hkNLjTPQ'
+      })
+    });
 
-    this.mdPanel.open(config);
+    this.source = new ol.source.Vector({wrapX: false});
+
+    this.vector = new ol.layer.Vector({
+      source: self.source
+    });
+
+    this.map = new ol.Map({
+      layers: [self.raster, self.vector],
+      target: 'map',
+      view: new ol.View({
+        center: [-11000000, 4600000],
+        zoom: 4
+      })
+    });
+
+    this.draw = new ol.interaction.Draw({
+      source: self.source,
+      type: 'Polygon'
+    });
+
+    this.draw.on('drawend', function(){
+      self.timeout(function(){
+        const currenFeatures = self.vector.getSource().getFeatures();  
+        if(currenFeatures.length > 1){
+          self.source.removeFeature(currenFeatures[0]);
+        }
+        const finalFeatures = self.vector.getSource().getFeatures();  
+        self.zonePolygon = finalFeatures[0].getGeometry().getCoordinates()[0];
+      }, 100);
+    });
+
+    this.map.addInteraction(self.draw);
+  }
+
+  createZone(city, name, polygon){
+    const self = this;
+    let polygonStr = '';
+    polygon.forEach(function(point) {
+     const pointLatLonged = ol.proj.transform(point, 'EPSG:3857', 'EPSG:4326')
+     polygonStr += pointLatLonged[0] + ' ' + pointLatLonged[1] + ','; 
+    });
+    polygonStr = polygonStr.slice(0, -1);
+    this.Zones.create(city.id, name, polygonStr, self.user.id).then(function(){
+      self.rootScope.simpleToast('Zona guardada', 'bottom right');
+      self.cancel();
+      // Broadcast the getTableData function
+      self.rootScope.$broadcast('zoneCreated');
+    }, function(){
+      self.rootScope.simpleToast('Ocurrio un error en el servidor, intentelo de nuevo', 'bottom right');
+    });
   }
 
 }
 
-createZoneModalController.$inject = ['$mdDialog', '$timeout', '$mdPanel'];
+createZoneModalController.$inject = ['$rootScope', '$cookies', '$mdDialog', '$timeout', '$mdPanel', 'Cities', 'Zones', '$scope'];
 
 export { createZoneModalController };
 

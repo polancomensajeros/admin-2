@@ -4,12 +4,14 @@
 
 import './app.scss';
 import template from './app.html';
+import { appController } from './app.controller'
 
 export const appDirective = ()=> {
   return {
     template,
     restrict: 'E',
     scope: {},
-    replace: true
+    replace: true,
+    controller: appController
   };
 };

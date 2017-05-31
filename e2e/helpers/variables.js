@@ -6,6 +6,6 @@ module.exports = {
   SLEEP_TIME      : 1500,
   HOME_STATE      : 'dashboard',
   ADMIN_PATH      : 'http://localhost:3000/',
-  DASHBOARD_STATE : 'detalle-servicio'
+  DASHBOARD_STATE : 'dashboard'
 
 };

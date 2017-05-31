@@ -11,19 +11,81 @@ import { createSpotModalController as createSpotModalController } from './compon
 import createZoneModal from './components/createZoneModal/createZoneModal.html';
 import { createZoneModalController as createZoneModalController } from './components/createZoneModal/createZoneModal.controller';
 
-import {Page} from '../../PageClass';
+import { Page } from '../../classes/PageClass';
 // Class representing a DisponibilityView
 
-class DisponibilityViewController extends Page{
-  constructor($mdDialog, Titles, $rootScope, $cookies, $state) {
+class DisponibilityViewController extends Page {
+  constructor($mdDialog, Titles, $rootScope, $cookies, $state, $scope, Zones, Prices) {
     super(true, $cookies, $state);
-    Titles.setTopbarTitle('Disponibilidades'); 
+    Titles.setTopbarTitle('Disponibilidades');
     this.mdDialog = $mdDialog;
-    this.currentTab = {i : 1, labelBtn : 'Disponibilidad'};
+    this.currentTab = { i: 1, labelBtn: 'Disponibilidad' };
+    this.Zones = Zones;
+    this.Prices = Prices;
+    const self = this;
+    this.scope = $scope;
+    /**
+     * After creating a zone broadcast the getZones functions
+     */
+    $scope.$on('zoneCreated', function () {
+      $scope.$broadcast('getZones', 1);
+    });
+
+    /**
+     * Create the filters for the table
+     */
+    $scope.$on('createFilters', function (event, args) {
+      //self.filters = args.filters;
+    });
   }
 
   setCurrentTab(tab) {
     this.currentTab = tab;
+    const self = this;
+    switch (parseInt(self.currentTab.i)) {
+      case 1:
+        console.log('todo');
+        break;
+      case 2:
+        console.log('todo');
+        break;
+      case 3:
+        self.filters = self.Prices.getFilters()
+        break;
+      case 4:
+        console.log('todo');
+        break;
+      case 5:
+        self.filters = self.Zones.getFilters()
+        break;
+    }
+  }
+
+  filterTable() {
+    const self = this;
+    switch (parseInt(this.currentTab.i)) {
+      case 1:
+        console.log('todo');
+        break;
+      case 2:
+        console.log('todo');
+        break;
+      case 3:
+        self.scope.$broadcast('filterPrices', {
+          filterName: self.filterName,
+          filter: self.filter
+        });
+        break;
+      case 4:
+        console.log('todo');
+        break;
+      case 5:
+        self.scope.$broadcast('filterZones', {
+          filterName: self.filterName,
+          filter: self.filter
+        });
+        break;
+    }
   }
 
   testingModals(ev, template, controller) {
@@ -48,36 +110,36 @@ class DisponibilityViewController extends Page{
     this.testingModals(ev, createDispModal, createDispModalController);
   }
 
-   openCreateSpotModal(ev) {
+  openCreateSpotModal(ev) {
     this.testingModals(ev, createSpotModal, createSpotModalController);
   }
 
-   openCreateZoneModal(ev) {
+  openCreateZoneModal(ev) {
     this.testingModals(ev, createZoneModal, createZoneModalController);
   }
 
-  create(){
-    switch(parseInt(this.currentTab.i)){
+  create() {
+    switch (parseInt(this.currentTab.i)) {
       case 1:
         this.openCreateDisponibilityModal();
-      break;
+        break;
       case 2:
         console.log('todo');
-      break;
+        break;
       case 3:
         console.log('todo');
-      break;
+        break;
       case 4:
         this.openCreateSpotModal();
-      break;
+        break;
       case 5:
         this.openCreateZoneModal();
-      break;
+        break;
     }
   }
 
 }
 
-DisponibilityViewController.$inject = ['$mdDialog', 'Titles', '$rootScope', '$cookies', '$state'];
+DisponibilityViewController.$inject = ['$mdDialog', 'Titles', '$rootScope', '$cookies', '$state', '$scope', 'Zones', 'Prices'];
 
 export { DisponibilityViewController };

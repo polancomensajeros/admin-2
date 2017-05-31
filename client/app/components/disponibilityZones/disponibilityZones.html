@@ -1,28 +1,31 @@
 <div>
-  <div layout="row" layout-align="center center" ng-if="vm.loadingDisponibilities">
-    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  <div layout="row" layout-align="center center" style="height: 5px;">
+    <md-progress-linear ng-if="vm.loadingData" md-mode="query"></md-progress-linear>
   </div>
-  <md-table-container ng-if="!vm.loadingDisponibilities">
+  <md-table-container>
     <table md-row-select multiple md-table ng-model="vm.selected" md-progress="vm.promise">
-      <thead md-head md-order="vm.query.order" md-on-reorder="vm.getDesserts">
+      <thead md-head md-order="vm.orderName" md-on-reorder="getData">
         <tr md-row>
-          <th md-column md-order-by="nameToLower"><span>Nombre</span></th>
-          <th md-column md-numeric md-order-by="calories.value"><span>Estado</span></th>
-          <th md-column md-numeric>Ciudad</th>
-          <th md-column md-numeric>Creador</th>
-          <th md-column md-numeric>Fecha creado</th>
-          <th md-column md-numeric>Ver zona</th>
+          <th md-column md-order-by="name"><span>Nombre</span></th>
+          <th md-column><span>Activa</span></th>
+          <th md-column md-order-by="city">Ciudad</th>
+          <th md-column md-order-by="user_created">Creador</th>
+          <th md-column md-order-by="datecreate">Fecha creado</th>
+          <th md-column>Ver zona</th>
         </tr>
       </thead>
       <tbody md-body>
-        <tr md-row md-select="disp" md-select-id="id" md-auto-select ng-repeat="disp in vm.disponibilities">
-          <td md-cell>{{disp.id}}</td>
-          <td md-cell>{{disp.created}}</td>
-          <td md-cell>{{disp.start}}</td>
-          <td md-cell>{{disp.end}}</td>
-          <td md-cell>{{disp.state}}</td>
+        <tr md-row md-auto-select ng-repeat="zone in vm.tableData">
+          <td md-cell>{{zone.name}}</td>
           <td md-cell>
-            <md-button class="md-icon-button md-primary" ng-click="vm.openViewZoneModal()">
+            <md-checkbox ng-model="zone.status" ng-true-value="'Activo'"
+              ng-false-value="'Inactivo'" aria-label="Estado" ng-change="vm.toggleZone(zone)"></md-checkbox>
+          </td>
+          <td md-cell>{{zone.city}}</td>
+          <td md-cell>{{zone.user_created}}</td>
+          <td md-cell>{{zone.datecreate}}</td>
+          <td md-cell>
+            <md-button class="md-icon-button md-primary" ng-click="vm.openViewZoneModal($event, zone.polygons)">
               <md-icon class="md-icon">map</md-icon>
             </md-button>
           </td>
@@ -31,6 +34,6 @@
     </table>
   </md-table-container>
 
-  <md-table-pagination ng-if="!vm.loadingDisponibilities" md-limit="vm.query.limit" md-limit-options="[5, 10, 15]" md-page="vm.query.page"
-    md-total="{{vm.disponibilities.count}}" md-on-paginate="vm.getDesserts" md-page-select md-label="{page: 'Página:', rowsPerPage: 'Filas por página:', of: 'de'}"></md-table-pagination>
+  <md-table-pagination md-limit="vm.limit" md-limit-options="[5, 10, 15]" md-page="vm.page"
+    md-total="{{vm.total}}" md-on-paginate="getData" md-page-select md-label="{page: 'Página:', rowsPerPage: 'Filas por página:', of: 'de'}"></md-table-pagination>
 </div>
