@@ -1,6 +1,6 @@
-var loginPage = require('../pages/loginPage.js');
-var disponibilitiesPage = require('../pages/disponibilitiesPage.js');
-var variables = require('../helpers/variables.js');
+var loginPage = require('../../pages/loginPage.js');
+var disponibilitiesPage = require('../../pages/disponibilitiesPage.js');
+var variables = require('../../helpers/variables.js');
 
 describe('Administrate zones', function () {
 
@@ -33,6 +33,7 @@ describe('Administrate zones', function () {
   });
 
   it('should create a new Zone', function(){
+    browser.sleep(variables.SLEEP_TIME);
     disponibilitiesPage.zonesTab.createZoneBtn.click();
     browser.sleep(variables.SLEEP_TIME);
     // Open and close modal

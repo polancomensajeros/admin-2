@@ -7,6 +7,7 @@ class createSpotModalController {
     this.mdDialog = $mdDialog;
     this.timeout = $timeout;
     this.cities = Cities.getState();
+    this.city = this.cities[0];
     this.Companies = Companies;
     this.Spots = Spots;
     this.q = $q;
