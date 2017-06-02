@@ -1,51 +1,92 @@
 <md-dialog flex="40" md-theme="mensajeros">
     <md-dialog-content class="md-dialog-content" layout="column">
-        <div flex layout="column" class="scrollable-full-column padding-1">
+        <form name="createForm" flex layout="column" class="scrollable-full-column padding-1">
             <span class="md-headline margin-top-0 margin-bottom-0-5">Crear punto</span>
             <md-input-container flex>
                 <label>Ciudad</label>
-                <md-select required ng-model="vm.pay" flex>
+                <md-select required ng-model="vm.city" name="city" flex>
                     <md-option><em>Selecciona una opción</em></md-option>
-                    <md-option ng-repeat="state in ['opcion 1', 'opcion 2']" ng-value="state">
-                        {{state}}
+                    <md-option ng-repeat="city in vm.cities" ng-value="city">
+                        {{city.name}}
                     </md-option>
                 </md-select>
+                <div ng-messages="createForm.city.$error" role="alert">
+                    <div ng-message="required">
+                        Seleccione una ciudad
+                    </div>
+                </div>
             </md-input-container>
             <md-input-container>
                 <label>Nombre</label>
-                <input ng-model="vm.name">
+                <input name="name" ng-model="vm.name" required>
+                <div ng-messages="createForm.name.$error" role="alert">
+                    <div ng-message="required">
+                        Digite un nombre
+                    </div>
+                </div>
             </md-input-container>
             <md-input-container>
                 <label>Dirección</label>
-                <input ng-model="vm.address">
+                <input name="address" ng-model="vm.address" required>
+                <div ng-messages="createForm.address.$error" role="alert">
+                    <div ng-message="required">
+                        Digite una dirección
+                    </div>
+                </div>
             </md-input-container>
-            <md-input-container>
-                <label>Empresa</label>
-                <input ng-model="vm.company">
-            </md-input-container>
+            <md-autocomplete flex required md-input-name="autocompleteField" md-input-minlength="2" md-no-cache="false"
+                md-selected-item="vm.selectedCompany" md-search-text="vm.searchText" md-items="item in vm.companiesSearch(vm.searchText)"
+                md-item-text="item.name" md-require-match md-floating-label="Empresa">
+                <md-item-template>
+                    <span md-highlight-text="vm.searchText">{{item.name}}</span>
+                </md-item-template>
+                <div ng-messages="createForm.autocompleteField.$error" ng-if="createForm.autocompleteField.$touched">
+                    <div ng-message="required">Selecciona una empresa.</div>
+                </div>
+            </md-autocomplete>
             <md-input-container>
                 <label>Teléfono</label>
-                <input ng-model="vm.phone">
+                <input name="phone" ng-model="vm.phone" required>
+                <div ng-messages="createForm.phone.$error" role="alert">
+                    <div ng-message="required">
+                        Digite un teléfono
+                    </div>
+                </div>
             </md-input-container>
             <md-input-container>
                 <label>ID cliente</label>
-                <input ng-model="vm.clientId">
+                <input type="number" name="client" ng-model="vm.clientId" required>
+                <div ng-messages="createForm.client.$error" role="alert">
+                    <div ng-message="required">
+                        Digite un ID
+                    </div>
+                </div>
             </md-input-container>
             <md-input-container>
                 <label>Horario del punto</label>
-                <input ng-model="vm.schedule">
+                <input name="schedule" ng-model="vm.schedule" required>
+                <div ng-messages="createForm.schedule.$error" role="alert">
+                    <div ng-message="required">
+                        Digite un horario
+                    </div>
+                </div>
             </md-input-container>
             <md-input-container>
                 <label>Valor del parqueadero</label>
-                <input ng-model="vm.name">
+                <input type="number" name="parking" ng-model="vm.parking" required>
+                <div ng-messages="createForm.parking.$error" role="alert">
+                    <div ng-message="required">
+                        Digite un valor
+                    </div>
+                </div>
             </md-input-container>
-        </div>
+        </form>
     </md-dialog-content>
     <md-dialog-actions>
         <md-button ng-click="vm.cancel()">
             Cancelar
         </md-button>
-        <md-button ng-click="vm.answer('useful')">
+        <md-button ng-disabled="createForm.$invalid || vm.creatingSpot" ng-click="vm.createSpot()">
             Crear
         </md-button>
     </md-dialog-actions>

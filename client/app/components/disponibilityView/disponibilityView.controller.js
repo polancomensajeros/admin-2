@@ -33,6 +33,13 @@ class DisponibilityViewController extends Page {
     });
 
     /**
+     * After creating a spot broadcast the getSpots functions
+     */
+    $scope.$on('spotCreated', function () {
+      $scope.$broadcast('getSpots', 1);
+    });
+
+    /**
      * Create the filters for the table
      */
     $scope.$on('createFilters', function (event, args) {

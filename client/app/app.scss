@@ -129,3 +129,8 @@ body::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
+
+// Autocomplete
+md-autocomplete md-autocomplete-wrap md-progress-linear.md-inline {
+    bottom: 13px !important;
+}

@@ -5,6 +5,7 @@
 import { api } from './api';
 import { titles } from './titles';
 import { cities } from './cities.factory';
+import { companies } from './companies.factory';
 import { ServiceSession } from './session.factory';
 import { zones } from './zones.factory';
 import { prices } from './prices.factory';
@@ -15,6 +16,7 @@ export const shared = angular.module('shared', [])
   .constant('API', api)
   .factory('Titles', titles)
   .factory('Cities', cities)
+  .factory('Companies', companies)
   .factory('Zones', zones)
   .factory('Prices', prices)
   .factory('Spots', spots)

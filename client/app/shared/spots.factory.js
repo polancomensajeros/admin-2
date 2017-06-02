@@ -41,13 +41,30 @@ const spots = ($http, $q) => {
         return $http(req);
     };
 
-     /**
-     * Toggles the state of a spot
-     * @param {int} spotId the spot id
-     * @param {int} status the status
-     * @param {int} userId the user id
+    /**
+     * Creates a new spot
+     * @param {Object} spot Object with the data to save 
      */
-    const toggleSpot = (spotId, status, userId) =>{
+    const create = function (spot) {
+        const req = {
+            method: 'POST',
+            url: '/create-spot',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: spot
+        };
+
+        return $http(req);
+    }
+
+    /**
+    * Toggles the state of a spot
+    * @param {int} spotId the spot id
+    * @param {int} status the status
+    * @param {int} userId the user id
+    */
+    const toggleSpot = (spotId, status, userId) => {
         const data = {
             id_store: spotId,
             status: status,
@@ -88,7 +105,7 @@ const spots = ($http, $q) => {
     }
 
 
-    return { get, getState, toggleSpot, getFilters, setFilters };
+    return { get, getState, create, toggleSpot, getFilters, setFilters };
 };
 
 spots.$inject = ['$http', '$q'];
