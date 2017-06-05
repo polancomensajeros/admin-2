@@ -1,5 +1,5 @@
-var loginPage = require('../pages/loginPage.js');
-var variables = require('../helpers/variables.js');
+var loginPage = require('../../pages/loginPage.js');
+var variables = require('../../helpers/variables.js');
 
 describe('Login to the application', function () {
 
